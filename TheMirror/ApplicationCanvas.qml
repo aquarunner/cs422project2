@@ -18,7 +18,7 @@ Rectangle {
     Rectangle {
         id: top
         x: applicationArea.x
-        width: applicationArea.width
+        width: applicationArea.width + applicationArea.border.width
         height: applicationArea.y
         anchors.top: parent.top
         anchors.topMargin: 0
@@ -32,7 +32,7 @@ Rectangle {
         id: bottom
         x: applicationArea.x
         width: applicationArea.width
-        height: applicationCanvas.height - applicationArea.y - applicationArea.height
+        height: applicationCanvas.height - applicationArea.y - applicationArea.height + applicationArea.border.width
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
 
@@ -43,7 +43,7 @@ Rectangle {
 
     Rectangle {
         id: left
-        width: applicationArea.x
+        width: applicationArea.x + applicationArea.border.width
         anchors.left: parent.left
         anchors.leftMargin: 0
         anchors.bottom: parent.bottom
@@ -58,7 +58,7 @@ Rectangle {
 
     Rectangle {
         id: right
-        width: applicationCanvas.width - applicationArea.x - applicationArea.width
+        width: applicationCanvas.width - applicationArea.x - applicationArea.width + applicationArea.border.width
         anchors.top: parent.top
         anchors.topMargin: 0
         anchors.bottom: parent.bottom
@@ -71,20 +71,20 @@ Rectangle {
         opacity: 0.6
     }
 
-//    Rectangle {
-//        id: center
-//        x: applicationCanvas.x
-//        y: applicationCanvas.y
-//        width: applicationCanvas.width
-//        height: applicationCanvas.height
+    //    Rectangle {
+    //        id: center
+    //        x: applicationCanvas.x
+    //        y: applicationCanvas.y
+    //        width: applicationCanvas.width
+    //        height: applicationCanvas.height
 
-//        color: isApplicationAreaTransparent? "#00000000" : "darkgrey"
-//        Image {
-//            source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3
-//            visible: !isApplicationAreaTransparent
-//        }
-//        opacity: 0.6
-//    }
+    //        color: isApplicationAreaTransparent? "#00000000" : "darkgrey"
+    //        Image {
+    //            source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3
+    //            visible: !isApplicationAreaTransparent
+    //        }
+    //        opacity: 0.6
+    //    }
 
     Rectangle {
         id: applicationArea
@@ -112,6 +112,7 @@ Rectangle {
         width: applicationAreaWidth
         height: applicationAreaHeight
 
+        property variant applicationColor: "#00000000" //transparent
         property variant applicationLoder: componentLoder;
     }
 

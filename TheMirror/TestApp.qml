@@ -3,7 +3,7 @@ import "common"
 
 Rectangle {
     id: applicationID
-    color: "#00000000" //transparent
+    color: applicationColor //DO NOT modify this, unless you want background other than system's
 
     Rectangle
     {
@@ -33,6 +33,7 @@ Rectangle {
 
         onClicked: {
             applicationLoder.source = "TestApp2.qml"; // load another application
+            applicationCanvas.isApplicationAreaTransparent = false; // new loaded application use solid background
         }
     }
 }

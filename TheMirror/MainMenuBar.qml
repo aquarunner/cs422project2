@@ -24,6 +24,7 @@ Rectangle {
             mainScreen.showMainMenuBar = false;
             mainScreen.showApplicationArea = true;
             applicationCanvas.componentLoder.source = "TestApp.qml"
+            applicationCanvas.isApplicationAreaTransparent = true;
         }
 
     }

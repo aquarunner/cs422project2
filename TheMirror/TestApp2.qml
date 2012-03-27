@@ -3,7 +3,7 @@ import "common"
 
 Rectangle {
     id: applicationID
-    color: "lightgreen" //solid
+    color: applicationColor //DO NOT modify this, unless you want background other than system's
 
     Rectangle
     {

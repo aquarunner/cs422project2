@@ -72,7 +72,7 @@ Rectangle {
             currentMonth: model.currentMonth
             currentDay: model.currentDay
             onButtonClicked: {
-                console.log("button says: " + index)
+                // console.log("button says: " + index)
                 //First time, just save the index
                 if (wdgGrid.previousClicked == -1) {
                     wdgGrid.previousClicked = index
