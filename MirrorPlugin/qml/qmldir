@@ -1,0 +1,3 @@
+# This is a demo qmldir file
+plugin ../release/MirrorPlugin
+
