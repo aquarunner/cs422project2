@@ -8,9 +8,16 @@ Rectangle {
     anchors.fill: parent
     color: "#00000000"
 
-    property int applicationAreaHeight: 640
-    property int applicationAreaWidth: 640
+    property int __defaultHeightInNumberOfCells: 10
+    property int __defaultWidthInNumberOfCells: 12
+
+    property int applicationAreaHeightInNumberOfCells: __defaultHeightInNumberOfCells
+    property int applicationAreaWidthInNumberOfCells: __defaultWidthInNumberOfCells
+
+    property int __applicationAreaHeight: grid.cellHeight * applicationAreaHeightInNumberOfCells
+    property int __applicationAreaWidth: grid.cellWidth * applicationAreaWidthInNumberOfCells
     property bool isApplicationAreaTransparent: false;
+    property bool showBorder: true;
 
     property alias componentLoder: componentLoder
 
@@ -89,13 +96,13 @@ Rectangle {
     Rectangle {
         id: applicationArea
 
-        width: applicationAreaWidth + border.width * 2
-        height: applicationAreaHeight + border.width * 2
+        width: __applicationAreaWidth + border.width * 2
+        height: __applicationAreaHeight + border.width * 2
         radius: 8
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-        border.color: "white"
-        border.width: 5
+        border.color: showBorder? "white" : "#00000000"
+        border.width: showBorder? 5 : 0
 
         color: isApplicationAreaTransparent? "#00000000" : "darkgrey"
         Image {
@@ -109,8 +116,8 @@ Rectangle {
         id: componentLoder;
         x: applicationArea.x + applicationArea.border.width
         y: applicationArea.y + applicationArea.border.width
-        width: applicationAreaWidth
-        height: applicationAreaHeight
+        width: __applicationAreaWidth
+        height: __applicationAreaHeight
 
         property variant applicationColor: "#00000000" //transparent
         property variant applicationLoder: componentLoder;

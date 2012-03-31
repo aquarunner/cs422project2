@@ -23,8 +23,16 @@ Rectangle {
         onButtonClick: {
             mainScreen.showMainMenuBar = false;
             mainScreen.showApplicationArea = true;
+            // the application you want to load in the ApplicationCanvas
             applicationCanvas.componentLoder.source = "TestApp.qml"
+            // is the background transparent?
             applicationCanvas.isApplicationAreaTransparent = true;
+            // show border?
+            applicationCanvas.showBorder = false;
+            // set default height
+            applicationCanvas.applicationAreaHeightInNumberOfCells = applicationCanvas.__defaultHeightInNumberOfCells
+            // set default width
+            applicationCanvas.applicationAreaWidthInNumberOfCells = applicationCanvas.__defaultWidthInNumberOfCells
         }
 
     }

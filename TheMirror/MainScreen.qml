@@ -28,8 +28,9 @@ Rectangle {
 
     Settings {
         id: settings
-        Component.onCompleted: settings.save("test");
+        // Component.onCompleted: settings.setSetting("test variable","testval","testapp");
     }
+
 
     gradient: Gradient {
         GradientStop { position: 0.0; color: "#8C8F8C" }

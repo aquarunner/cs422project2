@@ -34,6 +34,9 @@ Rectangle {
         onClicked: {
             applicationLoder.source = "TestApp2.qml"; // load another application
             applicationCanvas.isApplicationAreaTransparent = false; // new loaded application use solid background
+            applicationCanvas.showBorder = true; // show border?
+            applicationCanvas.applicationAreaHeightInNumberOfCells = 12 // change the height of applicationCanvas
+            applicationCanvas.applicationAreaWidthInNumberOfCells = 8 // change the width of applicationCanvas
         }
     }
 }
