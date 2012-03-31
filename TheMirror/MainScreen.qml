@@ -26,6 +26,10 @@ Rectangle {
     property bool showMainMenuBar: false
     property bool isLocked: true;
 
+    Settings {
+        id: settings
+        Component.onCompleted: settings.save("test");
+    }
 
     gradient: Gradient {
         GradientStop { position: 0.0; color: "#8C8F8C" }
