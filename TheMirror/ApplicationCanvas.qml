@@ -161,26 +161,39 @@ Rectangle {
 
         property bool startDrag: false;
 
+        property int last_x;
+        property int last_y;
+
         onPressAndHold: {
-            console.log("Press and hold");
+
             original_x = applicationArea.x;
             original_y = applicationArea.y;
 
             deltaX = mouseX - original_x;
             deltaY = mouseY - original_y;
 
+            last_x = original_x;
+            last_y = original_y;
+
             startDrag = true;
+
         }
         onReleased: {
             startDrag = false;
         }
+
         onMousePositionChanged: {
             if(startDrag) {
+                var currentX = mouseX - deltaX;
+                var currentY = mouseY - deltaY;
 
-                applicationArea.x = mouseX - deltaX;
-                applicationArea.y = mouseY - deltaY;
+                if(Math.sqrt((currentX-last_x)*(currentX-last_x) + (currentY-last_y)*(currentY-last_y)) > 30) {
+                    applicationArea.x = currentX;
+                    applicationArea.y = currentY;
 
-                // console.log("mouseX: " + applicationArea.x + " mouseY: " + applicationArea.y);
+                    last_x = currentX;
+                    last_y = currentY;
+                }
             }
         }
     }
