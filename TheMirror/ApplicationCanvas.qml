@@ -1,4 +1,5 @@
 import QtQuick 1.0
+import "common"
 
 Rectangle {
     id: applicationCanvas
@@ -93,14 +94,17 @@ Rectangle {
     //        opacity: 0.6
     //    }
 
+
     Rectangle {
         id: applicationArea
 
         width: __applicationAreaWidth + border.width * 2
         height: __applicationAreaHeight + border.width * 2
         radius: 8
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
+
+        x: (applicationCanvas.width - applicationArea.width) / 2
+        y: (applicationCanvas.height - applicationArea.height) / 2
+
         border.color: showBorder? "white" : "#00000000"
         border.width: showBorder? 5 : 0
 
@@ -112,6 +116,26 @@ Rectangle {
         opacity: 0.6
     }
 
+    Rectangle {
+        id: titleArea
+        x: applicationArea.x + applicationArea.border.width
+        y: applicationArea.y + applicationArea.border.width
+        width: applicationArea.width - applicationArea.border.width * 2
+        height: button.height
+
+        PicButton2 {
+            id: button
+
+            anchors.horizontalCenter: parent.horizontalCenter
+            label: componentLoder.title;
+            pictureName: componentLoder.iconName;
+            buttonColor: "#00000000"
+        }
+
+        color: "grey"
+        radius: 3
+    }
+
     Loader {
         id: componentLoder;
         x: applicationArea.x + applicationArea.border.width
@@ -121,6 +145,44 @@ Rectangle {
 
         property variant applicationColor: "#00000000" //transparent
         property variant applicationLoder: componentLoder;
+
+        property string title: "Title"
+        property string iconName: "Applications.png"
+    }
+
+    MouseArea {
+        id: dragBarMouseArea
+        anchors.fill: titleArea
+
+        property int original_x;    // Original position
+        property int original_y;
+        property int deltaX;
+        property int deltaY;
+
+        property bool startDrag: false;
+
+        onPressAndHold: {
+            console.log("Press and hold");
+            original_x = applicationArea.x;
+            original_y = applicationArea.y;
+
+            deltaX = mouseX - original_x;
+            deltaY = mouseY - original_y;
+
+            startDrag = true;
+        }
+        onReleased: {
+            startDrag = false;
+        }
+        onMousePositionChanged: {
+            if(startDrag) {
+
+                applicationArea.x = mouseX - deltaX;
+                applicationArea.y = mouseY - deltaY;
+
+                // console.log("mouseX: " + applicationArea.x + " mouseY: " + applicationArea.y);
+            }
+        }
     }
 
 }

@@ -37,6 +37,9 @@ Rectangle {
             applicationCanvas.showBorder = true; // show border?
             applicationCanvas.applicationAreaHeightInNumberOfCells = 12 // change the height of applicationCanvas
             applicationCanvas.applicationAreaWidthInNumberOfCells = 8 // change the width of applicationCanvas
+
+            applicationLoder.title = "Test App 2"
+            applicationLoder.iconName = "Settings.png"
         }
     }
 }

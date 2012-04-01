@@ -33,6 +33,9 @@ Rectangle {
             applicationCanvas.applicationAreaHeightInNumberOfCells = applicationCanvas.__defaultHeightInNumberOfCells
             // set default width
             applicationCanvas.applicationAreaWidthInNumberOfCells = applicationCanvas.__defaultWidthInNumberOfCells
+
+            applicationCanvas.componentLoder.title = "Test App"
+            applicationCanvas.componentLoder.iconName = "Exit.png"
         }
 
     }
