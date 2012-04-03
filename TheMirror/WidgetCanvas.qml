@@ -1,6 +1,10 @@
 import QtQuick 1.0
 
 GridView {
+
+    id: widgetCanvas
+    property alias gridModel: gridModel
+
     Component.onCompleted: {
         for(var index = 0; index < number_of_grids_x * number_of_grids_y; index++)
         {

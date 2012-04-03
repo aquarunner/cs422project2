@@ -39,6 +39,7 @@ Item {
 
         property int original_x;    // Original position
         property int original_y;
+
         property int deltaX;
         property int deltaY;
 
@@ -47,16 +48,20 @@ Item {
         property int last_x;
         property int last_y;
 
+        property int currentIndex;
+        property int originalIndex;
+
         onPressAndHold: {
+
+            console.log("item.x: " + item.x + " item.y: " + item.y);
+            console.log("mouseX: " + mouseX + " mouseY: " + mouseY);
+            console.log("index: " + widgetCanvas.indexAt(item.x, item.y));
+
+            original_x = item.x;
+            original_y = item.y;
+            originalIndex = widgetCanvas.indexAt(original_x, original_y)
+
             if(displayArea.showGrid) {
-                original_x = item.x;
-                original_y = item.y;
-
-                deltaX = mouseX - original_x;
-                deltaY = mouseY - original_y;
-
-                last_x = original_x;
-                last_y = original_y;
 
                 startDrag = true;
             }
@@ -66,17 +71,22 @@ Item {
         }
 
         onMousePositionChanged: {
-            if(startDrag) {
-                var currentX = mouseX - deltaX;
-                var currentY = mouseY - deltaY;
 
-                if(Math.sqrt((currentX-last_x)*(currentX-last_x) + (currentY-last_y)*(currentY-last_y)) > 30) {
-                    item.x = currentX;
-                    item.y = currentY;
+            original_x = item.x;
+            original_y = item.y;
 
-                    last_x = currentX;
-                    last_y = currentY;
-                }
+            console.log("mouseX: " + mouseX + " mouseY: " + mouseY);
+            currentIndex = widgetCanvas.indexAt(original_x + mouseX, original_y + mouseY);
+
+            console.log("currentIndex: " + currentIndex +" originalIndex:" + originalIndex);
+            if(startDrag && currentIndex != originalIndex) {
+
+                original_x = (currentIndex % number_of_grids_x) * cellWidth;
+                original_y = (currentIndex - original_x) / number_of_grids_x * cellHeight;
+                console.log("original_x: " + original_x + " original_y: " + original_y);
+
+                gridModel.move(originalIndex, originalIndex = currentIndex, 1);
+
             }
         }
     }
