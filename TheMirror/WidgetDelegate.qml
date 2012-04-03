@@ -48,18 +48,18 @@ Item {
         property int last_y;
 
         onPressAndHold: {
+            if(displayArea.showGrid) {
+                original_x = item.x;
+                original_y = item.y;
 
-            original_x = item.x;
-            original_y = item.y;
+                deltaX = mouseX - original_x;
+                deltaY = mouseY - original_y;
 
-            deltaX = mouseX - original_x;
-            deltaY = mouseY - original_y;
+                last_x = original_x;
+                last_y = original_y;
 
-            last_x = original_x;
-            last_y = original_y;
-
-            startDrag = true;
-
+                startDrag = true;
+            }
         }
         onReleased: {
             startDrag = false;
