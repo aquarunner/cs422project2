@@ -132,7 +132,7 @@ Rectangle {
             buttonColor: "#00000000"
         }
 
-        color: "grey"
+        color: dragBarMouseArea.startDrag?  Qt.darker("grey", 1.5)  : "grey"
         radius: 3
     }
 

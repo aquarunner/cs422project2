@@ -1,5 +1,5 @@
 import QtQuick 1.0
-import "common"
+import "../common"
 
 Rectangle {
     id: applicationID
@@ -23,9 +23,9 @@ Rectangle {
             anchors.verticalCenter: parent.verticalCenter
         }
 
-        AnimatedImage { id: animation_1; x: 91; y: 247; source: "images/widget2.gif" }
-        AnimatedImage { id: animation_2; x: -52; y: 394; width: 207; height: 135; source: "images/1.gif" }
-        AnimatedImage { id: animation_3; x: 177; y: 394; source: "images/2.gif" }
+        AnimatedImage { id: animation_1; x: 91; y: 247; source: "../images/widget2.gif" }
+        AnimatedImage { id: animation_2; x: -52; y: 394; width: 207; height: 135; source: "../images/1.gif" }
+        AnimatedImage { id: animation_3; x: 177; y: 394; source: "../images/2.gif" }
     }
 
     Button {

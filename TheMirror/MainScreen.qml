@@ -81,7 +81,6 @@ Rectangle {
             anchors.bottomMargin: sideMargin;
             anchors.leftMargin: sideMargin;
             anchors.rightMargin: sideMargin
-
             opacity: 0.1
 
             // initialize the grids
@@ -93,22 +92,23 @@ Rectangle {
             }
 
             model: ListModel { id: gridModel }
-            delegate: Rectangle {
+            delegate:  Rectangle {
                 width: grid.cellWidth; height: grid.cellHeight
                 border.color: "black"
                 border.width: 1
+                color: "#00000000"
             }
 
             cellWidth: grid.width/number_of_grids_x;
             cellHeight: grid.height/number_of_grids_y;
         }
 
-        Calendar {
-            opacity: isLocked? 0.500 : 1
-            anchors.top: parent.top
-            anchors.topMargin: 20
-            anchors.right: parent.right
-            anchors.rightMargin: 10
+        WidgetCanvas {
+            id: widgetCanvas
+            x: grid.x
+            y: grid.y
+            height: grid.height
+            width: grid.width
         }
     }
 
@@ -116,6 +116,7 @@ Rectangle {
         id: applicationCanvas
         visible: showApplicationArea
     }
+
 
     AnimatedImage {
         id: waitingForUnlock;
@@ -153,7 +154,7 @@ Rectangle {
         visible: isLocked
 
         color: "black"
-        opacity: 0.5
+        opacity: 0.8
         font.bold: true
         font.pixelSize: 20
 

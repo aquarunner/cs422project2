@@ -1,5 +1,5 @@
 import QtQuick 1.0
-import "common"
+import "../common"
 
 Rectangle {
     id: applicationID

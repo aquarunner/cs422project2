@@ -24,7 +24,7 @@ Rectangle {
             mainScreen.showMainMenuBar = false;
             mainScreen.showApplicationArea = true;
             // the application you want to load in the ApplicationCanvas
-            applicationCanvas.componentLoder.source = "TestApp.qml"
+            applicationCanvas.componentLoder.source = "demo/TestApp.qml"
             // is the background transparent?
             applicationCanvas.isApplicationAreaTransparent = true;
             // show border?
