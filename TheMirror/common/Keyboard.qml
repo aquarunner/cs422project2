@@ -1,6 +1,5 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
-import "common"
 
 // Based on keyboard code located at http://qt-project.org/forums/viewthread/1486
 
