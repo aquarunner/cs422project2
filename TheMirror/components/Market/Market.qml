@@ -21,7 +21,7 @@ Rectangle {
             applicationCanvas.applicationAreaWidthInNumberOfCells = 8 // change the width of applicationCanvas
 
             applicationLoder.title = "Market"
-            applicationLoder.iconName = "Market.png"
+            applicationLoder.iconName = "images/Package.png"
         }
     }
 

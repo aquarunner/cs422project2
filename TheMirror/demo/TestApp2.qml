@@ -37,13 +37,13 @@ Rectangle {
 
         onClicked: {
             applicationLoder.source = "../components/Market/Market.qml"; // load another application
-            applicationCanvas.isApplicationAreaTransparent = false; // new loaded application use solid background
-            applicationCanvas.showBorder = true; // show border?
-            applicationCanvas.applicationAreaHeightInNumberOfCells = 6 // change the height of applicationCanvas
-            applicationCanvas.applicationAreaWidthInNumberOfCells = 12 // change the width of applicationCanvas
+//            applicationCanvas.isApplicationAreaTransparent = false; // new loaded application use solid background
+//            applicationCanvas.showBorder = true; // show border?
+//            applicationCanvas.applicationAreaHeightInNumberOfCells = 6 // change the height of applicationCanvas
+//            applicationCanvas.applicationAreaWidthInNumberOfCells = 12 // change the width of applicationCanvas
 
-            applicationLoder.title = "Market"
-            applicationLoder.iconName = "..\components\images\Package.png"
+//            applicationLoder.title = "Market"
+//            applicationLoder.iconName = "../components/Market/images/Package.png"
 
 //            mainScreen.showMainMenuBar = true;
 //            mainScreen.showApplicationArea = false;
