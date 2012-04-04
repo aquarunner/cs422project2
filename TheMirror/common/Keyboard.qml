@@ -8,14 +8,14 @@ Grid {
     width: 70*columns
     height: 70*rows
 
-    property string line1: "qwertyuiop"
+    property string line1: "1234567890qwertyuiop"
     property string line2: "asdfghjkl"
     property string line3: "zxcvbnm"
 
     signal hideKeyboard()
     signal letterClicked(string letter)
 
-    rows: 3
+    rows: 4
     columns: 10
     spacing: 1
 
