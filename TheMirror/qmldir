@@ -7,5 +7,6 @@ plugin MirrorPlugin plugins/debug
 #plugin MirrorPlugin plugins/release 
 
 ## Uncomment below to allow the plugin location 
-## to be specified on command line
+## to be specified on command line.
+## Command line: qmlviewer.exe -P [folder path]
 #plugin MirrorPlugin
