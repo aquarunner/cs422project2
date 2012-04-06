@@ -1,7 +1,6 @@
 import QtQuick 1.0
 import MirrorPlugin 1.0
 import "components/DigitalClock"
-import "components/Calender"
 
 
 Rectangle {
@@ -25,12 +24,6 @@ Rectangle {
     property bool showApplicationArea: false;
     property bool showMainMenuBar: false
     property bool isLocked: true;
-
-    Settings {
-        id: settings
-        // Component.onCompleted: settings.setSetting("test variable","testval","testapp");
-    }
-
 
     gradient: Gradient {
         GradientStop { position: 0.0; color: "#8C8F8C" }

@@ -1,11 +1,12 @@
 import QtQuick 1.0
 
-Item {
+Rectangle {
     id: item
-    width: grid.cellWidth * widgetHeightInNumberOfCells;
-    height: grid.cellHeight * widgetWidthInNumberOfCells
+    width: grid.cellWidth * widgetWidthInNumberOfCells;
+    height: grid.cellHeight * widgetHeightInNumberOfCells
 
     visible: widgetVisible
+    // color: available? "#00000000" :"black"
 
     Rectangle {
         id: dragBar
@@ -33,6 +34,49 @@ Item {
         source: widgetSourceName
     }
 
+    function makeAreaAvailable(widgetIndex) {
+        for(var i = 0; i < gridModel.get(widgetIndex).widgetHeightInNumberOfCells; i++) {
+            for(var j = 0; j < gridModel.get(widgetIndex).widgetWidthInNumberOfCells; j++) {
+                var idx = widgetIndex + i*number_of_grids_x + j;
+                gridModel.get(idx).available = true;
+            }
+        }
+    }
+
+    function makeAreaUnavailable(widgetIndex) {
+        for(var i = 0; i < gridModel.get(widgetIndex).widgetHeightInNumberOfCells; i++) {
+            for(var j = 0; j < gridModel.get(widgetIndex).widgetWidthInNumberOfCells; j++) {
+                var idx = widgetIndex + i*number_of_grids_x + j;
+                gridModel.get(idx).available = false;
+                // console.log("UnA: " + idx);
+            }
+        }
+
+        // console.log("?"+available);
+    }
+
+    function printAllCellsStates() {
+        console.log("================================================");
+        var output = "";
+        var padding = "";
+        for(var i = 0; i < gridModel.count; i++) {
+            if(gridModel.get(i).gridId <= 9) {
+                padding="  "
+            } else if (gridModel.get(i).gridId<=99) {
+                padding = " "
+            } else {
+                padding = "";
+            }
+
+            output += ("["+padding+gridModel.get(i).gridId+"]"+(gridModel.get(i).widgetSourceName == "EmptyWidget.qml"?" ":"*") + " ");
+            if(i % number_of_grids_x === number_of_grids_x-1) {
+                console.log(output);
+                output = "";
+            }
+        }
+        console.log("================================================\n");
+    }
+
     MouseArea {
         id: dragArea
         anchors.fill: dragBar
@@ -40,34 +84,29 @@ Item {
         property int original_x;    // Original position
         property int original_y;
 
-        property int deltaX;
-        property int deltaY;
-
         property bool startDrag: false;
-
-        property int last_x;
-        property int last_y;
 
         property int currentIndex;
         property int originalIndex;
 
         onPressAndHold: {
 
-            console.log("item.x: " + item.x + " item.y: " + item.y);
-            console.log("mouseX: " + mouseX + " mouseY: " + mouseY);
-            console.log("index: " + widgetCanvas.indexAt(item.x, item.y));
+            //printAllCellsStates();
 
             original_x = item.x;
             original_y = item.y;
+
             originalIndex = widgetCanvas.indexAt(original_x, original_y)
 
             if(displayArea.showGrid) {
-
+                // makeAreaAvailable(originalIndex);
                 startDrag = true;
             }
         }
         onReleased: {
             startDrag = false;
+            // makeAreaUnavailable(originalIndex);
+            // printAllCellsStates();
         }
 
         onMousePositionChanged: {
@@ -75,20 +114,59 @@ Item {
             original_x = item.x;
             original_y = item.y;
 
-            console.log("mouseX: " + mouseX + " mouseY: " + mouseY);
             currentIndex = widgetCanvas.indexAt(original_x + mouseX, original_y + mouseY);
 
-            console.log("currentIndex: " + currentIndex +" originalIndex:" + originalIndex);
             if(startDrag && currentIndex != originalIndex) {
 
                 original_x = (currentIndex % number_of_grids_x) * cellWidth;
                 original_y = (currentIndex - original_x) / number_of_grids_x * cellHeight;
-                console.log("original_x: " + original_x + " original_y: " + original_y);
 
                 gridModel.move(originalIndex, originalIndex = currentIndex, 1);
 
+                originalIndex = currentIndex;
             }
         }
+
+
+        //        onMousePositionChanged: {
+
+        //            original_x = item.x;
+        //            original_y = item.y;
+
+        //            currentIndex = widgetCanvas.indexAt(original_x + mouseX, original_y + mouseY);
+
+        //            if(startDrag && currentIndex != originalIndex && currentIndex != -1 && gridModel.get(currentIndex).widgetSourceName == "EmptyWidget.qml") {
+
+        //                original_x = (currentIndex % number_of_grids_x) * cellWidth;
+        //                original_y = (currentIndex - original_x) / number_of_grids_x * cellHeight;
+
+        //                console.log("~~~~~~~~~~~~~~~~~");
+        //                console.log("original[" + originalIndex + "], current[" + currentIndex + "]");
+        //                console.log("original[" + originalIndex + "]: "+ gridModel.get(originalIndex).gridId + ", current[" + currentIndex + "]: " + gridModel.get(currentIndex).gridId);
+        //                printAllCellsStates();
+
+        //                if(originalIndex < currentIndex) {
+        //                    gridModel.move(originalIndex, currentIndex, 1);
+
+        //                    console.log("original[" + originalIndex + "]: "+ gridModel.get(originalIndex).gridId + ", current[" + currentIndex + "]: " + gridModel.get(currentIndex).gridId);
+        //                    printAllCellsStates();
+
+        //                    gridModel.move(originalIndex, originalIndex+1, currentIndex-originalIndex-1);
+        //                }
+        //                else {
+        //                    gridModel.move(originalIndex, currentIndex, 1);
+        //                    console.log("original[" + originalIndex + "]: "+ gridModel.get(originalIndex).gridId + ", current[" + currentIndex + "]: " + gridModel.get(currentIndex).gridId);
+        //                    printAllCellsStates();
+        //                    gridModel.move(currentIndex+1, originalIndex, 1);
+        //                }
+
+        //                console.log("original[" + originalIndex + "]: "+ gridModel.get(originalIndex).gridId + ", current[" + currentIndex + "]: " + gridModel.get(currentIndex).gridId);
+        //                printAllCellsStates();
+        //                console.log("~~~~~~~~~~~~~~~~~");
+
+        //                originalIndex = currentIndex;
+        //            }
+        //        }
     }
 
 }
