@@ -60,15 +60,15 @@ Rectangle {
         var output = "";
         var padding = "";
         for(var i = 0; i < gridModel.count; i++) {
-            if(i <= 9) {
+            if(gridModel.get(i).gridId <= 9) {
                 padding="  "
-            } else if (i <= 99) {
+            } else if (gridModel.get(i).gridId <= 99) {
                 padding = " "
             } else {
                 padding = "";
             }
 
-            output += ("[" + padding + i + "]"+(gridModel.get(i).available?" ":"*") + " ");
+            output += ("[" + padding + gridModel.get(i).gridId + "]"+(gridModel.get(i).available?" ":"*") + " ");
             if(i % number_of_grids_x === number_of_grids_x-1) {
                 console.log(output);
                 output = "";
@@ -91,7 +91,7 @@ Rectangle {
 
         onPressAndHold: {
             if(displayArea.showGrid) {
-                printAllCellsStates();
+                // printAllCellsStates();
 
                 original_x = item.x;
                 original_y = item.y;
@@ -101,13 +101,13 @@ Rectangle {
                 makeAreaAvailable(originalIndex);
                 startDrag = true;
 
-                printAllCellsStates();
+                // printAllCellsStates();
             }
         }
         onReleased: {
             startDrag = false;
-            // makeAreaUnavailable(originalIndex);
-            printAllCellsStates();
+            // makeAreaUnavailable(originalIndex); // no necessary
+            // printAllCellsStates();
         }
 
         function withinWidgetCanvas(currentIndex) {
@@ -115,6 +115,31 @@ Rectangle {
             var index_y = Math.floor(currentIndex / number_of_grids_x);
 
             return (index_x + widgetWidthInNumberOfCells <= number_of_grids_x) && (index_y + widgetHeightInNumberOfCells <= number_of_grids_y)
+        }
+
+        function printObjectInfo(modelObject) {
+            for(var prop in modelObject) {
+                console.debug("name: " + prop + "; value: " + modelObject[prop])
+            }
+        }
+
+        function clone(modelElement) {
+            return {
+                gridId: modelElement.gridId,
+                available: modelElement.available,
+                widgetSourceName: modelElement.widgetSourceName,
+                widgetVisible: modelElement.widgetVisible,
+                widgetHeightInNumberOfCells: modelElement.widgetHeightInNumberOfCells,
+                widgetWidthInNumberOfCells: modelElement.widgetWidthInNumberOfCells,
+                gridModel: modelElement.gridModel
+            }
+        }
+
+        function isAvailable(currentIndex) {
+            return (gridModel.get(currentIndex).available
+                    && gridModel.get(currentIndex + widgetWidthInNumberOfCells-1).available
+                    && gridModel.get(currentIndex + (widgetWidthInNumberOfCells-1) * number_of_grids_x).available
+                    && gridModel.get(currentIndex + widgetWidthInNumberOfCells-1 + (widgetWidthInNumberOfCells-1) * number_of_grids_x).available)
         }
 
         onMousePositionChanged: {
@@ -125,26 +150,37 @@ Rectangle {
             currentIndex = widgetCanvas.indexAt(original_x + mouseX, original_y + mouseY);
 
             if(startDrag && currentIndex != originalIndex && originalIndex != -1 && currentIndex != -1
-                    && withinWidgetCanvas(currentIndex)) {
+                    && withinWidgetCanvas(currentIndex) /*&& isAvailable(currentIndex)*/) {
 
                 makeAreaAvailable(originalIndex);
+                // console.log("originalIndex: " + originalIndex);
+                // printAllCellsStates();
 
                 original_x = (currentIndex % number_of_grids_x) * cellWidth;
                 original_y = (currentIndex - original_x) / number_of_grids_x * cellHeight;
 
                 if (currentIndex > originalIndex){
                     var currentElement = gridModel.get(currentIndex);
+                    currentElement = clone(currentElement);
+                    // console.debug(currentElement)
+                    // printObjectInfo(currentElement)
                     gridModel.remove(currentIndex);
                     gridModel.move(originalIndex, currentIndex-1, 1);
+                    // console.debug(currentElement)
                     gridModel.insert(originalIndex, currentElement);
                 } else {
                     gridModel.move(originalIndex, currentIndex, 1);
                     var originalElement = gridModel.get(currentIndex+1);
+                    originalElement = clone(originalElement);
                     gridModel.remove(currentIndex+1);
                     gridModel.insert(originalIndex, originalElement);
                 }
 
+                // console.log("before makeAreaUnavailable: " + currentIndex);
+                // printAllCellsStates();
                 makeAreaUnavailable(currentIndex);
+                // console.log("currentIndex: " + currentIndex);
+                // printAllCellsStates();
                 originalIndex = currentIndex;
             }
         }
