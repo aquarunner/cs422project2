@@ -1,5 +1,4 @@
 import QtQuick 1.0
-import MirrorPlugin 1.0
 import "components/DigitalClock"
 
 
