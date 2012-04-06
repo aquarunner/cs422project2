@@ -5,7 +5,7 @@ Rectangle {
     width: grid.cellWidth * widgetWidthInNumberOfCells;
     height: grid.cellHeight * widgetHeightInNumberOfCells
 
-    visible: widgetVisible
+    visible: widgetVisible != null? widgetVisible: false
     // color: available? "#00000000" :"black"
 
     Rectangle {
@@ -31,7 +31,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
 
-        source: widgetSourceName
+        source: widgetSourceName != null? widgetSourceName: "EmptyWidget.qml"
     }
 
     function makeAreaAvailable(widgetIndex) {
@@ -116,12 +116,22 @@ Rectangle {
 
             currentIndex = widgetCanvas.indexAt(original_x + mouseX, original_y + mouseY);
 
-            if(startDrag && currentIndex != originalIndex) {
+            if(startDrag && currentIndex != originalIndex && originalIndex != -1 && currentIndex != -1) {
 
                 original_x = (currentIndex % number_of_grids_x) * cellWidth;
                 original_y = (currentIndex - original_x) / number_of_grids_x * cellHeight;
 
-                gridModel.move(originalIndex, originalIndex = currentIndex, 1);
+                if (currentIndex > originalIndex){
+                    var currentElement = gridModel.get(currentIndex);
+                    gridModel.remove(currentIndex);
+                    gridModel.move(originalIndex, currentIndex -1, 1);
+                    gridModel.insert(originalIndex, currentElement);
+                } else {
+                    gridModel.move(originalIndex, currentIndex, 1);
+                    var currentNextElement = gridModel.get(currentIndex+1);
+                    gridModel.remove(currentIndex+1);
+                    gridModel.insert(originalIndex, currentNextElement);
+                }
 
                 originalIndex = currentIndex;
             }
