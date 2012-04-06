@@ -124,13 +124,13 @@ Rectangle {
                 if (currentIndex > originalIndex){
                     var currentElement = gridModel.get(currentIndex);
                     gridModel.remove(currentIndex);
-                    gridModel.move(originalIndex, currentIndex -1, 1);
+                    gridModel.move(originalIndex, currentIndex-1, 1);
                     gridModel.insert(originalIndex, currentElement);
                 } else {
                     gridModel.move(originalIndex, currentIndex, 1);
-                    var currentNextElement = gridModel.get(currentIndex+1);
+                    var originalElement = gridModel.get(currentIndex+1);
                     gridModel.remove(currentIndex+1);
-                    gridModel.insert(originalIndex, currentNextElement);
+                    gridModel.insert(originalIndex, originalElement);
                 }
 
                 originalIndex = currentIndex;
