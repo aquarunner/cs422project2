@@ -66,13 +66,28 @@ GridView {
             id = widgetIds[i].replace(/^\s+|\s+$/g, ""); // trim
             if(id.length !== 0){
 
-                widgetIndex = widgetsSettings.getSetting(id + "__index", "widgets");
+                widgetIndex = widgetsSettings.getSetting(id + "__index", "widgets")*1;
                 gridModel.get(widgetIndex).widgetVisible = true;
-                gridModel.get(widgetIndex).widgetHeightInNumberOfCells = widgetsSettings.getSetting(id + "__height", "widgets")
-                gridModel.get(widgetIndex).widgetWidthInNumberOfCells = widgetsSettings.getSetting(id + "__width", "widgets")
+                var widgetHeight = widgetsSettings.getSetting(id + "__height", "widgets")*1;
+                var widgetWidth = widgetsSettings.getSetting(id + "__width", "widgets")*1;
+                gridModel.get(widgetIndex).widgetHeightInNumberOfCells = widgetHeight;
+                gridModel.get(widgetIndex).widgetWidthInNumberOfCells = widgetWidth;
                 gridModel.get(widgetIndex).widgetSourceName = widgetsSettings.getSetting(id + "__source", "widgets")
 
+                setWidgetAreaUnavailabe(widgetIndex, widgetHeight, widgetWidth);
                 console.log("["+id+"] has been loaded. ");
+            }
+        }
+    }
+
+    function setWidgetAreaUnavailabe(widgetIndex, widgetHeight, widgetWidth) {
+        var idx;
+        // console.log("widgetHeight: " + widgetHeight + ", widgetWidth: " + widgetWidth);
+        for(var i = 0; i < widgetHeight; i++) {
+            for(var j = 0; j < widgetWidth; j++) {
+                idx = widgetIndex + (i*number_of_grids_x) + j;
+                // console.log(idx);
+                gridModel.get(idx).available = false;
             }
         }
     }
