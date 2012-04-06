@@ -110,12 +110,27 @@ Rectangle {
     }
 
 
-    AnimatedImage {
-        id: waitingForUnlock;
+    Image {
+        id: waitingIcon
         x: mouseArea.mouseX; y: mouseArea.mouseY;
-        source: "icons/Waiting.gif"
+        source: "icons/Waiting_background.png";
         visible: mouseArea.isUnlocking
+        width: 80
+        height: 80
+        smooth: true
+
+        AnimatedImage {
+            id: waitingForUnlock;
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            source: "icons/Waiting.gif"
+            width: 40
+            height: 40
+            smooth: true
+        }
+
     }
+
 
 
     MouseArea {
@@ -138,6 +153,13 @@ Rectangle {
         onPressAndHold: {
             isUnlocking = true;
             timer.start();
+        }
+
+        onReleased: {
+            if(isUnlocking) {
+                timer.stop();
+                isUnlocking = false;
+            }
         }
     }
 
