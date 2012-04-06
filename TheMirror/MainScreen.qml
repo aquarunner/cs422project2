@@ -117,6 +117,7 @@ Rectangle {
         visible: mouseArea.isUnlocking
     }
 
+
     MouseArea {
         id: mouseArea
         anchors.fill: parent
@@ -124,16 +125,19 @@ Rectangle {
 
         property bool isUnlocking: false;
 
-        onPressAndHold: {
-            isUnlocking = true;
-        }
-
-        onReleased: {
-            if(isUnlocking) {
+        Timer {
+            id: timer
+            interval: 1500 // 1.5 seconds to unlock screen
+            onTriggered: {
                 showMainMenuBar = true;
                 isLocked = false;
+                mouseArea.isUnlocking = false;
             }
-            isUnlocking = false;
+        }
+
+        onPressAndHold: {
+            isUnlocking = true;
+            timer.start();
         }
     }
 
