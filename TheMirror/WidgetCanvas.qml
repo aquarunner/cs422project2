@@ -64,7 +64,8 @@ GridView {
         var widgetIndex;
         for(var i = 0; i < widgetIds.length; i++) {
             id = widgetIds[i].replace(/^\s+|\s+$/g, ""); // trim
-            if(id.length !== 0){
+            var onScreen = (widgetsSettings.getSetting(id + "__onScreen", "widgets") === 'true');
+            if(id.length !== 0 && onScreen){
 
                 widgetIndex = widgetsSettings.getSetting(id + "__index", "widgets")*1;
                 gridModel.get(widgetIndex).widgetVisible = true;
