@@ -142,7 +142,7 @@ Rectangle {
 
         Timer {
             id: timer
-            interval: 1500 // 1.5 seconds to unlock screen
+            interval: 1000 // 1 second to unlock screen
             onTriggered: {
                 showMainMenuBar = true;
                 isLocked = false;

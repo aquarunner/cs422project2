@@ -1,124 +1,148 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <applications>
-	<category>
-		<id>DAILY</id>
-		<icon></icon>
-		<title>Daily Information</title>
-		<description>News, Weather, Calender and other information feeds...</description>
-	</category>
-	<category>
-		<id>MULTIMEDIA</id>
-		<icon></icon>
-		<title>Multimedia</title>
-		<description>Radio, Music player, TV/Online streaming, Camera...</description>
-	</category>
-	<category>
-		<id>HEALTH</id>
-		<icon></icon>
-		<title>Health Information</title>
-		<description>Height, Weight, body temperture, diet information...</description>
-	</category>
-	<category>
-		<id>DRESSING</id>
-		<icon></icon>
-		<title>Dressing and Makeup</title>
-		<description>Dress fitting, makeup...</description>
-	</category>
-	<category>
-		<id>MISC</id>
-		<icon></icon>
-		<title>Misc.</title>
-		<description>Other applications</description>
-	</category>
-	
-	
 	<application>
 		<name>Calendar</name>
 		<category>DAILY</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Daily_Calendar.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	<application>
 		<name>Email</name>
 		<category>DAILY</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Daily_Email.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	<application>
 		<name>News</name>
 		<category>DAILY</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Daily_News.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	<application>
 		<name>Notes</name>
 		<category>DAILY</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Daily_Notes.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	<application>
 		<name>Weather</name>
 		<category>DAILY</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Daily_Weather.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>	
 	
 	<application>
 		<name>Camera</name>
 		<category>MULTIMEDIA</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Multimedia_Camera.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	<application>
-		<name>Multimedia Player</name>
+		<name>Media Player</name>
 		<category>MULTIMEDIA</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Multimedia_MultimediaPlayer.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	<application>
 		<name>Gallery</name>
 		<category>MULTIMEDIA</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Multimedia_Gallery.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	<application>
 		<name>YouTube</name>
 		<category>MULTIMEDIA</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Multimedia_YouTube.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	
 	<application>
 		<name>Health Monitor</name>
 		<category>HEALTH</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Health_HealthMonitor.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	
 	<application>
 		<name>Dressing</name>
 		<category>DRESSING</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Dressing_Dressing.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	<application>
 		<name>Makeup</name>
 		<category>DRESSING</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Dressing_Makeup.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	
 	<application>
 		<name>App. Market</name>
 		<category>MISC</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Misc_Market.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	<application>
-		<name>Application Manager</name>
+		<name>App. Manager</name>
 		<category>MISC</category>
-		<icon></icon>
-		<source></source>
+		<icon>Application_Misc_Manager.png</icon>
+		<source>../../demo/TestApp.qml</source>
+		<width>12</width>
+		<height>10</height>
+		<transparent>true</transparent>
+		<border>true</border>
 	</application>
 	
 </applications>

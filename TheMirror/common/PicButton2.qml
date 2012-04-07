@@ -39,22 +39,19 @@ Rectangle {
     Text {
 
         id: labelText
-        x: 79
-        y: 20
+        x: image.x + image.width + 10
 
-        width: 80
-        height: 10
+        // width: 80
+        // height: 10
         text: label
-        anchors.horizontalCenterOffset: 19
+        anchors.verticalCenter: parent.verticalCenter
+
         smooth: true
-        anchors.horizontalCenter: parent.horizontalCenter
         font.bold: true
 
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         transformOrigin: Item.Center
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 20
         color: "white"
         font.pixelSize: 15
     }

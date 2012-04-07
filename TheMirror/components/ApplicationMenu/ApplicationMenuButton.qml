@@ -6,9 +6,8 @@ Rectangle {
     height: 70
 
     property string iconPath: icon;
-    property string titleString: title;
+    property string titleString: name;
     property string descriptionString: description;
-
 
     color: mouseArea.pressed ? "lightgrey" : "#00000000"
     border.color: "white"
@@ -56,10 +55,33 @@ Rectangle {
         id: mouseArea
         anchors.fill: parent
         onClicked: {
+            parent.clicked();
         }
     }
 
     onClicked: {
-        parent.clicked();
+
+        // goes into sub-menu (for certain category)
+
+        // console.log("Category [" + category +"] clicked. ")
+        applicationLoder.title = title;
+        // icon follows such form "../../icons/ApplicationMenu_Daily.png"
+        // but applicationLoder.iconName only accept this part "ApplicationMenu_Daily.png"
+        applicationLoder.iconName = icon.substring(11);
+
+        if(category == "DAILY") {
+            applicationSubMenuGrid.model = applicationDailyModel;
+        }else if(category == "MULTIMEDIA") {
+            applicationSubMenuGrid.model = applicationMultimediaModel;
+        }else if(category == "HEALTH") {
+            applicationSubMenuGrid.model = applicationHealthModel;
+        }else if(category == "DRESSING") {
+            applicationSubMenuGrid.model = applicationDressingModel;
+        }else if(category == "MISC") {
+            applicationSubMenuGrid.model = applicationMiscModel;
+        }
+
+        applicationMenu.showSubMenu = true;
+
     }
 }
