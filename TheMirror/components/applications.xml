@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<applications>
+	<category>
+		<id>DAILY</id>
+		<icon></icon>
+		<title>Daily Information</title>
+		<description>News, Weather, Calender and other information feeds...</description>
+	</category>
+	<category>
+		<id>MULTIMEDIA</id>
+		<icon></icon>
+		<title>Multimedia</title>
+		<description>Radio, Music player, TV/Online streaming, Camera...</description>
+	</category>
+	<category>
+		<id>HEALTH</id>
+		<icon></icon>
+		<title>Health Information</title>
+		<description>Height, Weight, body temperture, diet information...</description>
+	</category>
+	<category>
+		<id>DRESSING</id>
+		<icon></icon>
+		<title>Dressing and Makeup</title>
+		<description>Dress fitting, makeup...</description>
+	</category>
+	<category>
+		<id>MISC</id>
+		<icon></icon>
+		<title>Misc.</title>
+		<description>Other applications</description>
+	</category>
+	
+	
+	<application>
+		<name>Calendar</name>
+		<category>DAILY</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	<application>
+		<name>Email</name>
+		<category>DAILY</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	<application>
+		<name>News</name>
+		<category>DAILY</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	<application>
+		<name>Notes</name>
+		<category>DAILY</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	<application>
+		<name>Weather</name>
+		<category>DAILY</category>
+		<icon></icon>
+		<source></source>
+	</application>	
+	
+	<application>
+		<name>Camera</name>
+		<category>MULTIMEDIA</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	<application>
+		<name>Multimedia Player</name>
+		<category>MULTIMEDIA</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	<application>
+		<name>Gallery</name>
+		<category>MULTIMEDIA</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	<application>
+		<name>YouTube</name>
+		<category>MULTIMEDIA</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	
+	<application>
+		<name>Health Monitor</name>
+		<category>HEALTH</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	
+	<application>
+		<name>Dressing</name>
+		<category>DRESSING</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	<application>
+		<name>Makeup</name>
+		<category>DRESSING</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	
+	<application>
+		<name>App. Market</name>
+		<category>MISC</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	<application>
+		<name>Application Manager</name>
+		<category>MISC</category>
+		<icon></icon>
+		<source></source>
+	</application>
+	
+</applications>

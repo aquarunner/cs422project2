@@ -24,18 +24,18 @@ Rectangle {
             mainScreen.showMainMenuBar = false;
             mainScreen.showApplicationArea = true;
             // the application you want to load in the ApplicationCanvas
-            applicationCanvas.componentLoder.source = "demo/TestApp.qml"
+            applicationCanvas.componentLoder.source = "components/ApplicationMenu.qml"
             // is the background transparent?
-            applicationCanvas.isApplicationAreaTransparent = true;
+            applicationCanvas.isApplicationAreaTransparent = false;
             // show border?
-            applicationCanvas.showBorder = false;
+            applicationCanvas.showBorder = true;
             // set default height
             applicationCanvas.applicationAreaHeightInNumberOfCells = applicationCanvas.__defaultHeightInNumberOfCells
             // set default width
-            applicationCanvas.applicationAreaWidthInNumberOfCells = applicationCanvas.__defaultWidthInNumberOfCells
+            applicationCanvas.applicationAreaWidthInNumberOfCells = 8
 
-            applicationCanvas.componentLoder.title = "Test App"
-            applicationCanvas.componentLoder.iconName = "Exit.png"
+            applicationCanvas.componentLoder.title = "Applications"
+            applicationCanvas.componentLoder.iconName = "Applications.png"
         }
 
     }
