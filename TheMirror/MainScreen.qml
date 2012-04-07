@@ -24,6 +24,8 @@ Rectangle {
     property bool showMainMenuBar: false
     property bool isLocked: true;
 
+    property string notificationBarText: ""
+
     gradient: Gradient {
         GradientStop { position: 0.0; color: "#8C8F8C" }
         GradientStop { position: 0.2; color: "lightgrey" }
@@ -39,6 +41,26 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: 10
 
+    }
+
+    Rectangle {
+        id: notificationBar
+        height: mainScreen.notificationBarHeight;
+        width: mainScreen.width/2
+        anchors.top: parent.top
+        anchors.horizontalCenter: parent.horizontalCenter
+        color: "#00000000"
+
+        Text {
+            text: notificationBarText
+            font.underline: true
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
+            color: "grey"
+            font.bold: true
+            font.pointSize: 18
+            font.family: "Arial"
+        }
     }
 
     MainMenuBar {
@@ -102,6 +124,11 @@ Rectangle {
             height: grid.height
             width: grid.width
         }
+    }
+
+    WidgetSelectionBar {
+        id: widgetSelectionBar
+        visible: displayArea.showGrid
     }
 
     ApplicationCanvas {

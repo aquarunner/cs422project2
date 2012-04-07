@@ -47,21 +47,22 @@ Rectangle {
         pictureName: "Arrange_Widgets.png"
         onButtonClick: {
             mainScreen.displayArea.showGrid = true;
+            mainScreen.notificationBarText = "Drag the widget to arrange or remove"
         }
     }
 
-    Button {
-        id: arrangeWidgetsDoneButton;
-        anchors.verticalCenterOffset: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 10
-        anchors.verticalCenter: parent.verticalCenter
-        label: "Done";
-        visible: mainScreen.displayArea.showGrid
-        onClicked: {
-            mainScreen.displayArea.showGrid = false;
-        }
-    }
+    //    Button {
+    //        id: arrangeWidgetsDoneButton;
+    //        anchors.verticalCenterOffset: 0
+    //        anchors.left: parent.left
+    //        anchors.leftMargin: 10
+    //        anchors.verticalCenter: parent.verticalCenter
+    //        label: "Done";
+    //        visible: mainScreen.displayArea.showGrid
+    //        onClicked: {
+    //            mainScreen.displayArea.showGrid = false;
+    //        }
+    //    }
 
     PicButton{
         id: settingsButton
