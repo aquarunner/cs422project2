@@ -11,16 +11,53 @@ Rectangle {
 
     property bool showSubMenu: false;
 
-    ListView {
-
-        id: applicationMenuList
-
+    Flipable {
+        id: flipable
         anchors.fill: parent
-        delegate: ApplicationMenuButton {}
-        model: applicationMainMenuModel
-        interactive: false
-        visible: !showSubMenu;
+
+        property int angle: 0
+        // property bool flipped: false
+
+        front: ListView {
+
+            id: applicationMenuList
+
+            anchors.fill: parent
+            delegate: ApplicationMenuButton {}
+            model: applicationMainMenuModel
+            interactive: false
+            // visible: !showSubMenu;
+        }
+
+        back: GridView {
+            id: applicationSubMenuGrid
+            anchors.fill: parent
+            delegate: ApplicationSubMenuButton { id: subMenuButton}
+            cellWidth: applicationLoder.width/2;
+            // model: applicationSubMenuModel
+            // visible: showSubMenu;
+            interactive: false
+        }
+
+        transform: Rotation{
+            origin.x:flipable.width/2;
+            origin.y:flipable.height/2
+            axis.x:0; axis.y:1; axis.z:0
+            angle:flipable.angle
+        }
+
+        states: State {
+            name: "back"
+            PropertyChanges { target: flipable; angle: 180 }
+            when: showSubMenu
+        }
+
+        transitions: Transition {
+            NumberAnimation{ property: "angle"; duration:600 }
+        }
     }
+
+
 
     ListModel {
 
@@ -48,15 +85,7 @@ Rectangle {
         }
     }
 
-    GridView {
-        id: applicationSubMenuGrid
-        anchors.fill: parent
-        delegate: ApplicationSubMenuButton { id: subMenuButton}
-        cellWidth: applicationLoder.width/2;
-        // model: applicationSubMenuModel
-        visible: showSubMenu;
-        interactive: false
-    }
+
 
     ApplicationModel { id: applicationDailyModel; query: "/applications/application[category=\"DAILY\"]" }
     ApplicationModel { id: applicationMultimediaModel; query: "/applications/application[category=\"MULTIMEDIA\"]" }
