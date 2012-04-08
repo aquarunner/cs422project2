@@ -192,9 +192,13 @@ Rectangle {
         {
             if(type == "WIDGET") {
                 widgetsSettings.setSetting(widgetId+"__index", ""+currentIndex, "widgets");
+                widgetsSettings.setSetting(widgetId+"__onScreen", ""+true, "widgets");
             }
             else if (type == "SHORTCUT") {
+
+                console.log(widgetId+"__index")
                 widgetsSettings.setSetting(widgetId+"__index", ""+currentIndex, "shortcuts");
+                widgetsSettings.setSetting(widgetId+"__onScreen", ""+true, "shortcuts");
             }
         }
     }

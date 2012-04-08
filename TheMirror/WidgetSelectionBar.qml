@@ -346,7 +346,7 @@ Rectangle {
                             var currentX = mouseX - deltaX;
                             var currentY = mouseY - deltaY;
 
-                            if(Math.sqrt((currentX-last_x)*(currentX-last_x) + (currentY-last_y)*(currentY-last_y)) > 30) {
+                            if(Math.sqrt((currentX-last_x)*(currentX-last_x) + (currentY-last_y)*(currentY-last_y)) > 20) {
                                 widgetContainer.x = currentX;
                                 widgetContainer.y = currentY;
 
@@ -354,7 +354,8 @@ Rectangle {
                                 last_y = currentY;
                             }
 
-                            if(Math.sqrt((currentX-original_x)*(currentX-original_x) + (currentY-original_y)*(currentY-original_y)) > 200
+                            var offset = (type == "SHORTCUT")? 100: 200;
+                            if(Math.sqrt((currentX-original_x)*(currentX-original_x) + (currentY-original_y)*(currentY-original_y)) > offset
                                     && componentIndex != -1) {
                                 console.log("Index["+componentIndex+"], let's go! ")
                                 // console.log((widgetContainer.x + delta_widgetContainer_widgetGrid_x) + "/" + (widgetContainer.y + delta_widgetContainer_widgetGrid_y));
@@ -366,6 +367,7 @@ Rectangle {
                                 // console.debug(sourceInGridName);
 
                                 if(indexInGrid!=-1 && sourceInGridName == "EmptyWidget.qml") {
+                                    widgetCanvas.gridModel.get(indexInGrid).widgetId = widgetId;
                                     widgetCanvas.gridModel.get(indexInGrid).widgetVisible = true;
                                     widgetCanvas.gridModel.get(indexInGrid).widgetHeightInNumberOfCells = widgetHeight;
                                     widgetCanvas.gridModel.get(indexInGrid).widgetWidthInNumberOfCells = widgetWidth;
@@ -390,6 +392,7 @@ Rectangle {
                             widgetsSettings.setSetting(widgetId+"__onScreen", "true", "widgets");
                         }
                         else if (type == "SHORTCUT") {
+                            // console.log(widgetId+"__index");
                             widgetsSettings.setSetting(widgetId+"__index", ""+indexInGrid, "shortcuts");
                             widgetsSettings.setSetting(widgetId+"__source", widgetSourceName, "shortcuts");
                             widgetsSettings.setSetting(widgetId+"__onScreen", "true", "shortcuts");
