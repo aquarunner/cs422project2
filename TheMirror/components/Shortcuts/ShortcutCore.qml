@@ -44,14 +44,17 @@ Rectangle {
         anchors.fill: parent
 
         onClicked: {
+            mainScreen.showMainMenuBar = false;
+            mainScreen.showApplicationArea = true;
+
             applicationCanvas.isApplicationAreaTransparent = (settings.getSetting(appName + "__transparent", "shortcut_to_application") === 'true');
             applicationCanvas.showBorder = (settings.getSetting(appName + "__border", "shortcut_to_application") === 'true');
             applicationCanvas.applicationAreaHeightInNumberOfCells = settings.getSetting(appName + "__height", "shortcut_to_application")*1;
             applicationCanvas.applicationAreaWidthInNumberOfCells = settings.getSetting(appName + "__width", "shortcut_to_application")*1;
 
-            applicationLoder.title = appName;
-            applicationLoder.iconName = settings.getSetting(appName + "__icon", "shortcut_to_application");
-            applicationLoder.source = settings.getSetting(appName + "__source", "shortcut_to_application");
+            applicationCanvas.componentLoder.title = appName;
+            applicationCanvas.componentLoder.iconName = settings.getSetting(appName + "__icon", "shortcut_to_application");
+            applicationCanvas.componentLoder.source = settings.getSetting(appName + "__source", "shortcut_to_application");
         }
     }
 }
