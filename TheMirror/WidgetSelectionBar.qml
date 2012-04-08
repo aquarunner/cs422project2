@@ -288,7 +288,7 @@ Rectangle {
                             widgetContainer.scale = 1
                         }
                         else {
-                            widgetContainer.scale = 1.5
+                            widgetContainer.scale = 1.8
                         }
 
                         componentDisplayArea.interactive = false;
