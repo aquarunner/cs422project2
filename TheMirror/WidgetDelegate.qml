@@ -7,6 +7,7 @@ Rectangle {
 
     visible: widgetVisible != null? widgetVisible: false
     // color: available? "#00000000" :"black"
+    color: "#00000000"
 
     Rectangle {
         id: dragBar
@@ -189,7 +190,12 @@ Rectangle {
 
         function updateWidgetInfoIntoFile(currentIndex)
         {
-            widgetsSettings.setSetting(widgetId+"__index", ""+currentIndex, "widgets");
+            if(type == "WIDGET") {
+                widgetsSettings.setSetting(widgetId+"__index", ""+currentIndex, "widgets");
+            }
+            else if (type == "SHORTCUT") {
+                widgetsSettings.setSetting(widgetId+"__index", ""+currentIndex, "shortcuts");
+            }
         }
     }
 

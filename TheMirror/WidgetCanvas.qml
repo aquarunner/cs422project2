@@ -20,11 +20,13 @@ GridView {
                                  "widgetWidthInNumberOfCells": 3,
                                  "widgetSourceName" : "EmptyWidget.qml",
                                  "available" : true,
+                                 "type": "",
                                  "gridModel" : gridModel
                              });
         }
 
         loadWidgets();
+        loadShortcuts();
 
         /////////////////////////////////////////////
         //        var widgetIndex = 0;
@@ -76,12 +78,39 @@ GridView {
                 gridModel.get(widgetIndex).widgetHeightInNumberOfCells = widgetHeight;
                 gridModel.get(widgetIndex).widgetWidthInNumberOfCells = widgetWidth;
                 gridModel.get(widgetIndex).widgetSourceName = widgetsSettings.getSetting(id + "__source", "widgets")
+                gridModel.get(widgetIndex).type = "WIDGET"
 
                 setWidgetAreaUnavailabe(widgetIndex, widgetHeight, widgetWidth);
                 console.log("["+id+"] has been loaded. ");
             }
         }
     }
+
+    function loadShortcuts() {
+
+        var str = widgetsSettings.getSetting("shortcut_ids", "shortcuts");
+        var widgetIds = str.split(";");
+        var id;
+        var widgetIndex;
+        for(var i = 0; i < widgetIds.length; i++) {
+            id = widgetIds[i].replace(/^\s+|\s+$/g, ""); // trim
+            var onScreen = (widgetsSettings.getSetting(id + "__onScreen", "shortcuts") === 'true');
+            if(id.length !== 0 && onScreen){
+
+                widgetIndex = widgetsSettings.getSetting(id + "__index", "shortcuts")*1;
+                gridModel.get(widgetIndex).widgetId = id;
+                gridModel.get(widgetIndex).widgetVisible = true;
+                gridModel.get(widgetIndex).widgetHeightInNumberOfCells = 2;
+                gridModel.get(widgetIndex).widgetWidthInNumberOfCells = 1;
+                gridModel.get(widgetIndex).widgetSourceName = widgetsSettings.getSetting(id + "__source", "shortcuts")
+                gridModel.get(widgetIndex).type = "SHORTCUT"
+
+                setWidgetAreaUnavailabe(widgetIndex, 2, 1);
+                console.log("["+id+"] has been loaded. ");
+            }
+        }
+    }
+
 
     function setWidgetAreaUnavailabe(widgetIndex, widgetHeight, widgetWidth) {
         var idx;

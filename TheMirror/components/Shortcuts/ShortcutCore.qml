@@ -7,15 +7,11 @@ Rectangle {
     property string appName;
 
     anchors.fill: parent
-
     color: mouseArea.pressed? "grey": "#00000000"
+    radius: 3
 
     Settings {
         id: settings
-
-        Component.onCompleted: {
-            console.log(settings.getSetting(appName + "__icon", "shortcut_to_application"))
-        }
     }
 
     Image {
@@ -23,7 +19,7 @@ Rectangle {
         height: 50
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        anchors.topMargin: 10
+        anchors.topMargin: 0
         source: "../../icons/"+ settings.getSetting(appName + "__icon", "shortcut_to_application")
         smooth: true
     }
@@ -38,7 +34,7 @@ Rectangle {
         wrapMode: Text.WrapAtWordBoundaryOrAnywhere
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 10
-        font.bold: true
+        // font.bold: true
         font.pixelSize: 12
     }
 

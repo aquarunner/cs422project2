@@ -370,6 +370,7 @@ Rectangle {
                                     widgetCanvas.gridModel.get(indexInGrid).widgetHeightInNumberOfCells = widgetHeight;
                                     widgetCanvas.gridModel.get(indexInGrid).widgetWidthInNumberOfCells = widgetWidth;
                                     widgetCanvas.gridModel.get(indexInGrid).widgetSourceName = widgetSourceName;
+                                    widgetCanvas.gridModel.get(indexInGrid).type = type;
 
                                     widgetCanvas.setWidgetAreaUnavailabe(indexInGrid, widgetHeight, widgetWidth);
 
@@ -383,9 +384,16 @@ Rectangle {
 
                     function updateWidgetInfoIntoFile(indexInGrid, widgetSourceName)
                     {
-                        widgetsSettings.setSetting(widgetId+"__index", ""+indexInGrid, "widgets");
-                        widgetsSettings.setSetting(widgetId+"__source", widgetSourceName, "widgets");
-                        widgetsSettings.setSetting(widgetId+"__onScreen", "true", "widgets");
+                        if(type == "WIDGET") {
+                            widgetsSettings.setSetting(widgetId+"__index", ""+indexInGrid, "widgets");
+                            widgetsSettings.setSetting(widgetId+"__source", widgetSourceName, "widgets");
+                            widgetsSettings.setSetting(widgetId+"__onScreen", "true", "widgets");
+                        }
+                        else if (type == "SHORTCUT") {
+                            widgetsSettings.setSetting(widgetId+"__index", ""+indexInGrid, "shortcuts");
+                            widgetsSettings.setSetting(widgetId+"__source", widgetSourceName, "shortcuts");
+                            widgetsSettings.setSetting(widgetId+"__onScreen", "true", "shortcuts");
+                        }
                     }
                 }
 
