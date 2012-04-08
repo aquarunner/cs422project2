@@ -244,7 +244,7 @@ Rectangle {
                 width: type=="WIDGET"? 300: 100
                 height: componentDisplayArea.height
                 color: "#00000000" // "red"
-                scale: type=="WIDGET"? 0.8: 1 // show it smaller than actual
+                scale: type=="WIDGET"? 0.8: 1.5 // show it smaller than actual
 
                 Loader {
                     id: widgetLoader;
@@ -288,7 +288,7 @@ Rectangle {
                             widgetContainer.scale = 1
                         }
                         else {
-                            widgetContainer.scale = 1.3
+                            widgetContainer.scale = 1.5
                         }
 
                         componentDisplayArea.interactive = false;
@@ -314,7 +314,7 @@ Rectangle {
                             widgetContainer.scale = 0.8
                         }
                         else {
-                            widgetContainer.scale = 1
+                            widgetContainer.scale = 1.5
                         }
                         componentDisplayArea.interactive = true;
                         if(!removeOut) {
@@ -330,7 +330,7 @@ Rectangle {
                             widgetContainer.scale = 0.8
                         }
                         else {
-                            widgetContainer.scale = 1
+                            widgetContainer.scale = 1.5
                         }
 
                         componentDisplayArea.interactive = true;
@@ -442,7 +442,7 @@ Rectangle {
                 var widgetSourceName = widgetsSettings.getSetting(id + "__source", "shortcuts");
 
                 unloadedShortcuts.append({ "widgetId": id,
-                                           "widgetHeight": 2,
+                                           "widgetHeight": 1,
                                            "widgetWidth": 1,
                                            "widgetSourceName": widgetSourceName,
                                            "type": "SHORTCUT"
@@ -474,8 +474,8 @@ Rectangle {
                                            "widgetHeight": widgetHeight,
                                            "widgetWidth": widgetWidth,
                                            "widgetSourceName": widgetSourceName,
+                                           "type": "WIDGET",
                                            // "widgetShapshot": widgetShapshot
-                                           "type": "WIDGET"
                                        });
 
             }

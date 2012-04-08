@@ -100,12 +100,12 @@ GridView {
                 widgetIndex = widgetsSettings.getSetting(id + "__index", "shortcuts")*1;
                 gridModel.get(widgetIndex).widgetId = id;
                 gridModel.get(widgetIndex).widgetVisible = true;
-                gridModel.get(widgetIndex).widgetHeightInNumberOfCells = 2;
+                gridModel.get(widgetIndex).widgetHeightInNumberOfCells = 1;
                 gridModel.get(widgetIndex).widgetWidthInNumberOfCells = 1;
                 gridModel.get(widgetIndex).widgetSourceName = widgetsSettings.getSetting(id + "__source", "shortcuts")
                 gridModel.get(widgetIndex).type = "SHORTCUT"
 
-                setWidgetAreaUnavailabe(widgetIndex, 2, 1);
+                setWidgetAreaUnavailabe(widgetIndex, 1, 1);
                 console.log("["+id+"] has been loaded. ");
             }
         }

@@ -1,4 +1,5 @@
 import QtQuick 1.0
+import MirrorPlugin 1.0
 
 Rectangle {
     id: item
@@ -18,7 +19,7 @@ Rectangle {
         anchors.leftMargin: 0
         anchors.top: parent.top
         anchors.topMargin: 0
-        height: 20
+        height: type=="SHORTCUT"? 0: 20
         radius: 3
     }
 
@@ -33,6 +34,7 @@ Rectangle {
         anchors.bottomMargin: 0
 
         source: widgetSourceName != null? widgetSourceName: "EmptyWidget.qml"
+        scale: (type=="SHORTCUT" && dragArea.startDrag)? 1.2 : 1
     }
 
     function makeAreaAvailable(widgetIndex) {
@@ -78,9 +80,13 @@ Rectangle {
         console.log("================================================\n");
     }
 
+    Settings {
+        id: settings
+    }
+
     MouseArea {
         id: dragArea
-        anchors.fill: dragBar
+        anchors.fill: type=="SHORTCUT"? widgetLoader: dragBar
 
         property int original_x;    // Original position
         property int original_y;
@@ -89,6 +95,22 @@ Rectangle {
 
         property int currentIndex;
         property int originalIndex;
+
+        onClicked: {
+            if(type=="SHORTCUT") {
+                mainScreen.showMainMenuBar = false;
+                mainScreen.showApplicationArea = true;
+
+                applicationCanvas.isApplicationAreaTransparent = (settings.getSetting(widgetId + "__transparent", "shortcut_to_application") === 'true');
+                applicationCanvas.showBorder = (settings.getSetting(widgetId + "__border", "shortcut_to_application") === 'true');
+                applicationCanvas.applicationAreaHeightInNumberOfCells = settings.getSetting(widgetId + "__height", "shortcut_to_application")*1;
+                applicationCanvas.applicationAreaWidthInNumberOfCells = settings.getSetting(widgetId + "__width", "shortcut_to_application")*1;
+
+                applicationCanvas.componentLoder.title = widgetId;
+                applicationCanvas.componentLoder.iconName = settings.getSetting(widgetId + "__icon", "shortcut_to_application");
+                applicationCanvas.componentLoder.source = settings.getSetting(widgetId + "__source", "shortcut_to_application");
+            }
+        }
 
         onPressAndHold: {
             if(displayArea.showGrid) {
