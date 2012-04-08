@@ -181,8 +181,15 @@ Rectangle {
                 makeAreaUnavailable(currentIndex);
                 // console.log("currentIndex: " + currentIndex);
                 // printAllCellsStates();
+                updateWidgetInfoIntoFile(currentIndex);
+
                 originalIndex = currentIndex;
             }
+        }
+
+        function updateWidgetInfoIntoFile(currentIndex)
+        {
+            widgetsSettings.setSetting(widgetId+"__index", ""+currentIndex, "widgets");
         }
     }
 

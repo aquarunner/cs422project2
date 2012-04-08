@@ -26,6 +26,9 @@ Rectangle {
 
     property string notificationBarText: ""
 
+    property int delta_widgetSelectionBar_widgetGrid_x: widgetSelectionBar.x - (displayArea.x + grid.x)
+    property int delta_widgetSelectionBar_widgetGrid_y: widgetSelectionBar.y - (displayArea.y + grid.y)
+
     gradient: Gradient {
         GradientStop { position: 0.0; color: "#8C8F8C" }
         GradientStop { position: 0.2; color: "lightgrey" }

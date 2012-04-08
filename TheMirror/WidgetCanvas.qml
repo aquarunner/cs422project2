@@ -14,6 +14,7 @@ GridView {
         for(var index = 0; index < number_of_grids_x * number_of_grids_y; index++)
         {
             gridModel.append({"gridId": index,
+                                 "widgetId": "",
                                  "widgetVisible": false,
                                  "widgetHeightInNumberOfCells": 5,
                                  "widgetWidthInNumberOfCells": 3,
@@ -68,6 +69,7 @@ GridView {
             if(id.length !== 0 && onScreen){
 
                 widgetIndex = widgetsSettings.getSetting(id + "__index", "widgets")*1;
+                gridModel.get(widgetIndex).widgetId = id;
                 gridModel.get(widgetIndex).widgetVisible = true;
                 var widgetHeight = widgetsSettings.getSetting(id + "__height", "widgets")*1;
                 var widgetWidth = widgetsSettings.getSetting(id + "__width", "widgets")*1;

@@ -11,6 +11,9 @@ Rectangle {
     color: "grey"
     Image { source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3 }
 
+    property int delta_widgetContainer_widgetGrid_x: mainScreen.delta_widgetSelectionBar_widgetGrid_x + componentDisplayBox.x + componentDisplayArea.x;
+    property int delta_widgetContainer_widgetGrid_y: mainScreen.delta_widgetSelectionBar_widgetGrid_y + componentDisplayBox.y + componentDisplayArea.y;
+
     property bool expanded: false;
 
     states: State {
@@ -25,11 +28,11 @@ Rectangle {
     transitions: [
         Transition {
             to: "EXPANDED"
-            NumberAnimation { target: main; property: "y"; duration: 200 }
+            NumberAnimation { target: main; property: "y"; duration: 300 }
         },
         Transition {
             from: "EXPANDED"
-            NumberAnimation { target: main; property: "y"; duration: 100 }
+            NumberAnimation { target: main; property: "y"; duration: 200 }
         }
     ]
 
@@ -236,12 +239,15 @@ Rectangle {
             clip: true
 
             delegate: Rectangle {
+                id: widgetContainer
+
                 width: 300
                 height: componentDisplayArea.height
                 color: "#00000000" // "red"
                 scale: 0.8 // show it smaller than actual
 
                 Loader {
+                    id: widgetLoader;
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.horizontalCenter: parent.horizontalCenter
                     source: widgetSourceName
@@ -249,12 +255,135 @@ Rectangle {
                     height:grid.cellHeight * widgetHeight
 
                 }
+
+                function getIndexInList() {
+                    var model =  componentDisplayArea.model
+                    for(var i = 0; i < model.count; i++) {
+                        if(model.get(i).widgetId == widgetId) {
+                            return i;
+                        }
+                    }
+
+                    return -1;
+                }
+
+                MouseArea {
+
+                    property int original_x;    // Original position
+                    property int original_y;
+                    property int deltaX;
+                    property int deltaY;
+
+                    property bool startDrag: false;
+                    property bool removeOut: false;
+
+                    property int last_x;
+                    property int last_y;
+
+                    property int componentIndex: -1;
+
+                    anchors.fill: parent
+                    onPressAndHold: {
+                        widgetContainer.scale = 1
+                        componentDisplayArea.interactive = false;
+
+                        original_x = widgetContainer.x;
+                        original_y = widgetContainer.y;
+
+                        deltaX = mouseX - original_x;
+                        deltaY = mouseY - original_y;
+
+                        last_x = original_x;
+                        last_y = original_y;
+
+                        componentIndex = getIndexInList();
+                        console.log("Component index [" + componentIndex + "] is underway... ")
+
+                        startDrag = true;
+
+                    }
+                    onReleased: {
+                        startDrag = false;
+                        widgetContainer.scale = 0.8
+                        componentDisplayArea.interactive = true;
+                        if(!removeOut) {
+                            widgetContainer.x = original_x;
+                            widgetContainer.y = original_y;
+                        }
+
+                        componentIndex = -1;
+                    }
+                    onCanceled: {
+                        startDrag = false;
+                        widgetContainer.scale = 0.8
+                        componentDisplayArea.interactive = true;
+                        if(!removeOut) {
+                            widgetContainer.x = original_x;
+                            widgetContainer.y = original_y;
+                        }
+
+                        componentIndex = -1;
+                    }
+                    onPositionChanged: {
+                        if(startDrag) {
+                            var currentX = mouseX - deltaX;
+                            var currentY = mouseY - deltaY;
+
+                            if(Math.sqrt((currentX-last_x)*(currentX-last_x) + (currentY-last_y)*(currentY-last_y)) > 30) {
+                                widgetContainer.x = currentX;
+                                widgetContainer.y = currentY;
+
+                                last_x = currentX;
+                                last_y = currentY;
+                            }
+
+                            if(Math.sqrt((currentX-original_x)*(currentX-original_x) + (currentY-original_y)*(currentY-original_y)) > 200
+                                    && componentIndex != -1) {
+                                console.log("Index["+componentIndex+"], let's go! ")
+                                // console.log((widgetContainer.x + delta_widgetContainer_widgetGrid_x) + "/" + (widgetContainer.y + delta_widgetContainer_widgetGrid_y));
+                                var indexInGrid = grid.indexAt(widgetContainer.x + delta_widgetContainer_widgetGrid_x, widgetContainer.y + delta_widgetContainer_widgetGrid_y);
+                                // console.log("indexInGrid: " +indexInGrid)
+                                // printObjectInfo(widgetCanvas.gridModel.get(0))
+                                // printObjectInfo(widgetCanvas.gridModel.get(indexInGrid))
+                                var sourceInGridName = widgetCanvas.gridModel.get(indexInGrid).widgetSourceName;
+                                // console.debug(sourceInGridName);
+
+                                if(indexInGrid!=-1 && sourceInGridName == "EmptyWidget.qml") {
+                                    widgetCanvas.gridModel.get(indexInGrid).widgetVisible = true;
+                                    widgetCanvas.gridModel.get(indexInGrid).widgetHeightInNumberOfCells = widgetHeight;
+                                    widgetCanvas.gridModel.get(indexInGrid).widgetWidthInNumberOfCells = widgetWidth;
+                                    widgetCanvas.gridModel.get(indexInGrid).widgetSourceName = widgetSourceName;
+
+                                    widgetCanvas.setWidgetAreaUnavailabe(indexInGrid, widgetHeight, widgetWidth);
+
+                                    updateWidgetInfoIntoFile(indexInGrid, widgetSourceName);
+
+                                    expanded = false;
+                                }
+                            }
+                        }
+                    }
+
+                    function updateWidgetInfoIntoFile(indexInGrid, widgetSourceName)
+                    {
+                        widgetsSettings.setSetting(widgetId+"__index", ""+indexInGrid, "widgets");
+                        widgetsSettings.setSetting(widgetId+"__source", widgetSourceName, "widgets");
+                        widgetsSettings.setSetting(widgetId+"__onScreen", "true", "widgets");
+                    }
+                }
+
             }
         }
 
-
     }
 
+
+    function printObjectInfo(modelObject) {
+        console.debug(modelObject);
+        for(var prop in modelObject) {
+            console.debug("name: " + prop + "; value: " + modelObject[prop])
+        }
+    }
 
 
     function loadUnloadedComponents() {
@@ -286,7 +415,8 @@ Rectangle {
                 var widgetSourceName = widgetsSettings.getSetting(id + "__source", "widgets")
                 // var widgetShapshot = widgetsSettings.getSetting(id + "__snapshot", "widgets")
 
-                unloadedWidgets.append({ "widgetHeight": widgetHeight,
+                unloadedWidgets.append({ "widgetId": id,
+                                           "widgetHeight": widgetHeight,
                                            "widgetWidth": widgetWidth,
                                            "widgetSourceName": widgetSourceName,
                                            // "widgetShapshot": widgetShapshot
