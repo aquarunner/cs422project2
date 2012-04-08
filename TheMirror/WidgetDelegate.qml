@@ -42,6 +42,9 @@ Rectangle {
             for(var j = 0; j < gridModel.get(widgetIndex).widgetWidthInNumberOfCells; j++) {
                 var idx = widgetIndex + i*number_of_grids_x + j;
                 gridModel.get(idx).available = true;
+                if(widgetIndex != idx) {
+                    gridModel.get(idx).type=""
+                }
             }
         }
     }
