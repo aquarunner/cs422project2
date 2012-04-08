@@ -218,7 +218,7 @@ Rectangle {
             }
             else if (type == "SHORTCUT") {
 
-                console.log(widgetId+"__index")
+                // console.log(widgetId+"__index")
                 widgetsSettings.setSetting(widgetId+"__index", ""+currentIndex, "shortcuts");
                 widgetsSettings.setSetting(widgetId+"__onScreen", ""+true, "shortcuts");
             }
