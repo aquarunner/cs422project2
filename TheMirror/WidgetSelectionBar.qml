@@ -141,7 +141,7 @@ Rectangle {
     }
 
     ListModel { id: unloadedWidgets }
-    ListModel { id: unloadedApplications }
+    ListModel { id: unloadedShortcuts }
     ListModel { id: unloadedBoth }
 
     Image {
@@ -241,10 +241,10 @@ Rectangle {
             delegate: Rectangle {
                 id: widgetContainer
 
-                width: 300
+                width: type=="WIDGET"? 300: 100
                 height: componentDisplayArea.height
                 color: "#00000000" // "red"
-                scale: 0.8 // show it smaller than actual
+                scale: type=="WIDGET"? 0.8: 1 // show it smaller than actual
 
                 Loader {
                     id: widgetLoader;
@@ -284,7 +284,13 @@ Rectangle {
 
                     anchors.fill: parent
                     onPressAndHold: {
-                        widgetContainer.scale = 1
+                        if(type=="WIDGET") {
+                            widgetContainer.scale = 1
+                        }
+                        else {
+                            widgetContainer.scale = 1.3
+                        }
+
                         componentDisplayArea.interactive = false;
 
                         original_x = widgetContainer.x;
@@ -304,7 +310,12 @@ Rectangle {
                     }
                     onReleased: {
                         startDrag = false;
-                        widgetContainer.scale = 0.8
+                        if(type=="WIDGET") {
+                            widgetContainer.scale = 0.8
+                        }
+                        else {
+                            widgetContainer.scale = 1
+                        }
                         componentDisplayArea.interactive = true;
                         if(!removeOut) {
                             widgetContainer.x = original_x;
@@ -315,7 +326,13 @@ Rectangle {
                     }
                     onCanceled: {
                         startDrag = false;
-                        widgetContainer.scale = 0.8
+                        if(type=="WIDGET") {
+                            widgetContainer.scale = 0.8
+                        }
+                        else {
+                            widgetContainer.scale = 1
+                        }
+
                         componentDisplayArea.interactive = true;
                         if(!removeOut) {
                             widgetContainer.x = original_x;
@@ -391,9 +408,36 @@ Rectangle {
             loadUnloadedWidgets();
             componentDisplayArea.model = unloadedWidgets;
         } else if (selectedCategory == "Applications") {
-            componentDisplayArea.model = unloadedApplications;
+            loadUnloadedShortcuts();
+            componentDisplayArea.model = unloadedShortcuts;
         } else if (selectedCategory == "Both") {
             componentDisplayArea.model = unloadedBoth;
+        }
+    }
+
+    function loadUnloadedShortcuts() {
+
+        unloadedShortcuts.clear();
+
+        var str = widgetsSettings.getSetting("shortcut_ids", "shortcuts");
+        var shortcutIds = str.split(";");
+        var id;
+        var widgetIndex;
+        for(var i = 0; i < shortcutIds.length; i++) {
+            id = shortcutIds[i].replace(/^\s+|\s+$/g, ""); // trim
+            var onScreen = (widgetsSettings.getSetting(id + "__onScreen", "shortcuts") === 'true');
+            if(id.length !== 0 && !onScreen){
+
+                var widgetSourceName = widgetsSettings.getSetting(id + "__source", "shortcuts");
+
+                unloadedShortcuts.append({ "widgetId": id,
+                                           "widgetHeight": 2,
+                                           "widgetWidth": 1,
+                                           "widgetSourceName": widgetSourceName,
+                                           "type": "SHORTCUT"
+                                       });
+
+            }
         }
     }
 
@@ -420,6 +464,7 @@ Rectangle {
                                            "widgetWidth": widgetWidth,
                                            "widgetSourceName": widgetSourceName,
                                            // "widgetShapshot": widgetShapshot
+                                           "type": "WIDGET"
                                        });
 
             }
