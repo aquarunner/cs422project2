@@ -3,10 +3,10 @@ import "../common"
 
 Rectangle {
     id: widgetID
-    color: "brown"
+    color: "pink"
 
     Text {
-        text :"Widget 4"
+        text :"Widget 6"
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
     }

@@ -3,11 +3,12 @@ import "../common"
 
 Rectangle {
     id: widgetID
-    color: "brown"
+    color: "white"
 
     Text {
-        text :"Widget 4"
+        text :"Widget 8"
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
     }
+
 }

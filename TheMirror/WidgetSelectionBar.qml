@@ -239,11 +239,15 @@ Rectangle {
                 width: 300
                 height: componentDisplayArea.height
                 color: "#00000000" // "red"
+                scale: 0.8 // show it smaller than actual
 
-                Image {
+                Loader {
                     anchors.verticalCenter: parent.verticalCenter
                     anchors.horizontalCenter: parent.horizontalCenter
-                    source: widgetShapshot
+                    source: widgetSourceName
+                    width: grid.cellWidth * widgetWidth
+                    height:grid.cellHeight * widgetHeight
+
                 }
             }
         }
@@ -280,12 +284,12 @@ Rectangle {
                 var widgetHeight = widgetsSettings.getSetting(id + "__height", "widgets")*1;
                 var widgetWidth = widgetsSettings.getSetting(id + "__width", "widgets")*1;
                 var widgetSourceName = widgetsSettings.getSetting(id + "__source", "widgets")
-                var widgetShapshot = widgetsSettings.getSetting(id + "__snapshot", "widgets")
+                // var widgetShapshot = widgetsSettings.getSetting(id + "__snapshot", "widgets")
 
                 unloadedWidgets.append({ "widgetHeight": widgetHeight,
                                            "widgetWidth": widgetWidth,
                                            "widgetSourceName": widgetSourceName,
-                                           "widgetShapshot": widgetShapshot
+                                           // "widgetShapshot": widgetShapshot
                                        });
 
             }
