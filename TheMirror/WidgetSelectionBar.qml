@@ -92,6 +92,15 @@ Rectangle {
         }
     }
 
+    //    Image {
+    //        id: trashCan
+    //        source: "./icons/TrashCan.png"
+    //        anchors.right: parent.right
+    //        anchors.rightMargin: 10
+    //        y: 10
+    //        visible: !expanded
+    //    }
+
     Text {
         anchors.horizontalCenter: parent.horizontalCenter
         y: expandBar.height + 15
@@ -113,9 +122,9 @@ Rectangle {
         Button {label: "Applications"; border.color: "skyblue"; border.width: selectedCategory==label?3:0; height: 50; width: 200
             onClicked: { selectedCategory = label; loadUnloadedComponents(); }
         }
-//        Button {label: "Both"; border.color: "skyblue"; border.width: selectedCategory==label?3:0; height: 50; width: 200
-//            onClicked: { selectedCategory = label; loadUnloadedComponents(); }
-//        }
+        //        Button {label: "Both"; border.color: "skyblue"; border.width: selectedCategory==label?3:0; height: 50; width: 200
+        //            onClicked: { selectedCategory = label; loadUnloadedComponents(); }
+        //        }
     }
 
     ListView {
@@ -442,11 +451,11 @@ Rectangle {
                 var widgetSourceName = widgetsSettings.getSetting(id + "__source", "shortcuts");
 
                 unloadedShortcuts.append({ "widgetId": id,
-                                           "widgetHeight": 1,
-                                           "widgetWidth": 1,
-                                           "widgetSourceName": widgetSourceName,
-                                           "type": "SHORTCUT"
-                                       });
+                                             "widgetHeight": 1,
+                                             "widgetWidth": 1,
+                                             "widgetSourceName": widgetSourceName,
+                                             "type": "SHORTCUT"
+                                         });
 
             }
         }

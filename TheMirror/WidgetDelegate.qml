@@ -10,22 +10,10 @@ Rectangle {
     // color: available? "#00000000" :"black"
     color: "#00000000"
 
-    Rectangle {
-        id: dragBar
-        color: dragArea.startDrag?  Qt.darker("grey", 1.5)  : "grey"
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        anchors.top: parent.top
-        anchors.topMargin: 0
-        height: type=="SHORTCUT"? 0: 20
-        radius: 3
-    }
 
     Loader {
         id: widgetLoader;
-        height: item.height - dragBar.height
+        height: item.height /*- dragBar.height*/
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.left: parent.left
@@ -34,8 +22,22 @@ Rectangle {
         anchors.bottomMargin: 0
 
         source: widgetSourceName != null? widgetSourceName: "EmptyWidget.qml"
-        scale: (type=="SHORTCUT" && dragArea.startDrag)? 1.2 : 1
+        scale: dragArea.startDrag? 1.2 : 1
     }
+
+    //    Rectangle {
+    //        id: dragBar
+    //        color: dragArea.startDrag?  Qt.darker("grey", 1.5)  : "grey"
+    //        anchors.right: parent.right
+    //        anchors.rightMargin: 0
+    //        anchors.left: parent.left
+    //        anchors.leftMargin: 0
+    //        anchors.top: parent.top
+    //        anchors.topMargin: 0
+    //        height: type=="SHORTCUT"? 0: 20
+    //        radius: 3
+    //        visible: mainScreen.displayArea.showGrid
+    //    }
 
     function makeAreaAvailable(widgetIndex) {
         for(var i = 0; i < gridModel.get(widgetIndex).widgetHeightInNumberOfCells; i++) {
@@ -89,7 +91,7 @@ Rectangle {
 
     MouseArea {
         id: dragArea
-        anchors.fill: type=="SHORTCUT"? widgetLoader: dragBar
+        anchors.fill: widgetLoader /*type=="SHORTCUT"? widgetLoader: dragBar*/
 
         property int original_x;    // Original position
         property int original_y;
@@ -98,22 +100,23 @@ Rectangle {
 
         property int currentIndex;
         property int originalIndex;
+        visible: displayArea.showGrid
 
-        onClicked: {
-            if(type=="SHORTCUT") {
-                mainScreen.showMainMenuBar = false;
-                mainScreen.showApplicationArea = true;
+//        onClicked: {
+//            if(type=="SHORTCUT" && !startDrag) {
+//                mainScreen.showMainMenuBar = false;
+//                mainScreen.showApplicationArea = true;
 
-                applicationCanvas.isApplicationAreaTransparent = (settings.getSetting(widgetId + "__transparent", "shortcut_to_application") === 'true');
-                applicationCanvas.showBorder = (settings.getSetting(widgetId + "__border", "shortcut_to_application") === 'true');
-                applicationCanvas.applicationAreaHeightInNumberOfCells = settings.getSetting(widgetId + "__height", "shortcut_to_application")*1;
-                applicationCanvas.applicationAreaWidthInNumberOfCells = settings.getSetting(widgetId + "__width", "shortcut_to_application")*1;
+//                applicationCanvas.isApplicationAreaTransparent = (settings.getSetting(widgetId + "__transparent", "shortcut_to_application") === 'true');
+//                applicationCanvas.showBorder = (settings.getSetting(widgetId + "__border", "shortcut_to_application") === 'true');
+//                applicationCanvas.applicationAreaHeightInNumberOfCells = settings.getSetting(widgetId + "__height", "shortcut_to_application")*1;
+//                applicationCanvas.applicationAreaWidthInNumberOfCells = settings.getSetting(widgetId + "__width", "shortcut_to_application")*1;
 
-                applicationCanvas.componentLoder.title = widgetId;
-                applicationCanvas.componentLoder.iconName = settings.getSetting(widgetId + "__icon", "shortcut_to_application");
-                applicationCanvas.componentLoder.source = settings.getSetting(widgetId + "__source", "shortcut_to_application");
-            }
-        }
+//                applicationCanvas.componentLoder.title = widgetId;
+//                applicationCanvas.componentLoder.iconName = settings.getSetting(widgetId + "__icon", "shortcut_to_application");
+//                applicationCanvas.componentLoder.source = settings.getSetting(widgetId + "__source", "shortcut_to_application");
+//            }
+//        }
 
         onPressAndHold: {
             if(displayArea.showGrid) {
