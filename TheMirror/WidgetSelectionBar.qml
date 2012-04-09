@@ -113,9 +113,9 @@ Rectangle {
         Button {label: "Applications"; border.color: "skyblue"; border.width: selectedCategory==label?3:0; height: 50; width: 200
             onClicked: { selectedCategory = label; loadUnloadedComponents(); }
         }
-        Button {label: "Both"; border.color: "skyblue"; border.width: selectedCategory==label?3:0; height: 50; width: 200
-            onClicked: { selectedCategory = label; loadUnloadedComponents(); }
-        }
+//        Button {label: "Both"; border.color: "skyblue"; border.width: selectedCategory==label?3:0; height: 50; width: 200
+//            onClicked: { selectedCategory = label; loadUnloadedComponents(); }
+//        }
     }
 
     ListView {
@@ -149,7 +149,7 @@ Rectangle {
         id: leftArrow
 
         x: categoryList.x + categoryList.width + 50
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenter: componentDisplayBox.verticalCenter
         source: "./icons/ExpandArrow_Left.png"
         visible: expanded
 
@@ -182,7 +182,7 @@ Rectangle {
         id: rightArrow
 
         x: componentDisplayBox.x + componentDisplayBox.width + 7
-        anchors.verticalCenter: parent.verticalCenter
+        anchors.verticalCenter: componentDisplayBox.verticalCenter
         source: "./icons/ExpandArrow_Right.png"
         visible: expanded
         MouseArea {
@@ -218,7 +218,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: 50
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 30
+        anchors.bottomMargin: selectedCategory == "Widgets"? 30: 200
         visible: expanded
         color: "#00000000"
         border.color: "darkgrey"
