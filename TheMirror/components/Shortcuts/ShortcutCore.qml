@@ -15,12 +15,18 @@ Rectangle {
     }
 
     Image {
+        id: shortcutIcon
+
+        Component.onCompleted: {
+            loadImage();
+        }
+
         width: 32
         height: 32
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 0
-        source: "../../icons/"+ settings.getSetting(appName + "__icon", "shortcut_to_application")
+        // source: "../../icons/"+ settings.getSetting(appName + "__icon", "shortcut_to_application")
         smooth: true
     }
 
@@ -75,6 +81,59 @@ Rectangle {
 //        }
 //        console.log("===============\n");
 //    }
+
+    function loadImage() {
+        var doc = new XMLHttpRequest();
+        doc.onreadystatechange = function() {
+            if (doc.readyState == XMLHttpRequest.DONE) {
+                var applicationsElement = doc.responseXML.documentElement;
+                var found = false;
+                // printObjectInfo(applicationsElement);
+                for (var index = 0; index < applicationsElement.childNodes.length; index++) {
+                    var applicationElement = applicationsElement.childNodes[index];
+                    if(applicationElement.nodeType != 1 ) {
+                        continue;
+                    }
+                    //printObjectInfo(applicationElement);
+
+                    // <application>
+                    for(var i = 0; i < applicationElement.childNodes.length; i++) {
+
+                        if(applicationElement.childNodes[i].nodeType == 1
+                                && applicationElement.childNodes[i].nodeName == "name"
+                                && applicationElement.childNodes[i].childNodes[0].nodeValue == appName) { // <name> element
+
+                           //  printObjectInfo(applicationElement.childNodes[i]);
+
+                            found = true;
+
+                            for(var innerIndex = i+1; innerIndex < applicationElement.childNodes.length; innerIndex++) {
+                                var innerElement = applicationElement.childNodes[innerIndex];
+                                // printObjectInfo(innerElement);
+
+                                if(innerElement.nodeType == 1 && innerElement.nodeName == "icon") {
+                                    //console.log("icon");
+                                    shortcutIcon.source = "../../icons/" + innerElement.childNodes[0].nodeValue;
+                                    //console.log("icon " + innerElement.childNodes[0].nodeValue);
+
+                                    break;
+                                }
+                            }
+
+                            break;
+                        }
+                    }
+
+                    if(found) {
+                        break;
+                    }
+                }
+            }
+        }
+
+        doc.open("GET", "../applications.xml");
+        doc.send();
+    }
 
     function loadApplication() {
         var doc = new XMLHttpRequest();
