@@ -28,10 +28,10 @@ private:
 public:
     Q_INVOKABLE void setSetting(QString key, QString val, QString app = "");
     Q_INVOKABLE QString getSetting(QString key, QString app = "");
+    Q_INVOKABLE void save(string appfile = "");
 
 private:
     void load();
-    void save(string appfile = "");
     void writeFile(string);
 
 signals:

@@ -11,11 +11,13 @@ uri = MirrorPlugin
 # Input
 SOURCES += \
     src/settings.cpp \
-    src/mirror_plugin.cpp
+    src/mirror_plugin.cpp \
+    src/xml.cpp
 
 HEADERS += \
     src/settings.h \
-    src/mirror_plugin.h
+    src/mirror_plugin.h \
+    src/xml.h
 
 OTHER_FILES = \
     qml/qmldir \

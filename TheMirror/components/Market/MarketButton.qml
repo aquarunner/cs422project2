@@ -6,7 +6,9 @@ Rectangle {
     property variant text
     signal clicked
 
-    height: text.height + 2; width: text.width + 10
+    //height: text.height + 2;
+    height: 54
+    width: text.width + 10
     border.width: 1
     radius: 4
     smooth: true
