@@ -1,6 +1,4 @@
 import QtQuick 1.0
-import MirrorPlugin 1.0
-
 
 Rectangle {
 
@@ -9,10 +7,6 @@ Rectangle {
     anchors.fill: parent
     color: /*mouseArea.pressed? "grey":*/"#00000000"
     radius: 3
-
-    Settings {
-        id: settings
-    }
 
     Image {
         id: shortcutIcon
