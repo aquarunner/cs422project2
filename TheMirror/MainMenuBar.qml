@@ -47,7 +47,7 @@ Rectangle {
         pictureName: "Arrange_Widgets.png"
         onButtonClick: {
             mainScreen.displayArea.showGrid = true;
-            mainScreen.notificationBarText = "Drag the widget to arrange or remove"
+            mainScreen.notificationBarText = "Drag the widget to arrange or click 'X' to remove"
         }
     }
 

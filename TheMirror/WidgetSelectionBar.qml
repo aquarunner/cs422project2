@@ -1,6 +1,6 @@
 import QtQuick 1.0
 import "./common"
-import MirrorPlugin 1.0
+// import MirrorPlugin 1.0
 
 Rectangle {
     id: main
@@ -15,6 +15,8 @@ Rectangle {
     property int delta_widgetContainer_widgetGrid_y: mainScreen.delta_widgetSelectionBar_widgetGrid_y + componentDisplayBox.y + componentDisplayArea.y;
 
     property bool expanded: false;
+
+    property variant widgetsSettings: widgetCanvas.widgetsSettings
 
     states: State {
         name: "EXPANDED"
@@ -73,7 +75,7 @@ Rectangle {
                     caregoryWidgetsButton.clicked();
                 }
                 else {
-                    mainScreen.notificationBarText = "Drag the widget to arrange or remove"
+                    mainScreen.notificationBarText = "Drag the widget to arrange or click 'X' to remove"
                 }
             }
         }
@@ -145,9 +147,9 @@ Rectangle {
 
     ///////////////////////////////////////////////////////////////////////
 
-    Settings {
-        id: widgetsSettings
-    }
+//    Settings {
+//        id: widgetsSettings
+//    }
 
     ListModel { id: unloadedWidgets }
     ListModel { id: unloadedShortcuts }
@@ -424,6 +426,7 @@ Rectangle {
 
 
     function loadUnloadedComponents() {
+
         if(selectedCategory == "Widgets") {
             loadUnloadedWidgets();
             componentDisplayArea.model = unloadedWidgets;
@@ -445,6 +448,7 @@ Rectangle {
         var widgetIndex;
         for(var i = 0; i < shortcutIds.length; i++) {
             id = shortcutIds[i].replace(/^\s+|\s+$/g, ""); // trim
+
             var onScreen = (widgetsSettings.getSetting(id + "__onScreen", "shortcuts") === 'true');
             if(id.length !== 0 && !onScreen){
 

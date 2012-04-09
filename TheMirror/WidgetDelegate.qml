@@ -1,5 +1,5 @@
 import QtQuick 1.0
-import MirrorPlugin 1.0
+// import MirrorPlugin 1.0
 
 Rectangle {
     id: item
@@ -85,9 +85,9 @@ Rectangle {
         console.log("================================================\n");
     }
 
-    Settings {
-        id: settings
-    }
+//    Settings {
+//        id: settings
+//    }
 
     MouseArea {
         id: dragArea
@@ -154,13 +154,14 @@ Rectangle {
 
         function clone(modelElement) {
             return {
-                gridId: modelElement.gridId,
+                widgetId: modelElement.gridId,
                 available: modelElement.available,
                 widgetSourceName: modelElement.widgetSourceName,
                 widgetVisible: modelElement.widgetVisible,
                 widgetHeightInNumberOfCells: modelElement.widgetHeightInNumberOfCells,
                 widgetWidthInNumberOfCells: modelElement.widgetWidthInNumberOfCells,
-                gridModel: modelElement.gridModel
+                gridModel: modelElement.gridModel,
+                type: modelElement.type
             }
         }
 
@@ -227,6 +228,54 @@ Rectangle {
                 // console.log(widgetId+"__index")
                 widgetsSettings.setSetting(widgetId+"__index", ""+currentIndex, "shortcuts");
                 widgetsSettings.setSetting(widgetId+"__onScreen", ""+true, "shortcuts");
+            }
+        }
+    }
+
+    function deleteWidget(currentIndex) {
+        if(type == "WIDGET") {
+            widgetsSettings.setSetting(widgetId+"__index", "0", "widgets");
+            widgetsSettings.setSetting(widgetId+"__onScreen", "false", "widgets");
+        }
+        else if (type == "SHORTCUT") {
+            widgetsSettings.setSetting(widgetId+"__index", "0", "shortcuts");
+            widgetsSettings.setSetting(widgetId+"__onScreen", "false", "shortcuts");
+        }
+
+        makeAreaAvailable(currentIndex);
+        var currentElement = gridModel.get(currentIndex);
+        var gridId = currentElement.gridId;
+        gridModel.remove(currentIndex);
+        gridModel.insert(currentIndex, {
+                             widgetId: gridId,
+                             available: true,
+                             widgetSourceName: "EmptyWidget.qml",
+                             widgetVisible: false,
+                             widgetHeightInNumberOfCells: 1,
+                             widgetWidthInNumberOfCells: 1,
+                             gridModel: gridModel,
+                             type: ""
+                         });
+    }
+
+    Image {
+        id: deleteIcon
+        source: "icons/Delete.png"
+        anchors.right: parent.right
+        anchors.rightMargin: -10
+        anchors.top: parent.top
+        anchors.topMargin: -10
+        width: 25
+        height: 25
+        smooth: true
+        visible: displayArea.showGrid && !mainScreen.widgetSelectionBar.expanded
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                var currentIndex = widgetCanvas.indexAt(item.x, item.y);
+               //  console.log(currentIndex);
+                deleteWidget(currentIndex);
             }
         }
     }

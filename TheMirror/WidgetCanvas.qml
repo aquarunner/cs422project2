@@ -5,6 +5,7 @@ GridView {
 
     id: widgetCanvas
     property alias gridModel: gridModel
+    property alias widgetsSettings: widgetsSettings
 
     Settings {
         id: widgetsSettings
@@ -16,8 +17,8 @@ GridView {
             gridModel.append({"gridId": index,
                                  "widgetId": "",
                                  "widgetVisible": false,
-                                 "widgetHeightInNumberOfCells": 5,
-                                 "widgetWidthInNumberOfCells": 3,
+                                 "widgetHeightInNumberOfCells": 1,
+                                 "widgetWidthInNumberOfCells": 1,
                                  "widgetSourceName" : "EmptyWidget.qml",
                                  "available" : true,
                                  "type": "",
@@ -28,35 +29,6 @@ GridView {
         loadWidgets();
         loadShortcuts();
 
-        /////////////////////////////////////////////
-        //        var widgetIndex = 0;
-        //        gridModel.get(widgetIndex).widgetVisible = true;
-        //        gridModel.get(widgetIndex).widgetSourceName = "demo/TestWidget.qml"
-        //        for(var i = 0; i < gridModel.get(widgetIndex).widgetHeightInNumberOfCells; i++) {
-        //            for(var j = 0; j < gridModel.get(widgetIndex).widgetWidthInNumberOfCells; j++) {
-        //                var idx = widgetIndex + i*number_of_grids_x + j;
-        //                // console.log(idx + " unavailable");
-        //                gridModel.get(idx).available = false;
-        //            }
-        //        }
-        // console.log("---------\n");
-
-        /////////////////////////////////////////////
-        //        widgetIndex = 65;
-        //        gridModel.get(widgetIndex).widgetVisible = true;
-        //        gridModel.get(widgetIndex).widgetSourceName = "demo/TestWidget2.qml"
-        //        gridModel.get(widgetIndex).widgetHeightInNumberOfCells = 3
-        //        gridModel.get(widgetIndex).widgetWidthInNumberOfCells = 5
-        //        for(i = 0; i < gridModel.get(widgetIndex).widgetHeightInNumberOfCells; i++) {
-        //            for(j = 0; j < gridModel.get(widgetIndex).widgetWidthInNumberOfCells; j++) {
-        //                idx = widgetIndex + i*number_of_grids_x + j;
-        //                // console.log(idx + " unavailable");
-        //                gridModel.get(idx).available = false;
-        //            }
-        //        }
-        // console.log("---------\n");
-
-        /////////////////////////////////////////////
     }
 
     function loadWidgets() {

@@ -19,6 +19,7 @@ Rectangle {
     property alias gridCellHeight: grid.cellHeight;
 
     property alias displayArea: displayArea
+    property alias widgetSelectionBar: widgetSelectionBar
 
     property bool showApplicationArea: false;
     property bool showMainMenuBar: false
