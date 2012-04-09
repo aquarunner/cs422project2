@@ -128,10 +128,10 @@
 		<name>App. Market</name>
 		<category>MISC</category>
 		<icon>Application_Misc_Market.png</icon>
-		<source>../../demo/TestApp.qml</source>
+		<source>../Market/Market.qml</source>
 		<width>12</width>
 		<height>10</height>
-		<transparent>true</transparent>
+		<transparent>false</transparent>
 		<border>true</border>
 	</application>
 	<application>
