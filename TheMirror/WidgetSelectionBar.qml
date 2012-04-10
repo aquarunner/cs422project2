@@ -71,11 +71,11 @@ Rectangle {
             onClicked: {
                 expanded = !expanded;
                 if(expanded) {
-                    mainScreen.notificationBarText = "Drag the widget to the blank space on screen, and release"
+                    mainScreen.notificationBarText = i18n.drag_the_widget_to_the_blank_space_on_screen_and_release
                     caregoryWidgetsButton.clicked();
                 }
                 else {
-                    mainScreen.notificationBarText = "Drag the widget to arrange or click 'X' to remove"
+                    mainScreen.notificationBarText = i18n.drag_the_widget_to_arrange_or_click_x_to_remove
                 }
             }
         }
@@ -86,7 +86,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.leftMargin: 10
         y: expandBar.height + 15
-        label: "Done";
+        label: i18n.done;
         visible: !expanded
         onClicked: {
             mainScreen.displayArea.showGrid = false;
@@ -106,7 +106,7 @@ Rectangle {
     Text {
         anchors.horizontalCenter: parent.horizontalCenter
         y: expandBar.height + 15
-        text: "Click the arrow above to select widgets"
+        text: i18n.click_the_arrow_above_to_select_widgets
         color: "white"
         font.bold: true
         font.pointSize: 18
@@ -118,10 +118,11 @@ Rectangle {
 
     VisualItemModel {
         id: categoryButtonModel
-        Button {id: caregoryWidgetsButton; label: "Widgets"; border.color: "skyblue"; border.width: selectedCategory==label?3:0; height: 50; width: 200
+        // FIXME
+        Button {id: caregoryWidgetsButton; label: i18n.widgets; border.color: "skyblue"; border.width: selectedCategory==label?3:0; height: 50; width: 200
             onClicked: { selectedCategory = label; loadUnloadedComponents(); }
         }
-        Button {label: "Applications"; border.color: "skyblue"; border.width: selectedCategory==label?3:0; height: 50; width: 200
+        Button {label: i18n.applications; border.color: "skyblue"; border.width: selectedCategory==label?3:0; height: 50; width: 200
             onClicked: { selectedCategory = label; loadUnloadedComponents(); }
         }
         //        Button {label: "Both"; border.color: "skyblue"; border.width: selectedCategory==label?3:0; height: 50; width: 200
@@ -229,7 +230,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.rightMargin: 50
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: selectedCategory == "Widgets"? 30: 200
+        anchors.bottomMargin: selectedCategory == i18n.widgets? 30: 200
         visible: expanded
         color: "#00000000"
         border.color: "darkgrey"
@@ -427,15 +428,15 @@ Rectangle {
 
     function loadUnloadedComponents() {
 
-        if(selectedCategory == "Widgets") {
+        if(selectedCategory == i18n.widgets) {
             loadUnloadedWidgets();
             componentDisplayArea.model = unloadedWidgets;
-        } else if (selectedCategory == "Applications") {
+        } else if (selectedCategory == i18n.applications) {
             loadUnloadedShortcuts();
             componentDisplayArea.model = unloadedShortcuts;
-        } else if (selectedCategory == "Both") {
+        } /*else if (selectedCategory == "Both") {
             componentDisplayArea.model = unloadedBoth;
-        }
+        }*/
     }
 
     function loadUnloadedShortcuts() {
