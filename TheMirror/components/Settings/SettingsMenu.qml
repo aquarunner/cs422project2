@@ -87,7 +87,9 @@ Rectangle {
     ListModel {
         id: settingsMainMenuModel
 
-        Component.onCompleted: {
+        Component.onCompleted: { reload() }
+        function reload() {
+            settingsMainMenuModel.clear();
             settingsMainMenuModel.append( { "category": "PROFILE", "icon": "SettingsMenu_Profile.png", "name": i18n.manage_profiles, })
             settingsMainMenuModel.append( { "category": "LANGUAGE", "icon": "SettingsMenu_Language.png", "name": i18n.select_language, })
             settingsMainMenuModel.append( { "category": "WIFI", "icon": "SettingsMenu_Wifi.png", "name": i18n.wifi_settings, })
@@ -98,7 +100,9 @@ Rectangle {
 
     ListModel {
         id: manageProfilesSubMenuModel;
-        Component.onCompleted: {
+
+        Component.onCompleted: { reload() }
+        function reload() {
             manageProfilesSubMenuModel.append( { "category": "PROFILE_CREATE", "name": i18n.create_a_new_profile, "icon": "", "source": ""})
             manageProfilesSubMenuModel.append( { "category": "PROFILE_PASSWORD", "name": i18n.change_password, "icon": "", "source": ""})
             manageProfilesSubMenuModel.append( { "category": "PROFILE_DELETE", "name": i18n.delete_an_existing_profile, "icon": "", "source": ""})
@@ -107,7 +111,9 @@ Rectangle {
 
     ListModel {
         id: aboutAndHelpSubMenuModel;
-        Component.onCompleted: {
+
+        Component.onCompleted: { reload() }
+        function reload() {
             aboutAndHelpSubMenuModel.append( { "category": "HELP_ABOUT", "name": i18n.about, "icon": "", "source": ""})
             aboutAndHelpSubMenuModel.append( { "category": "HELP_HELP", "name": i18n.help, "icon": "", "source": ""})
         }
@@ -145,6 +151,9 @@ Rectangle {
                 settings.setSetting("current_language_source", settingsRadioSelectionList.sourceName);
                 settingsRadioSelectionList.settingOption = "";
                 mainScreen.language = settingsRadioSelectionList.sourceName;
+                settingsMainMenuModel.reload();
+                manageProfilesSubMenuModel.reload();
+                aboutAndHelpSubMenuModel.reload();
             }
 
             backButton.clicked();
