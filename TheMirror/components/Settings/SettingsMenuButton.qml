@@ -14,7 +14,7 @@ Rectangle {
     Image {
         id: iconArea
         x: 20
-        width: 50
+        width: (icon !== "")? 50: 0
         height: 50
         anchors.verticalCenter: parent.verticalCenter
         source: (icon !== "")? "../../icons/" + icon: ""
