@@ -64,7 +64,7 @@ Rectangle {
         // goes into sub-menu (for certain category)
 
         // console.log("Category [" + category +"] clicked. ")
-        applicationLoder.title = title;
+        applicationLoder.title = name;
         // icon follows such form "../../icons/ApplicationMenu_Daily.png"
         // but applicationLoder.iconName only accept this part "ApplicationMenu_Daily.png"
         applicationLoder.iconName = icon.substring(11);
