@@ -103,6 +103,7 @@ Rectangle {
 
         Component.onCompleted: { reload() }
         function reload() {
+            manageProfilesSubMenuModel.clear();
             manageProfilesSubMenuModel.append( { "category": "PROFILE_CREATE", "name": i18n.create_a_new_profile, "icon": "", "source": ""})
             manageProfilesSubMenuModel.append( { "category": "PROFILE_PASSWORD", "name": i18n.change_password, "icon": "", "source": ""})
             manageProfilesSubMenuModel.append( { "category": "PROFILE_DELETE", "name": i18n.delete_an_existing_profile, "icon": "", "source": ""})
@@ -114,6 +115,7 @@ Rectangle {
 
         Component.onCompleted: { reload() }
         function reload() {
+            aboutAndHelpSubMenuModel.clear();
             aboutAndHelpSubMenuModel.append( { "category": "HELP_ABOUT", "name": i18n.about, "icon": "", "source": ""})
             aboutAndHelpSubMenuModel.append( { "category": "HELP_HELP", "name": i18n.help, "icon": "", "source": ""})
         }
