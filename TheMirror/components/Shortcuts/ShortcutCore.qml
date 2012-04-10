@@ -154,6 +154,8 @@ Rectangle {
 
                             found = true;
 
+                            applicationCanvas.componentLoder.title = appName
+
                             for(var innerIndex = i+1; innerIndex < applicationElement.childNodes.length; innerIndex++) {
                                 var innerElement = applicationElement.childNodes[innerIndex];
                                 // printObjectInfo(innerElement);
