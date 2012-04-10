@@ -1,25 +1,75 @@
 // import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
 import QtQuick 1.1
-import "common"
+//import MirrorPlugin 1.0
+import "../../common"
 
-Rectangle {
+Grid{
     id: notepad_app
-    width: keyboard.width
-    height: 500
+    anchors.fill: parent
+    anchors.topMargin: 55
+    spacing: 10
 
-    //signal addletter(String letter)
+    Rectangle {
+        width: 180; height: 200
 
-    Component.onCompleted: {
-        //notepad_app.addletter.connect()
-        keyboard.letterClicked.connect(addletter)
+        Component {
+            id: contactDelegate
+            Item {
+                width: 180; height: 40
+                Column {
+                    Text { text: '<b>Title: </b> ' + title }
+                }
+            }
+        }
+
+        ListView {
+            width: 180
+            height: notepad_app.height
+            anchors.bottomMargin: -153
+            preferredHighlightBegin: 0
+            anchors.fill: parent
+            model: NotesModel {}
+            delegate: contactDelegate
+            highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
+            focus: true
+        }
     }
 
-    Keyboard {
-        id: keyboard
-    }
+    Rectangle {
+        id: edit_area
+        width: keyboard.width
+        height: keyboard.height + thetext.height
 
-    function addletter(letter)
-    {
-        console.log("Added: " + letter)
+        Component.onCompleted: {
+            keyboard.letterClicked.connect(addletter)
+            keyboard.enter.connect(enter)
+            keyboard.backspace.connect(backspace)
+        }
+
+        Text{
+            id: thetext
+            height: 100
+            text: "Hello"
+        }
+
+        Keyboard {
+            y: thetext.height
+            id: keyboard
+        }
+
+        function addletter(letter)
+        {
+            thetext.text += letter
+        }
+
+        function enter()
+        {
+            thetext.text += '\n';
+        }
+
+        function backspace()
+        {
+            thetext.text = thetext.text.substring(0,thetext.text.length-1);
+        }
     }
 }

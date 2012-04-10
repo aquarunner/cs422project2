@@ -1,4 +1,4 @@
-// import QtQuick 1.0 // to target S60 5th Edition or Maemo 5
+// import QtQuick 1.0 // to target Sbuttonheight 5th Edition or Maemo 5
 import QtQuick 1.1
 
 // Based on keyboard code located at http://qt-project.org/forums/viewthread/1486
@@ -12,13 +12,13 @@ Grid {
     property string line3: "zxcvbnm,."
     property bool shifted : false
     property bool capslocked: false
+    property int buttonwidth: 55
+    property int buttonheight: 50
 
     signal letterClicked(string letter)
     signal enter()
     signal backspace()
 
-    width: 71*columns
-    height: 71*rows
     rows: 4
     columns: 11
     spacing: 1
@@ -27,14 +27,14 @@ Grid {
         id: ln
         model: linenum.length
         Button {
-            width: 70; height: 70
+            width: buttonwidth; height: buttonheight
             label: { linenum.charAt( index ); }
             onClicked: { letterClicked(label); unshift() }
         }
     }
 
     Button {
-        width: 70; height: 70
+        width: buttonwidth; height: buttonheight
         label: "<-"
         onClicked: { backspace() }
     }
@@ -43,14 +43,14 @@ Grid {
         id: l1
         model: line1.length
         Button {
-            width: 70; height: 70
+            width: buttonwidth; height: buttonheight
             label: { line1.charAt( index ); }
             onClicked: { letterClicked(label); unshift() }
         }
     }
 
     Button {
-        width: 70; height: 70
+        width: buttonwidth; height: buttonheight
         label: "Caps"
         onClicked: {
             if(!capslocked && !shifted) { uppercaseall() }
@@ -65,14 +65,14 @@ Grid {
         id: l2
         model: line2.length
         Button {
-            width: 70; height: 70
+            width: buttonwidth; height: buttonheight
             label: { line2.charAt(index); }
             onClicked: { letterClicked(label); unshift(); }
         }
     }
 
     Button {
-        width: 70; height: 70
+        width: buttonwidth; height: buttonheight
         label: "Shift"
         onClicked: {
             if(shifted) unshift()
@@ -85,14 +85,14 @@ Grid {
         id: l3
         model: line3.length
         Button {
-            width: 70; height: 70
+            width: buttonwidth; height: buttonheight
             label: { line3.charAt(index); }
             onClicked: { letterClicked(label); unshift() }
         }
     }
 
     Button {
-        width: 70; height: 70
+        width: buttonwidth; height: buttonheight
         label: "Enter"
         onClicked: { enter() }
     }

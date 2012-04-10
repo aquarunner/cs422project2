@@ -8,8 +8,8 @@ Grid {
     signal enter()
     signal backspace()
 
-    width: kr.width
-    height: kr.height + 71
+//    width: kr.width
+//    height: kr.height + 71
     rows: 2
     columns: 1
     spacing: 1
@@ -25,9 +25,9 @@ Grid {
     }
 
     Button {
-        width: 71*11
-        height: 70
-        label: { "Space" }
+        width: kr.width
+        height: kr.height/4
+        label: "Space"
         onClicked: { letterClicked(" ") }
     }
 }
