@@ -8,14 +8,45 @@ Rectangle {
     anchors.topMargin: 55
     clip: true
 
-    property string bgColor: "khaki"
+    property string bgColor: "#00000000"
+    //property string bgColor: "khaki"
+
+
+
+    Rectangle {
+        id: searchArea
+        color: "white"
+        width: 150
+        height: 30
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.margins: 20
+        radius: 5
+        TextEdit {
+            id: searchEdit
+            text: "Search..."
+            font.italic: true
+            anchors.right: parent.right
+            width: parent.width - 10
+            anchors.verticalCenter: parent.verticalCenter
+
+
+            onActiveFocusChanged: {
+                if (searchEdit.activeFocus) {
+                    text = ""
+                } else
+                    text = "Search..."
+            }
+        }
+    }
+
 
     // Filter Button
     MarketButton {
         id: filterButton
         width: 300
-        property string curFilter: "none"
-        text: qsTr("Filter By Category: [ %1 ]").arg(curFilter)
+        property string curFilter: "All"
+        text: qsTr("%1 Item(s) in Category:  %2").arg(appList.count).arg(curFilter)
 
         anchors.margins: 10
         anchors.left: parent.left
@@ -49,7 +80,7 @@ Rectangle {
         model: ListModel {
             id: filterModel
             ListElement {
-                category: "none"
+                category: "All"
             }
             ListElement {
                 category: "Fun"
@@ -84,15 +115,35 @@ Rectangle {
                     onClicked: {
                         filterList.state = ""
                         filterButton.curFilter = category
+
+                        switch(index) {
+                        case 0:
+                            appList.model = appModel.all
+                            break
+                        case 1:
+                            appList.model = appModel.fun
+                            break
+                        case 2:
+                            appList.model = appModel.office
+                            break
+                        case 3:
+                            appList.model = appModel.productivity
+                            break
+                        case 4:
+                            appList.model = appModel.social
+                            break
+                        case 5:
+                            appList.model = appModel.utility
+                            break
+                        case 6:
+                            appList.model = appModel.multimedia
+                            break
+                        }
                     }
                 }
 
             }
         }
-
-
-        // Filter List effects
-
 
         Behavior on height {
             NumberAnimation {
@@ -125,7 +176,9 @@ Rectangle {
         spacing: 20
         clip: true
 
-        model: AppListModel { id: appModel }
+        AppListModels { id: appModel }
+
+        model: appModel.all
 
         delegate: Component {
             id: appDelegate
@@ -133,6 +186,12 @@ Rectangle {
                 id: appDelegateItem
                 width: parent.width
                 height: 200
+
+                Behavior on opacity {
+                    NumberAnimation {
+                        duration: 200;
+                    }
+                }
 
                 // image, app name and author layout
                 Column {
@@ -170,8 +229,22 @@ Rectangle {
                     anchors.horizontalCenter: descArea.horizontalCenter
 
                     onClicked: {
-                        messageArea.showMessage(qsTr("install the application successfuully %1").arg(index))
+                        messageArea.showMessage(qsTr("%1 application installed successfuully").arg(name))
+                        appDelegateItem.opacity = 0
+                        installButtonTimer.start()
                     }
+
+                    Timer {
+                        id: installButtonTimer
+                        interval: 250
+                        running: false
+                        repeat: false
+                        onTriggered: {
+                            appList.model.remove(index)
+                        }
+                    }
+
+
                 }
 
 
@@ -197,7 +270,7 @@ Rectangle {
                         TextEdit{
                             id: appDescription
                             horizontalAlignment: TextEdit.AlignHCenter
-                            text: description
+                            text: appModel.blurbs
                             font.italic: true
                             wrapMode: TextEdit.Wrap
                             readOnly: true
@@ -233,7 +306,7 @@ Rectangle {
             id: appScroll
             anchors.top: appList.top
             anchors.bottom: appList.bottom
-            anchors.right: appList.right
+            anchors.left: appList.left
             color: "grey"
             width: 2
             Rectangle {
@@ -285,7 +358,7 @@ Rectangle {
 
         Timer {
             id: messageTimer
-            interval: 7000
+            interval: 5000
             running: false
             repeat: false
             onTriggered: messageArea.opacity = 0.0
