@@ -1,7 +1,5 @@
 import QtQuick 1.0
 import "../../common"
-import MirrorPlugin 1.0
-
 
 Rectangle {
 
@@ -12,10 +10,6 @@ Rectangle {
     anchors.topMargin: 55
 
     property bool showSubMenu: false;
-
-    Settings {
-        id: settings
-    }
 
     Flipable {
         id: flipable
