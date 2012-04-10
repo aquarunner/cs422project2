@@ -63,26 +63,24 @@ Rectangle {
 
         id: applicationMainMenuModel
 
-        ListElement {
-            category: "DAILY"; icon: "../../icons/ApplicationMenu_Daily.png"; name: "Daily Information";
-            description: "News, Weather, Calender and other information feeds...";
+        Component.onCompleted: {
+            applicationMainMenuModel.append({"category": "DAILY", "icon": "../../icons/ApplicationMenu_Daily.png",
+                                                "name": i18n.daily_information,
+                                                "description": i18n.news_weather_calender_and_other_information_feeds});
+            applicationMainMenuModel.append({"category": "MULTIMEDIA", "icon": "../../icons/ApplicationMenu_Multimedia.png",
+                                                "name": i18n.multimedia,
+                                                "description": i18n.radio_music_player_tv_online_streaming_camera});
+            applicationMainMenuModel.append({"category": "HEALTH", "icon": "../../icons/ApplicationMenu_Health.png",
+                                                "name": i18n.health_information,
+                                                "description": i18n.height_weight_body_temperture_diet_information});
+            applicationMainMenuModel.append({"category": "DRESSING", "icon": "../../icons/ApplicationMenu_Dressing.png",
+                                                "name": i18n.dressing_and_makeup,
+                                                "description": i18n.dress_fitting_makeup});
+            applicationMainMenuModel.append({"category": "MISC", "icon": "../../icons/ApplicationMenu_Misc.png",
+                                                "name": i18n.misc,
+                                                "description": i18n.other_applications});
         }
-        ListElement {
-            category: "MULTIMEDIA"; icon: "../../icons/ApplicationMenu_Multimedia.png"; name: "Multimedia";
-            description: "Radio, Music player, TV/Online streaming, Camera...";
-        }
-        ListElement {
-            category: "HEALTH"; icon: "../../icons/ApplicationMenu_Health.png"; name: "Health Information";
-            description: "Height, Weight, body temperture, diet information...";
-        }
-        ListElement {
-            category: "DRESSING"; icon: "../../icons/ApplicationMenu_Dressing.png"; name: "Dressing and Makeup";
-            description: "Dress fitting, makeup...";
-        }
-        ListElement {
-            category: "MISC"; icon: "../../icons/ApplicationMenu_Misc.png"; name: "Misc.";
-            description: "Other applications";
-        }
+
     }
 
 
@@ -98,14 +96,14 @@ Rectangle {
         anchors.bottomMargin: 10
         anchors.right: parent.right
         anchors.rightMargin: 20
-        label: "Back"
+        label: i18n.back
 
         onClicked: {
             if(!showSubMenu) {
                 mainScreen.showMainMenuBar = true;
                 mainScreen.showApplicationArea = false;
             } else {
-                componentLoder.title = "Applications"
+                componentLoder.title = i18n.applications
                 componentLoder.iconName = "Applications.png"
                 showSubMenu = !showSubMenu;
             }

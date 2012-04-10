@@ -93,24 +93,30 @@ Rectangle {
     ListModel {
         id: settingsMainMenuModel
 
-        ListElement { category: "PROFILE"; icon: "SettingsMenu_Profile.png"; name: "Manage profiles"; }
-        ListElement { category: "LANGUAGE"; icon: "SettingsMenu_Language.png"; name: "Select language"; }
-        ListElement { category: "WIFI"; icon: "SettingsMenu_Wifi.png"; name: "Wi-fi settings"; }
-        ListElement { category: "DATE"; icon: "SettingsMenu_Date.png"; name: "Date and time"; }
-        ListElement { category: "HELP"; icon: "SettingsMenu_Help.png"; name: "About and help"; }
+        Component.onCompleted: {
+            settingsMainMenuModel.append( { "category": "PROFILE", "icon": "SettingsMenu_Profile.png", "name": i18n.manage_profiles, })
+            settingsMainMenuModel.append( { "category": "LANGUAGE", "icon": "SettingsMenu_Language.png", "name": i18n.select_language, })
+            settingsMainMenuModel.append( { "category": "WIFI", "icon": "SettingsMenu_Wifi.png", "name": i18n.wifi_settings, })
+            settingsMainMenuModel.append( { "category": "DATE", "icon": "SettingsMenu_Date.png", "name": i18n.date_and_time, })
+            settingsMainMenuModel.append( { "category": "HELP", "icon": "SettingsMenu_Help.png", "name": i18n.about_and_help, })
+        }
     }
 
     ListModel {
         id: manageProfilesSubMenuModel;
-        ListElement { category: "PROFILE_CREATE"; name: "Create a new profile"; icon: ""; source: ""}
-        ListElement { category: "PROFILE_PASSWORD"; name: "Change password"; icon: ""; source: ""}
-        ListElement { category: "PROFILE_DELETE"; name: "Delete an existing profile"; icon: ""; source: ""}
+        Component.onCompleted: {
+            manageProfilesSubMenuModel.append( { "category": "PROFILE_CREATE", "name": i18n.create_a_new_profile, "icon": "", "source": ""})
+            manageProfilesSubMenuModel.append( { "category": "PROFILE_PASSWORD", "name": i18n.change_password, "icon": "", "source": ""})
+            manageProfilesSubMenuModel.append( { "category": "PROFILE_DELETE", "name": i18n.delete_an_existing_profile, "icon": "", "source": ""})
+        }
     }
 
     ListModel {
         id: aboutAndHelpSubMenuModel;
-        ListElement { category: "HELP_ABOUT"; name: "About..."; icon: ""; source: ""}
-        ListElement { category: "HELP_HELP"; name: "Help..."; icon: ""; source: ""}
+        Component.onCompleted: {
+            aboutAndHelpSubMenuModel.append( { "category": "HELP_ABOUT", "name": i18n.about, "icon": "", "source": ""})
+            aboutAndHelpSubMenuModel.append( { "category": "HELP_HELP", "name": i18n.help, "icon": "", "source": ""})
+        }
     }
 
     ListModel {
@@ -164,7 +170,7 @@ Rectangle {
                 mainScreen.showMainMenuBar = true;
                 mainScreen.showApplicationArea = false;
             } else {
-                componentLoder.title = "Settings"
+                componentLoder.title = i18n.settings
                 componentLoder.iconName = "Settings.png"
                 showSubMenu = !showSubMenu;
             }
