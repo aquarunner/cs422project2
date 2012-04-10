@@ -209,7 +209,7 @@ Rectangle {
 
     Text {
         id: unlockNote
-        text: "Press anywhere to display menu"
+        text: i18n.press_anywhere_to_display_menu
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 40

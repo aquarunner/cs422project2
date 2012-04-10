@@ -18,7 +18,7 @@ Rectangle {
     PicButton{
         id: homeScreenButton
         x: x_base + 0 * (spaceBetweenTwoButtons + homeScreenButton.width)
-        label: "Applications"
+        label: i18n.applications
         pictureName: "Applications.png"
         onButtonClick: {
             mainScreen.showMainMenuBar = false;
@@ -34,7 +34,7 @@ Rectangle {
             // set default width
             applicationCanvas.applicationAreaWidthInNumberOfCells = 8
 
-            applicationCanvas.componentLoder.title = "Applications"
+            applicationCanvas.componentLoder.title = i18n.applications
             applicationCanvas.componentLoder.iconName = "Applications.png"
         }
 
@@ -43,18 +43,18 @@ Rectangle {
     PicButton{
         id: arrangeWidgetsButton
         x: x_base + 1 * (spaceBetweenTwoButtons + homeScreenButton.width)
-        label: "Arrange Widgets"
+        label: i18n.arrange_widgets
         pictureName: "Arrange_Widgets.png"
         onButtonClick: {
             mainScreen.displayArea.showGrid = true;
-            mainScreen.notificationBarText = "Drag the widget to arrange or click 'X' to remove"
+            mainScreen.notificationBarText = i18n.drag_the_widget_to_arrange_or_click_x_to_remove
         }
     }
 
     PicButton{
         id: settingsButton
         x: x_base + 2 * (spaceBetweenTwoButtons + homeScreenButton.width)
-        label: "Settings"
+        label: i18n.settings
         pictureName: "Settings.png"
         onButtonClick: {
             mainScreen.showMainMenuBar = false;
@@ -66,7 +66,7 @@ Rectangle {
             applicationCanvas.applicationAreaHeightInNumberOfCells = applicationCanvas.__defaultHeightInNumberOfCells
             applicationCanvas.applicationAreaWidthInNumberOfCells = 8
 
-            applicationCanvas.componentLoder.title = "Settings"
+            applicationCanvas.componentLoder.title = i18n.settings
             applicationCanvas.componentLoder.iconName = "Settings.png"
         }
     }
@@ -74,7 +74,7 @@ Rectangle {
     PicButton{
         id: exitButton
         x: x_base + 2.8 * (spaceBetweenTwoButtons + homeScreenButton.width)
-        label: "Exit"
+        label: i18n.exit
         pictureName: "Exit.png"
         onButtonClick: {
             mainScreen.showMainMenuBar = false;
