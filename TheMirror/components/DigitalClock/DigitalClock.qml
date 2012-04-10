@@ -80,10 +80,18 @@ Item {
 
 
             Text {
-                text: " : "
+                id: colon
+                width: 30
+                text: blink? " : " : "   "
                 color: clock.textColor
                 font.pixelSize: clock.fontSize
                 font.family: font.name
+
+                property bool blink: false;
+                Timer {
+                    interval: 500; running: true; repeat: true; triggeredOnStart: true
+                    onTriggered: colon.blink = !colon.blink
+                }
             }
 
             Text {
