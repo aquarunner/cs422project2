@@ -140,6 +140,7 @@ Rectangle {
             y: grid.y
             height: grid.height
             width: grid.width
+            widgetsSettings: settings
         }
     }
 
