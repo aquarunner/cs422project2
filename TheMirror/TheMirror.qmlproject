@@ -20,6 +20,6 @@ Project {
     importPaths: [ "plugins/debug", "plugins/release" ]
 
     Files {
-        filter: "qmldir;*.xml"
+        filter: "qmldir;*.xml;*.ini"
     }
 }

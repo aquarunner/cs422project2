@@ -1,5 +1,6 @@
 import QtQuick 1.0
 import "components/DigitalClock"
+import MirrorPlugin 1.0
 
 
 Rectangle {
@@ -29,6 +30,18 @@ Rectangle {
 
     property int delta_widgetSelectionBar_widgetGrid_x: widgetSelectionBar.x - (displayArea.x + grid.x)
     property int delta_widgetSelectionBar_widgetGrid_y: widgetSelectionBar.y - (displayArea.y + grid.y)
+
+    property string language: settings.getSetting("current_language_source");
+    property alias i18n: languageLoader.item
+
+    Settings {
+        id: settings;
+    }
+
+    Loader {
+        id: languageLoader
+        source: "./languages/"+language+".qml"
+    }
 
     gradient: Gradient {
         GradientStop { position: 0.0; color: "#8C8F8C" }

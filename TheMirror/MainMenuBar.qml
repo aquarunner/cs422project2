@@ -51,24 +51,24 @@ Rectangle {
         }
     }
 
-    //    Button {
-    //        id: arrangeWidgetsDoneButton;
-    //        anchors.verticalCenterOffset: 0
-    //        anchors.left: parent.left
-    //        anchors.leftMargin: 10
-    //        anchors.verticalCenter: parent.verticalCenter
-    //        label: "Done";
-    //        visible: mainScreen.displayArea.showGrid
-    //        onClicked: {
-    //            mainScreen.displayArea.showGrid = false;
-    //        }
-    //    }
-
     PicButton{
         id: settingsButton
         x: x_base + 2 * (spaceBetweenTwoButtons + homeScreenButton.width)
         label: "Settings"
         pictureName: "Settings.png"
+        onButtonClick: {
+            mainScreen.showMainMenuBar = false;
+            mainScreen.showApplicationArea = true;
+
+            applicationCanvas.componentLoder.source = "components/Settings/SettingsMenu.qml"
+            applicationCanvas.isApplicationAreaTransparent = false;
+            applicationCanvas.showBorder = true;
+            applicationCanvas.applicationAreaHeightInNumberOfCells = applicationCanvas.__defaultHeightInNumberOfCells
+            applicationCanvas.applicationAreaWidthInNumberOfCells = 8
+
+            applicationCanvas.componentLoder.title = "Settings"
+            applicationCanvas.componentLoder.iconName = "Settings.png"
+        }
     }
 
     PicButton{
