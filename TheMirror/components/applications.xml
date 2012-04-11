@@ -75,11 +75,11 @@
                 <name>Gallery</name>
                 <category>MULTIMEDIA</category>
                 <icon>Application_Multimedia_Gallery.png</icon>
-                <source>../../demo/TestApp.qml</source>
-                <width>12</width>
+                <source>../Gallery/Gallery.qml</source>
+                <width>18</width>
                 <height>10</height>
-                <transparent>true</transparent>
-                <border>true</border>
+                <transparent>false</transparent>
+                <border>false</border>
         </application>
         <application>
                 <name>YouTube</name>
