@@ -19,7 +19,7 @@ Rectangle {
         width: 20
         height: 20
         anchors.verticalCenter: parent.verticalCenter
-        source: selected? "../../icons/RadioButton_On.png": "../../icons/RadioButton_Off.png"
+        source: selected? "icons/RadioButton_On.png": "icons/RadioButton_Off.png"
         smooth: true
     }
 
@@ -33,6 +33,14 @@ Rectangle {
         font.bold: true
         font.family: "Arial"
         color: "white"
+    }
+
+    Image {
+        id: secondIcon
+        anchors.verticalCenter: parent.verticalCenter
+        source: secondIconSource
+        anchors.right: parent.right
+        anchors.rightMargin: 20
     }
 
     MouseArea {

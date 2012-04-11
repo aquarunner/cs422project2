@@ -126,17 +126,25 @@ Rectangle {
 
     ListModel {
         id: selectLanguageRadioMenuModel;
-        ListElement { identification: "en"; sourceName: "English"; name: "English"; }
-        ListElement { identification: "zh"; sourceName: "Chinese"; name: "中文"; }
-        ListElement { identification: "jp"; sourceName: "Japanese"; name: "日本語"; }
-        ListElement { identification: "es"; sourceName: "Spanish"; name: "Español"; }
+        ListElement { identification: "en"; sourceName: "English"; name: "English"; secondIconSource: ""}
+        ListElement { identification: "zh"; sourceName: "Chinese"; name: "中文"; secondIconSource: ""}
+        ListElement { identification: "jp"; sourceName: "Japanese"; name: "日本語"; secondIconSource: ""}
+        ListElement { identification: "es"; sourceName: "Spanish"; name: "Español"; secondIconSource: ""}
         // faked
-        ListElement { identification: "cs"; sourceName: "English"; name: "Czech"; }
-        ListElement { identification: "nl"; sourceName: "English"; name: "Dutch"; }
-        ListElement { identification: "fi"; sourceName: "English"; name: "Suomi"; }
-        ListElement { identification: "fr"; sourceName: "English"; name: "Française"; }
-        ListElement { identification: "de"; sourceName: "English"; name: "Deutsch"; }
-        ListElement { identification: "ko"; sourceName: "English"; name: "한국어"; }
+        ListElement { identification: "cs"; sourceName: "English"; name: "Czech"; secondIconSource: ""}
+        ListElement { identification: "nl"; sourceName: "English"; name: "Dutch"; secondIconSource: ""}
+        ListElement { identification: "fi"; sourceName: "English"; name: "Suomi"; secondIconSource: ""}
+        ListElement { identification: "fr"; sourceName: "English"; name: "Française"; secondIconSource: ""}
+        ListElement { identification: "de"; sourceName: "English"; name: "Deutsch"; secondIconSource: ""}
+        ListElement { identification: "ko"; sourceName: "English"; name: "한국어"; secondIconSource: ""}
+    }
+
+    ListModel {
+        id: selectWifiRadioMenuModel;
+        ListElement { identification: "EVL-Guest"; sourceName: ""; name: "EVL-Guest"; secondIconSource: "icons/wifi-Signal.png"}
+        ListElement { identification: "UIC-Wireless"; sourceName: ""; name: "UIC-Wireless"; secondIconSource: "icons/wifi-Signal.png"}
+        ListElement { identification: "UIC-Wifi"; sourceName: ""; name: "UIC-Wifi"; secondIconSource: "icons/wifi-Signal.png"}
+        ListElement { identification: "UIC-Guest"; sourceName: ""; name: "UIC-Guest"; secondIconSource: "icons/wifi-Signal.png"}
     }
 
     Button {
@@ -159,6 +167,10 @@ Rectangle {
                 settingsMainMenuModel.reload();
                 manageProfilesSubMenuModel.reload();
                 aboutAndHelpSubMenuModel.reload();
+            } else if(settingsRadioSelectionList.settingOption == "current_wifi"
+                      && settingsRadioSelectionList.sourceName !== undefined) { // set language
+                settings.setSetting("current_wifi", settingsRadioSelectionList.currentSelection, "settings", "./components/Settings/");
+                settingsRadioSelectionList.settingOption = "";
             }
 
             backButton.clicked();

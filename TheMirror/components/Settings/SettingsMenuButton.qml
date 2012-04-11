@@ -65,7 +65,9 @@ Rectangle {
             applicationLoder.iconName = icon;
 
             back.viewID = settingsRadioSelectionList
-            settingsRadioSelectionList.model = null;
+            settingsRadioSelectionList.settingOption = "current_wifi";
+            settingsRadioSelectionList.currentSelection = settings.getSetting("current_wifi", "settings", "./components/Settings/");
+            settingsRadioSelectionList.model = selectWifiRadioMenuModel;
 
         }else if(category == "DATE") {
             applicationLoder.title = name;
