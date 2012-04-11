@@ -13,6 +13,13 @@ Rectangle {
     property bool flashing: false;
     property bool showPicture: false;
 
+    property bool showCalleryButton: true
+    property bool animated: true
+
+    property int numberOfShoot: 0;
+
+    property alias exitButton: exit;
+
     XmlApplicationLoader {
         id: xmlApplicationLoader
     }
@@ -83,6 +90,7 @@ Rectangle {
             flashing = false;
             showPic.start();
             showPicture = true;
+            numberOfShoot++;
         }
     }
 
@@ -90,7 +98,9 @@ Rectangle {
         id: showPic
         interval: 2000
         onTriggered: {
-            moveToGallery.running = true;
+            if(animated) {
+                moveToGallery.running = true;
+            }
             animation.start();
         }
     }
@@ -176,6 +186,8 @@ Rectangle {
         width: 60
         height: 50
 
+        visible: showCalleryButton
+
         PicButton2 {
             id: gallery
             label: "Gallery..."
@@ -200,6 +212,8 @@ Rectangle {
 
 
     Button {
+        id: exit
+
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 10
         anchors.right: parent.right

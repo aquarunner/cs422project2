@@ -33,5 +33,7 @@ Item {
     property string delete_an_existing_profile: "Delete an existing profile"
     property string about: "About..."
     property string help: "Help..."
-
+    property string next: "Next"
+    property string please_face_the_mirror_then_take_two_shots: "Please face the mirror, then take two shots"
+    property string enter_a_pin_code: "Enter a pin code"
 }

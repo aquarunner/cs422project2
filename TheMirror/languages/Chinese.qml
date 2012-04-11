@@ -33,4 +33,7 @@ Item {
     property string delete_an_existing_profile: "删除已存在账户"
     property string about: "关于..."
     property string help: "帮助..."
+    property string next: "下一步"
+    property string please_face_the_mirror_then_take_two_shots: "请面对镜子，照两张相"
+    property string enter_a_pin_code: "请设置Pin码"
 }

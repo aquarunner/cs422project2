@@ -82,7 +82,8 @@ Rectangle {
             settingsSubMenuList.model = aboutAndHelpSubMenuModel;
 
         } else {
-
+            applicationCanvas.isApplicationAreaTransparent = true;
+            applicationLoder.source = source;
         }
 
         settingsMenu.showSubMenu = true;
