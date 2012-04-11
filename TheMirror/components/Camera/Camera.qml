@@ -120,8 +120,50 @@ Rectangle {
         MouseArea {
             id: timerButton
             anchors.fill: parent
+
+            onClicked: {
+                countDown.visible = true;
+                timerForTimer.start();
+            }
         }
     }
+
+    FontLoader {
+        id: font
+        source: "digital-7.ttf"
+    }
+
+    Text {
+        id: countDown
+        anchors.centerIn: focusFrame
+        text: timerForTimer.seconds-1
+        color: "#444444"
+        font.pixelSize: 40
+        font.family: font.name
+
+        visible: false;
+    }
+
+    Timer {
+        id: timerForTimer
+
+        property int seconds: 10;
+
+        interval: 1000
+        repeat: true
+        onTriggered: {
+            seconds--;
+            if(seconds == 0) {
+                stop();
+                countDown.visible = false;
+                seconds = 10;
+
+                flashing = true;
+                shutterTimer.start();
+            }
+        }
+    }
+
 
     Item {
 
