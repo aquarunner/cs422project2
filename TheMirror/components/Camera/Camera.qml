@@ -1,5 +1,6 @@
 import QtQuick 1.0
 import "../../common"
+import ".."
 
 Rectangle {
 
@@ -11,6 +12,10 @@ Rectangle {
 
     property bool flashing: false;
     property bool showPicture: false;
+
+    XmlApplicationLoader {
+        id: xmlApplicationLoader
+    }
 
     Image {
         id: focusFrame
@@ -136,8 +141,7 @@ Rectangle {
             pictureName: "../icons/Application_Multimedia_Gallery.png";
 
             onButtonClick: {
-                // FIXME
-                // go to gallery
+                xmlApplicationLoader.loadApplication("Gallery");
             }
         }
     }
@@ -176,5 +180,6 @@ Rectangle {
 
         visible: flashing
     }
+
 
 }
