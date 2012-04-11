@@ -36,6 +36,7 @@ Rectangle {
 
     Settings {
         id: settings;
+        iniPath: "./settings/"
     }
 
     Loader {
