@@ -44,7 +44,7 @@
                 <name>Weather</name>
                 <category>DAILY</category>
                 <icon>Application_Daily_Weather.png</icon>
-                <source>../../demo/TestApp.qml</source>
+                <source>../../components/Weather/weather.qml</source>
                 <width>12</width>
                 <height>10</height>
                 <transparent>true</transparent>
