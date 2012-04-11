@@ -83,7 +83,7 @@ Rectangle {
             back.viewID = settingsSubMenuList
             settingsSubMenuList.model = aboutAndHelpSubMenuModel;
 
-        } else {
+        } else { // invoke new page
             applicationCanvas.isApplicationAreaTransparent = true;
             applicationLoder.source = source;
         }

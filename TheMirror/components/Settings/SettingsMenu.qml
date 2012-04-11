@@ -108,7 +108,7 @@ Rectangle {
         function reload() {
             manageProfilesSubMenuModel.clear();
             manageProfilesSubMenuModel.append( { "category": "PROFILE_CREATE", "name": i18n.create_a_new_profile, "icon": "", "source": "CreateNewProfile.qml"})
-            manageProfilesSubMenuModel.append( { "category": "PROFILE_PASSWORD", "name": i18n.change_password, "icon": "", "source": ""})
+            manageProfilesSubMenuModel.append( { "category": "PROFILE_PASSWORD", "name": i18n.change_password, "icon": "", "source": "ChangePassword.qml"})
             manageProfilesSubMenuModel.append( { "category": "PROFILE_DELETE", "name": i18n.delete_an_existing_profile, "icon": "", "source": ""})
         }
     }

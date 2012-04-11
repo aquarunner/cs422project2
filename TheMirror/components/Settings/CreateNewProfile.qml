@@ -181,8 +181,12 @@ Flipable {
             color: "white"
             border.color: "#444444"
 
-            TextEdit {
+            TextInput {
                 anchors.fill: parent
+                echoMode : TextInput.Password
+                font.pixelSize: 20
+                maximumLength: 4
+                cursorVisible: true
             }
         }
 
@@ -197,8 +201,12 @@ Flipable {
             color: "white"
             border.color: "#444444"
 
-            TextEdit {
+            TextInput {
                 anchors.fill: parent
+                echoMode : TextInput.Password
+                font.pixelSize: 20
+                maximumLength: 4
+                cursorVisible: true
             }
         }
 
