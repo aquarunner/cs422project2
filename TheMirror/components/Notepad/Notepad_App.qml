@@ -3,42 +3,82 @@ import QtQuick 1.1
 //import MirrorPlugin 1.0
 import "../../common"
 
-Grid{
+Rectangle{
     id: notepad_app
     anchors.fill: parent
     anchors.topMargin: 55
-    spacing: 10
+
+    property int numNotes: settings.getSetting("numNotes", "notes")
+    property string oldText: ""
+
+    Component.onCompleted: {
+        for(var i = 0; i < numNotes; ++i)
+            notes_model.append({"title": settings.getSetting("note"+i,"notes").split(":")[0], "text": settings.getSetting("note"+i,"notes").split(":")[1]})
+
+        if(numNotes > 0)
+            thetext.text = notes_model.get(0).text
+    }
+
+    ListModel {
+        id: notes_model
+    }
 
     Rectangle {
-        width: 180; height: 200
+        id: np_list
+        anchors.top: parent.top
+        anchors.bottom: edit_area.bottom
+        anchors.left: parent.left
+        anchors.right: edit_area.left
+        anchors.rightMargin: 2
+        anchors.leftMargin: 2
+        anchors.bottomMargin: 2
+        color: "red"
 
         Component {
-            id: contactDelegate
+            id: noteDelegate
             Item {
-                width: 180; height: 40
+                width: np_list.width; height: np_list.height/5.5
                 Column {
-                    Text { text: '<b>Title: </b> ' + title }
+
+                    Text {
+                        text: '<b>' + title  + "</b>";
+                        horizontalAlignment: Text.AlignRight
+                    }
+
+                    MouseArea {
+                        anchors.fill: parent
+
+                        onClicked: {
+                            np_view.currentIndex = index;
+                            thetext.text = text
+                            oldText = text
+                        }
+                    }
                 }
             }
         }
 
         ListView {
-            width: 180
-            height: notepad_app.height
+            id: np_view
             anchors.bottomMargin: -153
             preferredHighlightBegin: 0
             anchors.fill: parent
-            model: NotesModel {}
-            delegate: contactDelegate
-            highlight: Rectangle { color: "lightsteelblue"; radius: 5 }
+            model: notes_model
+            delegate: noteDelegate
+            highlight: Rectangle { color: "lightgray"; radius: 5 }
             focus: true
         }
     }
 
     Rectangle {
         id: edit_area
+        anchors.top: parent.top
+        anchors.right: parent.right
         width: keyboard.width
         height: keyboard.height + thetext.height
+        anchors.rightMargin: 2
+        anchors.leftMargin: 2
+        anchors.bottomMargin: 2
 
         Component.onCompleted: {
             keyboard.letterClicked.connect(addletter)
@@ -49,7 +89,7 @@ Grid{
         Text{
             id: thetext
             height: 100
-            text: "Hello"
+            text: "" // np_view.currentItem.
         }
 
         Keyboard {
@@ -70,6 +110,109 @@ Grid{
         function backspace()
         {
             thetext.text = thetext.text.substring(0,thetext.text.length-1);
+        }
+    }
+
+    Rectangle {
+        id: buttons
+        anchors.left: parent.left
+        anchors.top: edit_area.bottom
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.topMargin: 2
+        anchors.rightMargin: 2
+        anchors.leftMargin: 2
+        anchors.bottomMargin: 2
+
+        Button {
+            id:newbutton
+            anchors.left: parent.left
+            anchors.rightMargin: 2
+            anchors.leftMargin: 2
+            label: "New"
+
+            onClicked: {
+                settings.setSetting("note"+numNotes, thetext.text, "notes")
+                numNotes++
+                settings.setSetting("numNotes", numNotes, "notes")
+                notes_model.append({"title": thetext.text, "text": ""})
+                thetext.text = ""
+            }
+        }
+
+        Button {
+            id:deletebutton
+            anchors.left: newbutton.right
+            anchors.rightMargin: 2
+            anchors.leftMargin: 2
+            label: "Delete"
+
+            onClicked: {
+                if(numNotes > 0) // Only if there is something to remove
+                {
+                    numNotes--
+
+                    // If the
+                    if(np_view.currentIndex != numNotes)
+                    {
+                        // Move the last one to the deleted slot
+                        settings.setSetting("note"+np_view.currentIndex, settings.getSetting(numNotes, "notes"),"notes")
+                        notes_model.set(np_view.currentIndex, notes_model.get(numNotes))
+                    }
+
+                    // Finally, delete the last setting and set the new number of notes
+                    settings.setSetting("note"+numNotes, "", "notes")
+                    notes_model.remove(numNotes)
+                    settings.setSetting("numNotes", numNotes, "notes")
+                    if(numNotes > 0)
+                    {
+                        thetext.text = notes_model.get(np_view.currentIndex).text
+                    }
+                    else
+                    {
+                        thetext.text = ""
+                    }
+                }
+            }
+        }
+
+        Button {
+            id:cancelbutton
+            anchors.left: deletebutton.right
+            anchors.rightMargin: 2
+            anchors.leftMargin: 2
+            label: "Cancel"
+
+            onClicked:{
+                thetext.text = oldText
+            }
+        }
+
+        Button {
+            id:savebutton
+            anchors.left: cancelbutton.right
+            anchors.right: exitbutton.left
+            anchors.rightMargin: 2
+            anchors.leftMargin: 2
+            label: "Save"
+
+            onClicked: {
+                notes_model.setProperty(np_view.currentIndex, "text", thetext.text)
+                settings.setSetting("note"+ np_view.currentIndex, notes_model.get(np_view.currentIndex).title + ":" + notes_model.get(np_view.currentIndex).text, "notes")
+            }
+        }
+
+        Button{
+            id:exitbutton
+            anchors.right: parent.right
+            anchors.rightMargin: 2
+            anchors.leftMargin: 2
+            label: "Exit"
+
+            onClicked: {
+                mainScreen.showMainMenuBar = true;
+                mainScreen.showApplicationArea = false;
+            }
         }
     }
 }

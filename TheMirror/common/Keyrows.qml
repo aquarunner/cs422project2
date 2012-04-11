@@ -120,7 +120,7 @@ Grid {
         linenum = "!@#$%^&*()"
         line1 = "QWERTYUIOP_"
         line2 = "ASDFGHJKL\""
-        line3 = "ZXCVBNM<>"
+        line3 = "ZXCVBNM:?"
     }
 
     function lowercaseall()

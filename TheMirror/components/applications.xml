@@ -35,9 +35,9 @@
                 <category>DAILY</category>
                 <icon>Application_Daily_Notes.png</icon>
                 <source>../../components/Notepad/Notepad_App.qml</source>
-                <width>12</width>
-                <height>10</height>
-                <transparent>true</transparent>
+                <width>13</width>
+                <height>9</height>
+                <transparent>false</transparent>
                 <border>true</border>
         </application>
         <application>
