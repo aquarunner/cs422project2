@@ -3,11 +3,33 @@ import "../../common"
 
 Rectangle {
 
+    id: camera
+
     color: "#00000000"
     anchors.fill: parent
     anchors.topMargin: 55
 
     property bool flashing: false;
+    property bool showPicture: false;
+
+    Image {
+        id: focusFrame
+        source: "icons/focus.png"
+        anchors.horizontalCenter: parent.horizontalCenter
+        width: 150
+        height: 150
+        y: 50
+
+        smooth: true
+        visible: !showPicture
+    }
+
+    ParallelAnimation {
+        id: moveToGallery
+
+        NumberAnimation { target: picJustTook; property: "x"; to: galleryArea.x; duration: 1000 }
+        NumberAnimation { target: picJustTook; property: "y"; to: galleryArea.y - picJustTook.height/2; duration: 1000 }
+    }
 
     Image {
         id: voiceControl
@@ -47,13 +69,34 @@ Rectangle {
 
             }
         }
+    }
 
-        Timer {
-            id: shutterTimer
-            interval: 250
-            onTriggered: {
-                flashing = false;
-            }
+    Timer {
+        id: shutterTimer
+        interval: 250
+        onTriggered: {
+            flashing = false;
+            showPic.start();
+            showPicture = true;
+        }
+    }
+
+    Timer {
+        id: showPic
+        interval: 2000
+        onTriggered: {
+            moveToGallery.running = true;
+            animation.start();
+        }
+    }
+
+    Timer {
+        id: animation
+        interval: 1100
+        onTriggered: {
+            showPicture = false
+            picJustTook.x = camera.width/2 - picJustTook.width/2
+            picJustTook.y = 50
         }
     }
 
@@ -74,6 +117,41 @@ Rectangle {
             anchors.fill: parent
         }
     }
+
+    Item {
+
+        id: galleryArea
+
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 10
+        anchors.left: parent.left
+        anchors.leftMargin: 20
+        width: 60
+        height: 50
+
+        PicButton2 {
+            id: gallery
+            label: "Gallery..."
+            buttonColor: "#444444"
+            pictureName: "../icons/Application_Multimedia_Gallery.png";
+
+            onButtonClick: {
+                // FIXME
+                // go to gallery
+            }
+        }
+    }
+
+    Image {
+        id: picJustTook
+        source: "pictures/sample.png"
+        x: camera.width/2 - picJustTook.width/2
+        y: 50
+
+        smooth: true
+        visible: showPicture
+    }
+
 
     Button {
         anchors.bottom: parent.bottom
