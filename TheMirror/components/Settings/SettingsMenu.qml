@@ -51,7 +51,7 @@ Rectangle {
                 id: settingsRadioSelectionList
 
                 property string settingOption: "";
-                property string currentSelection: settings.getSetting(settingOption);
+                property string currentSelection: settings.getSetting(settingOption, "settings", "./components/Settings/");
                 property variant sourceName;
 
                 anchors.top: parent.top
@@ -149,8 +149,8 @@ Rectangle {
         onClicked: {
             if(settingsRadioSelectionList.settingOption == "current_language"
                     && settingsRadioSelectionList.sourceName !== undefined) { // set language
-                settings.setSetting("current_language", settingsRadioSelectionList.currentSelection);
-                settings.setSetting("current_language_source", settingsRadioSelectionList.sourceName);
+                settings.setSetting("current_language", settingsRadioSelectionList.currentSelection, "settings", "./components/Settings/");
+                settings.setSetting("current_language_source", settingsRadioSelectionList.sourceName, "settings", "./components/Settings/");
                 settingsRadioSelectionList.settingOption = "";
                 mainScreen.language = settingsRadioSelectionList.sourceName;
                 settingsMainMenuModel.reload();

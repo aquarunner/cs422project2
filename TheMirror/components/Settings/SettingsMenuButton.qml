@@ -57,7 +57,7 @@ Rectangle {
 
             back.viewID = settingsRadioSelectionList
             settingsRadioSelectionList.settingOption = "current_language";
-            settingsRadioSelectionList.currentSelection = settings.getSetting("current_language");
+            settingsRadioSelectionList.currentSelection = settings.getSetting("current_language", "settings", "./components/Settings/");
             settingsRadioSelectionList.model = selectLanguageRadioMenuModel;
 
         }else if(category == "WIFI") {
