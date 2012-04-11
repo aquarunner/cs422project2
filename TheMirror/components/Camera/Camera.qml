@@ -54,6 +54,7 @@ Rectangle {
         anchors.bottomMargin: 100
         anchors.left: parent.left
         anchors.leftMargin: 100
+        visible: !showPicture
 
         MouseArea {
             id: voiceControlButton
@@ -71,6 +72,7 @@ Rectangle {
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 100
         anchors.horizontalCenter: parent.horizontalCenter
+        visible: !showPicture
 
         MouseArea {
             id: shutterButton
@@ -107,7 +109,7 @@ Rectangle {
 
     Timer {
         id: animation
-        interval: 1100
+        interval: animated? 1100: 0
         onTriggered: {
             showPicture = false
             picJustTook.x = camera.width/2 - picJustTook.width/2
@@ -126,6 +128,7 @@ Rectangle {
         anchors.bottomMargin: 100
         anchors.right: parent.right
         anchors.rightMargin: 100
+        visible: !showPicture
 
         MouseArea {
             id: timerButton
