@@ -30,7 +30,6 @@ Rectangle{
         anchors.rightMargin: 2
         anchors.leftMargin: 2
         anchors.bottomMargin: 2
-        color: "red"
 
         Component {
             id: noteDelegate
