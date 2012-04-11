@@ -31,7 +31,7 @@ Rectangle {
     property int delta_widgetSelectionBar_widgetGrid_x: widgetSelectionBar.x - (displayArea.x + grid.x)
     property int delta_widgetSelectionBar_widgetGrid_y: widgetSelectionBar.y - (displayArea.y + grid.y)
 
-    property string language: settings.getSetting("current_language_source");
+    property string language: settings.getSetting("current_language_source", "settings", "./components/Settings/");
     property alias i18n: languageLoader.item
 
     Settings {
