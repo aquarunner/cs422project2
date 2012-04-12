@@ -65,7 +65,7 @@ Rectangle {
                             id: text1
                             x: 280
                             y: 20
-                            text: qsTr(condition)
+                            text: condition
                             font.family: "Calibri"
                             color: "#0f0f0f"
                             font.pixelSize: 20
@@ -74,7 +74,7 @@ Rectangle {
                             id: text2
                             x: 280
                             y: 60
-                            text: qsTr(temp_f + " F")
+                            text: temp_f + " F"
                             font.family: "Calibri"
                             color: "#0f0f0f"
                             font.pixelSize: 20
@@ -83,7 +83,7 @@ Rectangle {
                             id: text3
                             x: 280
                             y: 100
-                            text: qsTr(humidity)
+                            text: humidity
                             font.family: "Calibri"
                             color: "#0f0f0f"
                             font.pixelSize: 20
@@ -92,7 +92,7 @@ Rectangle {
                             id: text4
                             x: 280
                             y: 140
-                            text: qsTr(wind_condition)
+                            text: wind_condition
                             font.family: "Calibri"
                             color: "#0f0f0f"
                             font.pixelSize: 20
@@ -181,7 +181,7 @@ Rectangle {
                                 id: text1
                                 x: 65
                                 y: 90
-                                text: qsTr(day_of_week1)
+                                text: day_of_week1
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 19
@@ -190,7 +190,7 @@ Rectangle {
                                 id: text2
                                 x: 25
                                 y: 120
-                                text: qsTr(condition_s1)
+                                text: condition_s1
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
@@ -199,7 +199,7 @@ Rectangle {
                                 id: text3
                                 x: 25
                                 y: 145
-                                text: qsTr(low_f_s1 + " F")
+                                text: low_f_s1 + " F"
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
@@ -208,7 +208,7 @@ Rectangle {
                                 id: text4
                                 x: 25
                                 y: 170
-                                text: qsTr(high_f_s1 + " F")
+                                text: high_f_s1 + " F"
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
@@ -231,7 +231,7 @@ Rectangle {
                                 id: text21
                                 x: 65
                                 y: 90
-                                text: qsTr(day_of_week2)
+                                text: day_of_week2
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 19
@@ -240,7 +240,7 @@ Rectangle {
                                 id: text22
                                 x: 25
                                 y: 120
-                                text: qsTr(condition_s2)
+                                text: condition_s2
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
@@ -249,7 +249,7 @@ Rectangle {
                                 id: text23
                                 x: 25
                                 y: 145
-                                text: qsTr(low_f_s2 + " F")
+                                text: low_f_s2 + " F"
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
@@ -258,7 +258,7 @@ Rectangle {
                                 id: text24
                                 x: 25
                                 y: 170
-                                text: qsTr(high_f_s2 + " F")
+                                text: high_f_s2 + " F"
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
@@ -281,7 +281,7 @@ Rectangle {
                                 id: text31
                                 x: 65
                                 y: 90
-                                text: qsTr(day_of_week3)
+                                text: day_of_week3
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 19
@@ -290,7 +290,7 @@ Rectangle {
                                 id: text32
                                 x: 25
                                 y: 120
-                                text: qsTr(condition_s3)
+                                text: condition_s3
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
@@ -299,7 +299,7 @@ Rectangle {
                                 id: text33
                                 x: 25
                                 y: 145
-                                text: qsTr(low_f_s3 + " F")
+                                text: low_f_s3 + " F"
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
@@ -308,7 +308,7 @@ Rectangle {
                                 id: text34
                                 x: 25
                                 y: 170
-                                text: qsTr(high_f_s3 + " F")
+                                text: high_f_s3 + " F"
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
@@ -330,7 +330,7 @@ Rectangle {
                                 id: text41
                                 x: 65
                                 y: 90
-                                text: qsTr(day_of_week4)
+                                text: day_of_week4
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 19
@@ -339,7 +339,7 @@ Rectangle {
                                 id: text42
                                 x: 25
                                 y: 120
-                                text: qsTr(condition_s4)
+                                text: condition_s4
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
@@ -348,7 +348,7 @@ Rectangle {
                                 id: text43
                                 x: 25
                                 y: 145
-                                text: qsTr(low_f_s4 + " F")
+                                text: low_f_s4 + " F"
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
@@ -357,7 +357,7 @@ Rectangle {
                                 id: text44
                                 x: 25
                                 y: 170
-                                text: qsTr(high_f_s4 + " F")
+                                text: high_f_s4 + " F"
                                 font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
