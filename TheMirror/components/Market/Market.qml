@@ -416,23 +416,11 @@ Rectangle {
                 id: helpText
                 font.bold: true
                 anchors.centerIn: parent
+                width: parent.width / 2
                 wrapMode: Text.WordWrap
+                horizontalAlignment: Text.AlignLeft
 
-                text: "
-Market v1.0
-
-The app market allows you to browse through applications
-available for download through the cloud.
-
-Instructions: use the description text of each application
-to determine if it is a feature you like, and then press
-the Install button.
-
-Send gripes, suggestions and praise to support@microsoft.com
-
-Thank you - Mark App Dev Team.
-
-"
+                text: i18n.marketHelpText
             }
 
             Button {

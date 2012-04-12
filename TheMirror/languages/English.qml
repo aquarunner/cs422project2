@@ -38,4 +38,12 @@ Item {
     property string next: "Next"
     property string please_face_the_mirror_then_take_two_shots: "Please face the mirror, then take two shots"
     property string enter_a_pin_code: "Enter a pin code"
+
+    property string galleryHelpText: "<html><p>Click any image below to view it.</p><p>Press and hold an image for additional options.</p></html>"
+    property string marketHelpText: "<html><p>Market v1.0</p><p>The app market allows you to browse through applications available for download through the cloud.</p><p>Instructions: use the description text of each application to determine if it is a feature you like, and then press the Install button.</p><p>Send gripes, suggestions and praise to support@microsoft.com</p><p>Thank you - Mark App Dev Team.</p></html>"
+
+    property string  galleryRenameButtonText: "Rename"
+    property string  galleryDeleteButtonText: "Delete"
+
+
 }
