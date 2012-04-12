@@ -21,6 +21,9 @@ Rectangle {
 
     Component.onCompleted: {
         event = widgetsSettings.getSetting(year+"_"+(month+1)+"_"+day, "events", "./components/Calender/")
+        if(button.currentDay) {
+            buttonClicked(index);
+        }
     }
 
     FontLoader { id: nsRegular; source: "fonts/Nokia_Sans_Regular.ttf" }

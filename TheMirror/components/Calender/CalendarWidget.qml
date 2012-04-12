@@ -9,6 +9,7 @@ Rectangle {
         anchors.right: parent.right
         anchors.bottom: parent.bottom
         anchors.top: calendar.bottom
+        anchors.topMargin: 2
         border.color: "lightgrey"
         border.width: 3
         clip: true
