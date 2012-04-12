@@ -66,7 +66,7 @@ Rectangle {
                             x: 280
                             y: 20
                             text: qsTr(condition)
-                            font.family: "Mangal"
+                            font.family: "Calibri"
                             color: "#0f0f0f"
                             font.pixelSize: 20
                         }
@@ -75,7 +75,7 @@ Rectangle {
                             x: 280
                             y: 60
                             text: qsTr(temp_f + " F")
-                            font.family: "Mangal"
+                            font.family: "Calibri"
                             color: "#0f0f0f"
                             font.pixelSize: 20
                         }
@@ -84,7 +84,7 @@ Rectangle {
                             x: 280
                             y: 100
                             text: qsTr(humidity)
-                            font.family: "Mangal"
+                            font.family: "Calibri"
                             color: "#0f0f0f"
                             font.pixelSize: 20
                         }
@@ -93,7 +93,7 @@ Rectangle {
                             x: 280
                             y: 140
                             text: qsTr(wind_condition)
-                            font.family: "Mangal"
+                            font.family: "Calibri"
                             color: "#0f0f0f"
                             font.pixelSize: 20
                         }
@@ -182,7 +182,7 @@ Rectangle {
                                 x: 65
                                 y: 90
                                 text: qsTr(day_of_week1)
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 19
                             }
@@ -191,7 +191,7 @@ Rectangle {
                                 x: 25
                                 y: 120
                                 text: qsTr(condition_s1)
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
                             }
@@ -200,7 +200,7 @@ Rectangle {
                                 x: 25
                                 y: 145
                                 text: qsTr(low_f_s1 + " F")
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
                             }
@@ -209,7 +209,7 @@ Rectangle {
                                 x: 25
                                 y: 170
                                 text: qsTr(high_f_s1 + " F")
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
                             }
@@ -232,7 +232,7 @@ Rectangle {
                                 x: 65
                                 y: 90
                                 text: qsTr(day_of_week2)
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 19
                             }
@@ -241,7 +241,7 @@ Rectangle {
                                 x: 25
                                 y: 120
                                 text: qsTr(condition_s2)
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
                             }
@@ -250,7 +250,7 @@ Rectangle {
                                 x: 25
                                 y: 145
                                 text: qsTr(low_f_s2 + " F")
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
                             }
@@ -259,7 +259,7 @@ Rectangle {
                                 x: 25
                                 y: 170
                                 text: qsTr(high_f_s2 + " F")
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
                             }
@@ -282,7 +282,7 @@ Rectangle {
                                 x: 65
                                 y: 90
                                 text: qsTr(day_of_week3)
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 19
                             }
@@ -291,7 +291,7 @@ Rectangle {
                                 x: 25
                                 y: 120
                                 text: qsTr(condition_s3)
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
                             }
@@ -300,7 +300,7 @@ Rectangle {
                                 x: 25
                                 y: 145
                                 text: qsTr(low_f_s3 + " F")
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
                             }
@@ -309,7 +309,7 @@ Rectangle {
                                 x: 25
                                 y: 170
                                 text: qsTr(high_f_s3 + " F")
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
                             }
@@ -331,7 +331,7 @@ Rectangle {
                                 x: 65
                                 y: 90
                                 text: qsTr(day_of_week4)
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 19
                             }
@@ -340,7 +340,7 @@ Rectangle {
                                 x: 25
                                 y: 120
                                 text: qsTr(condition_s4)
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
                             }
@@ -349,7 +349,7 @@ Rectangle {
                                 x: 25
                                 y: 145
                                 text: qsTr(low_f_s4 + " F")
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
                             }
@@ -358,7 +358,7 @@ Rectangle {
                                 x: 25
                                 y: 170
                                 text: qsTr(high_f_s4 + " F")
-                                font.family: "Mangal"
+                                font.family: "Calibri"
                                 color: "#0f0f0f"
                                 font.pixelSize: 18
                             }
