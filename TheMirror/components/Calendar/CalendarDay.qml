@@ -20,7 +20,7 @@ Rectangle {
     border.width: 2
 
     Component.onCompleted: {
-        event = widgetsSettings.getSetting(year+"_"+(month+1)+"_"+day, "events", "./components/Calender/")
+        event = settings.getSetting(year+"_"+(month+1)+"_"+day, "events", "./components/Calendar/")
         if(button.currentDay) {
             buttonClicked(index);
         }

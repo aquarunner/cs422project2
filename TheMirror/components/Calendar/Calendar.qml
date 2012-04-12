@@ -63,7 +63,7 @@ Rectangle {
             model: weekModel
             Text {
                 width: (calendar.width)/7
-                font { family: nsRegular.name; pixelSize: 10/*19*/ }
+                font { family: nsRegular.name; pixelSize: calendar.height/18 }
                 color: "#5e5e5e"
                 horizontalAlignment: Text.AlignHCenter
                 text: week

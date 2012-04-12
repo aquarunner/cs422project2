@@ -4,10 +4,10 @@
                 <name>Calendar</name>
                 <category>DAILY</category>
                 <icon>Application_Daily_Calendar.png</icon>
-                <source>../../demo/TestApp.qml</source>
-                <width>12</width>
-                <height>10</height>
-                <transparent>true</transparent>
+                <source>../../components/Calendar/CalendarApplication.qml</source>
+                <width>10</width>
+                <height>8</height>
+                <transparent>false</transparent>
                 <border>true</border>
         </application>
         <application>
