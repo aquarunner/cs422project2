@@ -7,10 +7,13 @@ Item {
     property string pressed: "imgs/textbutton_pressed.png"
     property string focused: "imgs/textbutton_focused.png"
     signal buttonClicked
-    width: background.width; height: background.height
+    // width: background.width; height: background.height
+    height: monthHandler.height
+    width: (monthHandler.width - calendarStringImg.width)/2
 
     Image {
         id: background
+        anchors.fill: parent
         source: button.current
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter

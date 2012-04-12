@@ -1,11 +1,22 @@
+/****************************************************************************
+** Based on cellardoor (http://code.google.com/p/cellardoor/)
+**
+****************************************************************************/
+
 import QtQuick 1.0
 import "js/calendar.js" as CalendarFunctions
 
 Rectangle {
+
+    property string currentEvent: "";
+
     id: calendar
     color: "#dddddd"
     clip: true
-    width: 343; height: 390
+    radius: 3
+    border.color: "lightgrey"
+    border.width: 3
+
     FontLoader { id: nsRegular; source: "fonts/Nokia_Sans_Regular.ttf" }
 
     signal clicked()
@@ -20,23 +31,24 @@ Rectangle {
 
     ListModel {
         id: weekModel
-        ListElement { week: "Su"; value: 0}
+        ListElement { week: "Sun"; value: 0}
         ListElement { week: "Mon"; value: 1}
         ListElement { week: "Tue"; value: 2}
-        ListElement { week: "We"; value: 3}
-        ListElement { week: "Th"; value: 4}
-        ListElement { week: "Fr"; value: 5}
-        ListElement { week: "Sa"; value: 6}
+        ListElement { week: "Wed"; value: 3}
+        ListElement { week: "Thu"; value: 4}
+        ListElement { week: "Fri"; value: 5}
+        ListElement { week: "Sat"; value: 6}
     }
 
     ListModel {
         id: monthModel
     }
 
-     MonthButton {
+    MonthButton {
         id: monthButton
+        anchors.left: calendar.left
+        anchors.right: calendar.right
         calendarString: CalendarFunctions.getMonth() + " " + date.getFullYear()
-        anchors.horizontalCenter: calendar.horizontalCenter
         onPreviousClicked: CalendarFunctions.previousMonth()
         onNextClicked: CalendarFunctions.nextMonth()
     }
@@ -45,12 +57,13 @@ Rectangle {
     Row {
         id: weekElement
         anchors.top: monthButton.bottom
-        anchors.horizontalCenter: calendar.horizontalCenter
+        anchors.left: calendar.left
+        anchors.right: calendar.right
         Repeater {
             model: weekModel
             Text {
-                width: 50
-                font { family: nsRegular.name; pixelSize: 19 }
+                width: (calendar.width)/7
+                font { family: nsRegular.name; pixelSize: 10/*19*/ }
                 color: "#5e5e5e"
                 horizontalAlignment: Text.AlignHCenter
                 text: week
@@ -60,19 +73,24 @@ Rectangle {
 
     GridView {
         id: wdgGrid
-        width: 343; height: 350
+        anchors.left: calendar.left
+        // anchors.leftMargin: 1
+        anchors.right: calendar.right
+        // anchors.rightMargin: 1
         model: monthModel
         property int previousClicked: -1
-        cellWidth: 49; cellHeight: 50
+        cellWidth: wdgGrid.width/7; cellHeight: wdgGrid.height/7
         anchors.top: weekElement.bottom
-        anchors.horizontalCenter: calendar.horizontalCenter
+        anchors.bottom: calendar.bottom
+        anchors.bottomMargin: -20
+        interactive: false
+
         delegate: CalendarDay {
             id: dayDelegate
             day: model.day
             currentMonth: model.currentMonth
             currentDay: model.currentDay
             onButtonClicked: {
-                // console.log("button says: " + index)
                 //First time, just save the index
                 if (wdgGrid.previousClicked == -1) {
                     wdgGrid.previousClicked = index
@@ -86,10 +104,11 @@ Rectangle {
                 var modelObj = monthModel.get(index)
                 clickedDate = new Date(modelObj.year, modelObj.month, modelObj.day,
                                        clickedDate.getHours(),
-        clickedDate.getMinutes())
+                                       clickedDate.getMinutes())
+                calendar.currentEvent = event
                 calendar.clicked()
             }
-         }
+        }
     }
 
     Component.onCompleted: { CalendarFunctions.populateModel() }

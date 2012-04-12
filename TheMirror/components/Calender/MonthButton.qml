@@ -1,7 +1,9 @@
 import QtQuick 1.0
 
 Item {
-    width: 339; height: 66
+    // width: calendar.width - margin*2;
+    // height: 66
+    height: 30
     id: monthHandler
     property string calendarString: ""
     signal previousClicked()
@@ -17,21 +19,23 @@ Item {
         pressed: "imgs/btn_prev_pressed.png"
         focused: "imgs/btn_prev.png"
         anchors.left: parent.left
-        anchors.leftMargin: -2
+        // anchors.leftMargin: -2
         onButtonClicked: monthHandler.previousClicked()
     }
 
     Image {
         id: calendarStringImg
         source: "imgs/calendar_string_bg.png"
-        height: 66; width: 211
+        // height: 66; width: 211
+        height: monthHandler.height
+        width: monthHandler.width/5*3
         fillMode: Image.Tile
         anchors.left: prevBtn.right
     }
 
     Text {
         text: calendarString
-        font { family: nsRegular.name; pixelSize: 24 }
+        font { family: nsRegular.name; pixelSize: 18 }
         color: "#5b5b5b"
         anchors.verticalCenter: calendarStringImg.verticalCenter
         anchors.horizontalCenter: calendarStringImg.horizontalCenter
