@@ -101,6 +101,21 @@ Flipable {
         }
 
         Button {
+            id: back
+
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 10
+            anchors.left: parent.left
+            anchors.leftMargin: 100
+            label: i18n.back
+            visible: !camera.flashing
+
+            onClicked: {
+                backToSettingsMenu(true);
+            }
+        }
+
+        Button {
             id: next
 
             anchors.bottom: parent.bottom
@@ -108,7 +123,7 @@ Flipable {
             anchors.right: parent.right
             anchors.rightMargin: 20
             label: i18n.next
-            visible: camera.numberOfShoot >= 2
+            visible: camera.numberOfShoot >= 2 && !camera.flashing
 
             onClicked: {
                 inEnterPinCodePage = true
@@ -118,6 +133,18 @@ Flipable {
             }
         }
 
+    }
+
+    function backToSettingsMenu(backToSubMenu) {
+        applicationLoder.title = i18n.manage_profiles;
+        applicationLoder.iconName = "SettingsMenu_Profile.png";
+
+        applicationCanvas.componentLoder.source = "SettingsMenu.qml"
+
+        applicationCanvas.componentLoder.item.back.viewID =  applicationCanvas.componentLoder.item.settingsSubMenuList
+        applicationCanvas.componentLoder.item.settingsSubMenuList.model =  applicationCanvas.componentLoder.item.manageProfilesSubMenuModel;
+        applicationCanvas.componentLoder.item.showSubMenu = backToSubMenu;
+        applicationCanvas.isApplicationAreaTransparent = false;
     }
 
     back:  Rectangle {
