@@ -3,6 +3,8 @@ import QtQuick 1.0
 Item {
     property string ok: "OK"
     property string back: "Back"
+    property string cancel: "Cancel"
+    property string delete_: "Delete"
     property string press_anywhere_to_display_menu: "Press anywhere to display menu"
     property string applications: "Applications"
     property string arrange_widgets: "Arrange Widgets"

@@ -3,6 +3,8 @@ import QtQuick 1.0
 Item {
     property string ok: "确认"
     property string back: "返回"
+    property string cancel: "取消"
+    property string delete_: "删除"
     property string press_anywhere_to_display_menu: "按住任意位置显示菜单"
     property string applications: "应用程序"
     property string arrange_widgets: "整理小工具"
