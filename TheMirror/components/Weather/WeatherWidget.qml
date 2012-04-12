@@ -1,4 +1,5 @@
 import QtQuick 1.0
+import ".."
 
 Rectangle {
     id: weatherWidget
@@ -119,6 +120,19 @@ Rectangle {
             delegate: weatherWidgetDelegate
         }
 
+    }
+
+    XmlApplicationLoader {
+        id: xmlApplicationLoader
+    }
+
+    MouseArea {
+        anchors.fill: parent
+        onClicked: {
+            xmlApplicationLoader.loadApplication("Weather");
+            mainScreen.showMainMenuBar = false;
+            mainScreen.showApplicationArea = true;
+        }
     }
 
 }
