@@ -127,7 +127,7 @@ Rectangle {
 
                     id: weatherForecastXmlModel
                     property int index
-                    source: "http://www.google.com/ig/api?weather=forchheim"
+                    source: "http://www.google.com/ig/api?weather=chicago"
                     query: "/xml_api_reply/weather"
                     XmlRole { name: "day_of_week1"; query: "forecast_conditions[1]/day_of_week/@data/string()" }
                     XmlRole { name: "low_f_s1"; query: "forecast_conditions[1]/low/@data/string()" }
