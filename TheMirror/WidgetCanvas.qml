@@ -7,9 +7,9 @@ GridView {
     property alias gridModel: gridModel
     property variant widgetsSettings;
 
-//    Settings {
-//        id: widgetsSettings
-//    }
+    //    Settings {
+    //        id: widgetsSettings
+    //    }
 
     Component.onCompleted: {
         for(var index = 0; index < number_of_grids_x * number_of_grids_y; index++)
@@ -29,6 +29,16 @@ GridView {
         loadWidgets();
         loadShortcuts();
 
+    }
+
+    function reloadWidget(widgetID) {
+        for(var i = 0; i < gridModel.count; i++) {
+            if(gridModel.get(i).widgetId == widgetID) {
+                gridModel.get(i).widgetSourceName = "";
+                gridModel.get(i).widgetSourceName = widgetsSettings.getSetting(widgetID + "__source", "widgets")
+                break;
+            }
+        }
     }
 
     function loadWidgets() {

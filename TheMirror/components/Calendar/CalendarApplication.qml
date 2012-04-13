@@ -206,6 +206,7 @@ Rectangle {
             // console.log("After deletion: " + calendar.currentEvent)
             calendar.reset();
             // calendar.clicked();
+            widgetCanvas.reloadWidget("calendar_widget");
         }
     }
 
