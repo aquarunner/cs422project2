@@ -50,6 +50,16 @@
                 <transparent>true</transparent>
                 <border>true</border>
         </application>
+        <application>
+                <name>CTA Bus</name>
+                <category>DAILY</category>
+                <icon>Application_Daily_CTA.png</icon>
+                <source>../../components/CtaTracker/CtaTrackerApplication.qml</source>
+                <width>7</width>
+                <height>10</height>
+                <transparent>true</transparent>
+                <border>true</border>
+        </application>
 
         <application>
                 <name>Camera</name>
