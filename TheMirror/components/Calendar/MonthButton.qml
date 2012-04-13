@@ -3,7 +3,7 @@ import QtQuick 1.0
 Item {
     // width: calendar.width - margin*2;
     // height: 66
-    height: 30
+    height: calendar.height/6
     id: monthHandler
     property string calendarString: ""
     signal previousClicked()

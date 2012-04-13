@@ -22,19 +22,25 @@ Rectangle {
             id: eventList
             anchors.fill: parent
             anchors.leftMargin: 1
+            anchors.bottomMargin: 2
+            clip: true
 
             delegate: Rectangle {
                 id: wrapper
                 width: eventList.width
-                height: 30
+                height: 45
                 border.color: "lightgrey"
                 border.width: 2
                 // color: "#00000000"
 
                 Text {
                     wrapMode: Text.Wrap
-                    text: " > "+content
-                    anchors.fill: wrapper
+                    text: content
+                    anchors.left: wrapper.left
+                    anchors.leftMargin: 10
+                    anchors.right: wrapper.right
+                    anchors.rightMargin: 10
+                    anchors.verticalCenter: wrapper.verticalCenter
                     font.pixelSize: 12
                     font.family: "Arial"
                 }

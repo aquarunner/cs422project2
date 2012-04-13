@@ -79,10 +79,10 @@ Rectangle {
         // anchors.rightMargin: 1
         model: monthModel
         property int previousClicked: -1
-        cellWidth: wdgGrid.width/7; cellHeight: wdgGrid.height/7
+        cellWidth: wdgGrid.width/7; cellHeight: wdgGrid.height/6
         anchors.top: weekElement.bottom
         anchors.bottom: calendar.bottom
-        anchors.bottomMargin: -20
+        // anchors.bottomMargin: -20
         interactive: false
 
         delegate: CalendarDay {
@@ -105,6 +105,17 @@ Rectangle {
                 clickedDate = new Date(modelObj.year, modelObj.month, modelObj.day,
                                        clickedDate.getHours(),
                                        clickedDate.getMinutes())
+
+                // reload the notes /////////////////
+                var str = settings.getSetting(year+"_"+(month+1)+"_"+day, "events", "./components/Calendar/")
+                if(str != "$$NULL$$") {
+                    event = str;
+                }
+                else {
+                    event = "";
+                }
+                ////////////////////////////////////
+
                 calendar.currentEvent = event
                 calendar.clicked()
             }
