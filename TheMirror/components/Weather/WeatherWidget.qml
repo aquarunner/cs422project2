@@ -72,8 +72,10 @@ Rectangle {
                 }
                 Text {
                     id: text1
-                    x: 175
+                    // x: 175
                     y: 115
+                    anchors.right: parent.right
+                    anchors.rightMargin: 5
                     text: condition
                     font.family: "Calibri"
                     color: "#0f0f0f"
