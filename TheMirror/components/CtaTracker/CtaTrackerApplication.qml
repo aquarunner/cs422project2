@@ -3,9 +3,6 @@ import "../../common"
 
 Rectangle {
 
-    height: 640
-    width: 480
-
     id: tracker
 
     color: "#00000000"
@@ -371,6 +368,7 @@ Rectangle {
                     pagesListView.currentIndex = 1
 
                     readExistingRoutes();
+                    widgetCanvas.reloadWidget("cta_widget");
                 }
             }
 

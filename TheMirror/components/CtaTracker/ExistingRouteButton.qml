@@ -3,6 +3,7 @@ import QtQuick 1.0
 Rectangle {
 
     property variant listView;
+    property int fontSize: 22
 
     width: listView.width
     height: 70
@@ -15,11 +16,13 @@ Rectangle {
 
     Text {
         id: titleArea
-        x: 20
+        wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+        x: listView.width/25
         height: 20
+        width: parent.width - 2
         text: routeID
         anchors.verticalCenter: parent.verticalCenter
-        font.pixelSize: 22
+        font.pixelSize: fontSize
         font.bold: true
         font.family: "Arial"
         color: "white"

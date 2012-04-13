@@ -3,6 +3,7 @@ import QtQuick 1.0
 Rectangle {
 
     property variant listView;
+    property int fontSize: 22
 
     width: listView.width
     height: 70
@@ -13,11 +14,11 @@ Rectangle {
 
     Text {
         id: titleArea
-        x: 50
+        x: listView.width/20
         height: 20
         text: computeEstimatedTime(currentTime, predictedTime);
         anchors.verticalCenter: parent.verticalCenter
-        font.pixelSize: 22
+        font.pixelSize: fontSize
         font.bold: true
         font.family: "Arial"
         color: "white"
