@@ -1,6 +1,5 @@
 import QtQuick 1.0
 import "../../common"
-import ".."
 
 Rectangle {
 
@@ -80,9 +79,6 @@ Rectangle {
 
     }
 
-    XmlApplicationLoader {
-        id: xmlApplicationLoader
-    }
 
     VisualItemModel {
         id: pagesModel
