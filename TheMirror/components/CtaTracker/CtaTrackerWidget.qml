@@ -140,7 +140,7 @@ Rectangle {
             id: showingTrackingPage
 
             width: pagesListView.width
-            height: pagesListView.height - 55
+            height: pagesListView.height - 40
 
             color: "grey"
             Image { source: "../../icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3 }
@@ -161,7 +161,7 @@ Rectangle {
             Button {
                 id: backToCurrentTrackingPage
                 anchors.top: parent.bottom
-                anchors.topMargin: 15
+                anchors.topMargin: 3
                 anchors.horizontalCenter: parent.horizontalCenter
                 label: i18n.back
 
