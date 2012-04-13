@@ -117,8 +117,8 @@
                 <name>Makeup</name>
                 <category>DRESSING</category>
                 <icon>Application_Dressing_Makeup.png</icon>
-                <source>../../demo/TestApp.qml</source>
-                <width>12</width>
+                <source>../Makeup/Makeup.qml</source>
+                <width>15</width>
                 <height>10</height>
                 <transparent>true</transparent>
                 <border>true</border>
