@@ -261,6 +261,7 @@ Rectangle {
 
                 onClicked: {
                     directionsModel.routeNumber = routesList.currentSelection
+                    directionsList.model = directionsModel;
                     pagesListView.currentIndex = 3
                 }
             }
@@ -279,7 +280,7 @@ Rectangle {
             ListView {
                 id: directionsList
                 anchors.fill: parent
-                model: directionsModel
+                // model: directionsModel
                 clip: true
 
                 property string currentSelection: "";
@@ -310,6 +311,7 @@ Rectangle {
                 onClicked: {
                     stopsModel.routeNumber = routesList.currentSelection
                     stopsModel.direction = directionsList.currentSelection;
+                    stopsList.model = stopsModel;
                     pagesListView.currentIndex = 4
                 }
             }
@@ -329,7 +331,7 @@ Rectangle {
             ListView {
                 id: stopsList
                 anchors.fill: parent
-                model: stopsModel
+                // model: stopsModel
                 clip: true
 
                 property string currentSelection: "";
