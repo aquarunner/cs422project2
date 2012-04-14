@@ -77,7 +77,7 @@ Rectangle {
                 id: categories
                 anchors.fill: parent
                 model: rssFeeds
-                footer: quitButtonDelegate
+                // footer: quitButtonDelegate
                 delegate: CategoryDelegate {}
                 highlight: Rectangle { color: "steelblue" }
                 highlightMoveSpeed: 9999999
@@ -96,24 +96,24 @@ Rectangle {
             clip: true
         }
     }
-    Component {
-        id: quitButtonDelegate
-        Item {
-            width: categories.width; height: 60
-            Text {
-                text: "Quit"
-                font { family: "Helvetica"; pixelSize: 16; bold: true }
-                anchors {
-                    left: parent.left; leftMargin: 15
-                    verticalCenter: parent.verticalCenter
-                }
-            }
-            MouseArea {
-                anchors.fill: parent
-                onClicked: Qt.quit()
-            }
-        }
-    }
+//    Component {
+//        id: quitButtonDelegate
+//        Item {
+//            width: categories.width; height: 60
+//            Text {
+//                text: "Quit"
+//                font { family: "Helvetica"; pixelSize: 16; bold: true }
+//                anchors {
+//                    left: parent.left; leftMargin: 15
+//                    verticalCenter: parent.verticalCenter
+//                }
+//            }
+//            MouseArea {
+//                anchors.fill: parent
+//                onClicked: Qt.quit()
+//            }
+//        }
+//    }
     ScrollBar { scrollArea: list; height: list.height; width: 8; anchors.right: window.right }
     Rectangle { x: 220; height: window.height; width: 1; color: "#cccccc" }
 

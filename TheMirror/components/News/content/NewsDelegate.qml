@@ -61,10 +61,6 @@ Item {
             id: descriptionText
             width: parent.width; text: description
             wrapMode: Text.WordWrap; font.family: "Helvetica"
-
-            Component.onCompleted: {
-                console.log(description)
-            }
         }
     }
 
