@@ -79,7 +79,7 @@ Rectangle {
             delegate: Item {
                 id: delegate
 
-                height: column.height + 15
+                height: column.height + 13
                 width: delegate.ListView.view.width
 
                 Column {
