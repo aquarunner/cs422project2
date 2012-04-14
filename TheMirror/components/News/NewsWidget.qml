@@ -109,7 +109,7 @@ Rectangle {
 
             }
 
-            ScrollBar { scrollArea: list; height: list.height; width: 8; anchors.left: window.left }
+            ScrollBar { scrollArea: list; height: list.height; width: 8; anchors.right: list.right }
         }
 
 
