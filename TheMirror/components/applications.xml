@@ -24,7 +24,7 @@
                 <name>News</name>
                 <category>DAILY</category>
                 <icon>Application_Daily_News.png</icon>
-                <source>../../demo/TestApp.qml</source>
+                <source>../../components/News/rssnews.qml</source>
                 <width>12</width>
                 <height>10</height>
                 <transparent>true</transparent>
