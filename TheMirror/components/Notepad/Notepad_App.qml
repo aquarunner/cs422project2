@@ -6,12 +6,15 @@ Rectangle{
     anchors.fill: parent
     anchors.topMargin: 55
 
-    property int numNotes: settings.getSetting("numNotes", "notes")
+    property int numNotes: settings.getSetting("numNotes", "notes", "./components/Notepad/")
     property string oldText: ""
 
     Component.onCompleted: {
         for(var i = 0; i < numNotes; ++i)
-            notes_model.append({"title": settings.getSetting("note"+i,"notes").split(":")[0], "text": settings.getSetting("note"+i,"notes").split(":")[1]})
+            notes_model.append({
+                                   "title": settings.getSetting("note"+i,"notes", "./components/Notepad/").split(":")[0],
+                                   "text": settings.getSetting("note"+i,"notes", "./components/Notepad/").split(":")[1]
+                               })
 
         if(numNotes > 0)
             thetext.text = notes_model.get(0).text
@@ -129,9 +132,9 @@ Rectangle{
             label: "New"
 
             onClicked: {
-                settings.setSetting("note"+numNotes, thetext.text, "notes")
+                settings.setSetting("note"+numNotes, thetext.text, "notes", "./components/Notepad/")
                 numNotes++
-                settings.setSetting("numNotes", numNotes, "notes")
+                settings.setSetting("numNotes", numNotes, "notes", "./components/Notepad/")
                 notes_model.append({"title": thetext.text, "text": ""})
                 thetext.text = ""
             }
@@ -153,14 +156,14 @@ Rectangle{
                     if(np_view.currentIndex != numNotes)
                     {
                         // Move the last one to the deleted slot
-                        settings.setSetting("note"+np_view.currentIndex, settings.getSetting(numNotes, "notes"),"notes")
+                        settings.setSetting("note"+np_view.currentIndex, settings.getSetting(numNotes, "notes", "./components/Notepad/"),"notes", "./components/Notepad/")
                         notes_model.set(np_view.currentIndex, notes_model.get(numNotes))
                     }
 
                     // Finally, delete the last setting and set the new number of notes
-                    settings.setSetting("note"+numNotes, "", "notes")
+                    settings.setSetting("note"+numNotes, "", "notes", "./components/Notepad/")
                     notes_model.remove(numNotes)
-                    settings.setSetting("numNotes", numNotes, "notes")
+                    settings.setSetting("numNotes", numNotes, "notes", "./components/Notepad/")
                     if(numNotes > 0)
                     {
                         thetext.text = notes_model.get(np_view.currentIndex).text
@@ -195,7 +198,9 @@ Rectangle{
 
             onClicked: {
                 notes_model.setProperty(np_view.currentIndex, "text", thetext.text)
-                settings.setSetting("note"+ np_view.currentIndex, notes_model.get(np_view.currentIndex).title + ":" + notes_model.get(np_view.currentIndex).text, "notes")
+                settings.setSetting("note"+ np_view.currentIndex,
+                                    notes_model.get(np_view.currentIndex).title + ":" + notes_model.get(np_view.currentIndex).text,
+                                    "notes", "./components/Notepad/")
             }
         }
 

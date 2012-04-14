@@ -5,7 +5,7 @@ import "../../common"
 Rectangle {
     color: "#FCF0AD"
 
-    property int numNotes: settings.getSetting("numNotes", "notes")
+    property int numNotes: settings.getSetting("numNotes", "notes", "./components/Notepad/")
     property int current: 0
 
     Component.onCompleted: {
@@ -15,7 +15,7 @@ Rectangle {
             forward.enabled = false
         else
         {
-            var unformatted = settings.getSetting("note0", "notes")
+            var unformatted = settings.getSetting("note0", "notes", "./components/Notepad/")
             thetext.text = "<b>"+unformatted.split(":")[0]+":</b>\n" + unformatted.split(":")[1]
         }
     }
@@ -33,7 +33,7 @@ Rectangle {
             if(current > 0)
             {
                 current--
-                var unformatted = settings.getSetting("note"+current, "notes")
+                var unformatted = settings.getSetting("note"+current, "notes", "./components/Notepad/")
                 thetext.text = "<b>"+unformatted.split(":")[0]+":</b>\n" + unformatted.split(":")[1]
                 if(current == 0)
                     back.enabled = false
@@ -56,7 +56,7 @@ Rectangle {
             if(current < numNotes-1)
             {
                 current++
-                var unformatted = settings.getSetting("note"+current, "notes")
+                var unformatted = settings.getSetting("note"+current, "notes", "./components/Notepad/")
                 thetext.text = "<b>"+unformatted.split(":")[0]+":</b>\n" + unformatted.split(":")[1]
                 if(current == numNotes-1)
                     forward.enabled = false
