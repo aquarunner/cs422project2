@@ -399,15 +399,15 @@ Rectangle {
                     function updateWidgetInfoIntoFile(indexInGrid, widgetSourceName)
                     {
                         if(type == "WIDGET") {
-                            widgetsSettings.setSetting(widgetId+"__index", ""+indexInGrid, "widgets");
-                            widgetsSettings.setSetting(widgetId+"__source", widgetSourceName, "widgets");
-                            widgetsSettings.setSetting(widgetId+"__onScreen", "true", "widgets");
+                            widgetsSettings.setSetting(widgetId+"__index", ""+indexInGrid, "widgets", "./settings/");
+                            widgetsSettings.setSetting(widgetId+"__source", widgetSourceName, "widgets", "./settings/");
+                            widgetsSettings.setSetting(widgetId+"__onScreen", "true", "widgets", "./settings/");
                         }
                         else if (type == "SHORTCUT") {
                             // console.log(widgetId+"__index");
-                            widgetsSettings.setSetting(widgetId+"__index", ""+indexInGrid, "shortcuts");
-                            widgetsSettings.setSetting(widgetId+"__source", widgetSourceName, "shortcuts");
-                            widgetsSettings.setSetting(widgetId+"__onScreen", "true", "shortcuts");
+                            widgetsSettings.setSetting(widgetId+"__index", ""+indexInGrid, "shortcuts", "./settings/");
+                            widgetsSettings.setSetting(widgetId+"__source", widgetSourceName, "shortcuts", "./settings/");
+                            widgetsSettings.setSetting(widgetId+"__onScreen", "true", "shortcuts", "./settings/");
                         }
                     }
                 }
@@ -443,17 +443,17 @@ Rectangle {
 
         unloadedShortcuts.clear();
 
-        var str = widgetsSettings.getSetting("shortcut_ids", "shortcuts");
+        var str = widgetsSettings.getSetting("shortcut_ids", "shortcuts", "./settings/");
         var shortcutIds = str.split(";");
         var id;
         var widgetIndex;
         for(var i = 0; i < shortcutIds.length; i++) {
             id = shortcutIds[i].replace(/^\s+|\s+$/g, ""); // trim
 
-            var onScreen = (widgetsSettings.getSetting(id + "__onScreen", "shortcuts") === 'true');
+            var onScreen = (widgetsSettings.getSetting(id + "__onScreen", "shortcuts", "./settings/") === 'true');
             if(id.length !== 0 && !onScreen){
 
-                var widgetSourceName = widgetsSettings.getSetting(id + "__source", "shortcuts");
+                var widgetSourceName = widgetsSettings.getSetting(id + "__source", "shortcuts", "./settings/");
 
                 unloadedShortcuts.append({ "widgetId": id,
                                              "widgetHeight": 1,
@@ -470,19 +470,19 @@ Rectangle {
 
         unloadedWidgets.clear();
 
-        var str = widgetsSettings.getSetting("widget_ids", "widgets");
+        var str = widgetsSettings.getSetting("widget_ids", "widgets", "./settings/");
         var widgetIds = str.split(";");
         var id;
         var widgetIndex;
         for(var i = 0; i < widgetIds.length; i++) {
             id = widgetIds[i].replace(/^\s+|\s+$/g, ""); // trim
-            var onScreen = (widgetsSettings.getSetting(id + "__onScreen", "widgets") === 'true');
+            var onScreen = (widgetsSettings.getSetting(id + "__onScreen", "widgets", "./settings/") === 'true');
             if(id.length !== 0 && !onScreen){
 
-                var widgetHeight = widgetsSettings.getSetting(id + "__height", "widgets")*1;
-                var widgetWidth = widgetsSettings.getSetting(id + "__width", "widgets")*1;
-                var widgetSourceName = widgetsSettings.getSetting(id + "__source", "widgets")
-                // var widgetShapshot = widgetsSettings.getSetting(id + "__snapshot", "widgets")
+                var widgetHeight = widgetsSettings.getSetting(id + "__height", "widgets", "./settings/")*1;
+                var widgetWidth = widgetsSettings.getSetting(id + "__width", "widgets", "./settings/")*1;
+                var widgetSourceName = widgetsSettings.getSetting(id + "__source", "widgets", "./settings/")
+                // var widgetShapshot = widgetsSettings.getSetting(id + "__snapshot", "widgets", "./settings/")
 
                 unloadedWidgets.append({ "widgetId": id,
                                            "widgetHeight": widgetHeight,

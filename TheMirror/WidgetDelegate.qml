@@ -220,26 +220,26 @@ Rectangle {
         function updateWidgetInfoIntoFile(currentIndex)
         {
             if(type == "WIDGET") {
-                widgetsSettings.setSetting(widgetId+"__index", ""+currentIndex, "widgets");
-                widgetsSettings.setSetting(widgetId+"__onScreen", ""+true, "widgets");
+                widgetsSettings.setSetting(widgetId+"__index", ""+currentIndex, "widgets", "./settings/");
+                widgetsSettings.setSetting(widgetId+"__onScreen", ""+true, "widgets", "./settings/");
             }
             else if (type == "SHORTCUT") {
 
                 // console.log(widgetId+"__index")
-                widgetsSettings.setSetting(widgetId+"__index", ""+currentIndex, "shortcuts");
-                widgetsSettings.setSetting(widgetId+"__onScreen", ""+true, "shortcuts");
+                widgetsSettings.setSetting(widgetId+"__index", ""+currentIndex, "shortcuts", "./settings/");
+                widgetsSettings.setSetting(widgetId+"__onScreen", ""+true, "shortcuts", "./settings/");
             }
         }
     }
 
     function deleteWidget(currentIndex) {
         if(type == "WIDGET") {
-            widgetsSettings.setSetting(widgetId+"__index", "0", "widgets");
-            widgetsSettings.setSetting(widgetId+"__onScreen", "false", "widgets");
+            widgetsSettings.setSetting(widgetId+"__index", "0", "widgets", "./settings/");
+            widgetsSettings.setSetting(widgetId+"__onScreen", "false", "widgets", "./settings/");
         }
         else if (type == "SHORTCUT") {
-            widgetsSettings.setSetting(widgetId+"__index", "0", "shortcuts");
-            widgetsSettings.setSetting(widgetId+"__onScreen", "false", "shortcuts");
+            widgetsSettings.setSetting(widgetId+"__index", "0", "shortcuts", "./settings/");
+            widgetsSettings.setSetting(widgetId+"__onScreen", "false", "shortcuts", "./settings/");
         }
 
         makeAreaAvailable(currentIndex);

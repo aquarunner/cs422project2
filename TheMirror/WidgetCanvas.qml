@@ -35,7 +35,7 @@ GridView {
         for(var i = 0; i < gridModel.count; i++) {
             if(gridModel.get(i).widgetId == widgetID) {
                 gridModel.get(i).widgetSourceName = "";
-                gridModel.get(i).widgetSourceName = widgetsSettings.getSetting(widgetID + "__source", "widgets")
+                gridModel.get(i).widgetSourceName = widgetsSettings.getSetting(widgetID + "__source", "widgets", "./settings/")
                 break;
             }
         }
@@ -43,23 +43,23 @@ GridView {
 
     function loadWidgets() {
 
-        var str = widgetsSettings.getSetting("widget_ids", "widgets");
+        var str = widgetsSettings.getSetting("widget_ids", "widgets", "./settings/");
         var widgetIds = str.split(";");
         var id;
         var widgetIndex;
         for(var i = 0; i < widgetIds.length; i++) {
             id = widgetIds[i].replace(/^\s+|\s+$/g, ""); // trim
-            var onScreen = (widgetsSettings.getSetting(id + "__onScreen", "widgets") === 'true');
+            var onScreen = (widgetsSettings.getSetting(id + "__onScreen", "widgets", "./settings/") === 'true');
             if(id.length !== 0 && onScreen){
 
-                widgetIndex = widgetsSettings.getSetting(id + "__index", "widgets")*1;
+                widgetIndex = widgetsSettings.getSetting(id + "__index", "widgets", "./settings/")*1;
                 gridModel.get(widgetIndex).widgetId = id;
                 gridModel.get(widgetIndex).widgetVisible = true;
-                var widgetHeight = widgetsSettings.getSetting(id + "__height", "widgets")*1;
-                var widgetWidth = widgetsSettings.getSetting(id + "__width", "widgets")*1;
+                var widgetHeight = widgetsSettings.getSetting(id + "__height", "widgets", "./settings/")*1;
+                var widgetWidth = widgetsSettings.getSetting(id + "__width", "widgets", "./settings/")*1;
                 gridModel.get(widgetIndex).widgetHeightInNumberOfCells = widgetHeight;
                 gridModel.get(widgetIndex).widgetWidthInNumberOfCells = widgetWidth;
-                gridModel.get(widgetIndex).widgetSourceName = widgetsSettings.getSetting(id + "__source", "widgets")
+                gridModel.get(widgetIndex).widgetSourceName = widgetsSettings.getSetting(id + "__source", "widgets", "./settings/")
                 gridModel.get(widgetIndex).type = "WIDGET"
 
                 setWidgetAreaUnavailabe(widgetIndex, widgetHeight, widgetWidth);
@@ -70,21 +70,21 @@ GridView {
 
     function loadShortcuts() {
 
-        var str = widgetsSettings.getSetting("shortcut_ids", "shortcuts");
+        var str = widgetsSettings.getSetting("shortcut_ids", "shortcuts", "./settings/");
         var widgetIds = str.split(";");
         var id;
         var widgetIndex;
         for(var i = 0; i < widgetIds.length; i++) {
             id = widgetIds[i].replace(/^\s+|\s+$/g, ""); // trim
-            var onScreen = (widgetsSettings.getSetting(id + "__onScreen", "shortcuts") === 'true');
+            var onScreen = (widgetsSettings.getSetting(id + "__onScreen", "shortcuts", "./settings/") === 'true');
             if(id.length !== 0 && onScreen){
 
-                widgetIndex = widgetsSettings.getSetting(id + "__index", "shortcuts")*1;
+                widgetIndex = widgetsSettings.getSetting(id + "__index", "shortcuts", "./settings/")*1;
                 gridModel.get(widgetIndex).widgetId = id;
                 gridModel.get(widgetIndex).widgetVisible = true;
                 gridModel.get(widgetIndex).widgetHeightInNumberOfCells = 1;
                 gridModel.get(widgetIndex).widgetWidthInNumberOfCells = 1;
-                gridModel.get(widgetIndex).widgetSourceName = widgetsSettings.getSetting(id + "__source", "shortcuts")
+                gridModel.get(widgetIndex).widgetSourceName = widgetsSettings.getSetting(id + "__source", "shortcuts", "./settings/")
                 gridModel.get(widgetIndex).type = "SHORTCUT"
 
                 setWidgetAreaUnavailabe(widgetIndex, 1, 1);
