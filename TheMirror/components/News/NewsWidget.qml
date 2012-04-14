@@ -42,6 +42,26 @@ Rectangle {
             color: "black"
 
         }
+
+        Image {
+            id: refresh
+            width: 25
+            height: 25
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+            scale: refreshArea.pressed? 0.9: 1
+            source: "icons/refresh.png"
+
+            MouseArea {
+                id: refreshArea
+                anchors.fill: parent
+
+                onClicked: {
+                    feedModel.reload();
+                }
+            }
+        }
     }
 
 
