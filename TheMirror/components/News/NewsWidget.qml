@@ -124,16 +124,39 @@ Rectangle {
 
             property string descriptionText: ""
 
-            Text {
+            //            Text {
+            //                anchors.fill: parent
+            //                anchors.topMargin: 15
+            //                anchors.leftMargin: 10
+            //                anchors.rightMargin: 10
+            //                text: descriptionPage.descriptionText
+            //                wrapMode: Text.WordWrap; font.family: "Helvetica"
+            //                font.pixelSize: 12
+            //            }
+
+
+            Flickable {
+                id: flickArea
                 anchors.fill: parent
                 anchors.topMargin: 15
                 anchors.leftMargin: 10
                 anchors.rightMargin: 10
-                text: descriptionPage.descriptionText
-                wrapMode: Text.WordWrap; font.family: "Helvetica"
-                font.pixelSize: 12
-            }
+                contentWidth: helpText.width; contentHeight: helpText.height
+                flickableDirection: Flickable.VerticalFlick
+                clip: true
 
+                Text{
+                    id: helpText
+                    wrapMode: TextEdit.Wrap
+                    width:pagesListView.width;
+                    // readOnly:true
+                    font.family: "Helvetica"
+                    font.pixelSize: 12
+                    text:  descriptionPage.descriptionText
+                }
+
+
+            }
 
             Button {
                 anchors.top: parent.bottom
