@@ -10,6 +10,7 @@ Rectangle {
 
     Component.onCompleted: {
         back.enabled = false
+        print("NotepadWidget: " + numNotes)
         if(numNotes == 0)
             forward.enabled = false
         else
@@ -21,8 +22,8 @@ Rectangle {
 
     Button {
         id: back
-        height: 50
-        width: 50
+        height: 20
+        width: 20
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.margins: 10
@@ -44,8 +45,8 @@ Rectangle {
 
     Button{
         id: forward
-        height: 50
-        width: 50
+        height: 20
+        width: 20
         anchors.top: parent.top
         anchors.right: parent.right
         anchors.margins: 10
@@ -72,7 +73,8 @@ Rectangle {
         anchors.top: back.bottom
         anchors.bottom: parent.bottom
         anchors.margins: 10
-        font.pointSize: 20
+        font.pointSize: 14
+        wrapMode: Text.Wrap
 
         text: ""
     }

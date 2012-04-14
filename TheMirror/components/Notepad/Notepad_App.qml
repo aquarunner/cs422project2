@@ -206,7 +206,8 @@ Rectangle{
             anchors.leftMargin: 2
             label: "Exit"
 
-            onClicked: {
+            onClicked: {                
+                widgetCanvas.reloadWidget("notes_widget")
                 mainScreen.showMainMenuBar = true;
                 mainScreen.showApplicationArea = false;
             }
