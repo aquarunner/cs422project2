@@ -27,7 +27,7 @@
                 <source>../../components/News/rssnews.qml</source>
                 <width>12</width>
                 <height>10</height>
-                <transparent>true</transparent>
+                <transparent>false</transparent>
                 <border>true</border>
         </application>
         <application>
