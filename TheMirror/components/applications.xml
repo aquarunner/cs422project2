@@ -75,7 +75,7 @@
                 <name>Media Player</name>
                 <category>MULTIMEDIA</category>
                 <icon>Application_Multimedia_MultimediaPlayer.png</icon>
-                <source>../../demo/TestApp.qml</source>
+                <source>../../components/MediaPlayer/MediaPlayerApplication.qml</source>
                 <width>12</width>
                 <height>10</height>
                 <transparent>true</transparent>
