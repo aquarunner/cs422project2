@@ -33,7 +33,7 @@ Rectangle {
 
         color: "darkgrey"
         Image { source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3 }
-        opacity: 0.6
+        opacity: 0.8
     }
 
     Rectangle {
@@ -46,7 +46,7 @@ Rectangle {
 
         color: "darkgrey"
         Image { source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3 }
-        opacity: 0.6
+        opacity: 0.8
     }
 
     Rectangle {
@@ -61,7 +61,7 @@ Rectangle {
 
         color: "darkgrey"
         Image { source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3 }
-        opacity: 0.6
+        opacity: 0.8
     }
 
     Rectangle {
@@ -76,7 +76,7 @@ Rectangle {
 
         color: "darkgrey"
         Image { source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3 }
-        opacity: 0.6
+        opacity: 0.8
     }
 
     //    Rectangle {
@@ -91,7 +91,7 @@ Rectangle {
     //            source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3
     //            visible: !isApplicationAreaTransparent
     //        }
-    //        opacity: 0.6
+    //        opacity: 0.8
     //    }
 
 
@@ -113,7 +113,7 @@ Rectangle {
             source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3
             visible: !isApplicationAreaTransparent
         }
-        opacity: 0.6
+        opacity: 0.8
     }
 
     Rectangle {
