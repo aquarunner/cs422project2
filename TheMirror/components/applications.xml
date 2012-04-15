@@ -14,7 +14,7 @@
                 <name>Email</name>
                 <category>DAILY</category>
                 <icon>Application_Daily_Email.png</icon>
-                <source>../../demo/TestApp.qml</source>
+                <source>../../components/Email/Email.qml</source>
                 <width>12</width>
                 <height>10</height>
                 <transparent>true</transparent>
