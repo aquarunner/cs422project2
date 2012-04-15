@@ -60,6 +60,16 @@
                 <transparent>true</transparent>
                 <border>true</border>
         </application>
+        <application>
+                <name>Traffic Watch</name>
+                <category>DAILY</category>
+                <icon>Traffic.png</icon>
+                <source>../../components/Traffic/Traffic.qml</source>
+                <width>11</width>
+                <height>9</height>
+                <transparent>false</transparent>
+                <border>true</border>
+        </application>
 
         <application>
                 <name>Camera</name>
