@@ -12,8 +12,8 @@ Rectangle{
     Component.onCompleted: {
         for(var i = 0; i < numNotes; ++i)
             notes_model.append({
-                                   "title": settings.getSetting("note"+i,"notes", "./components/Notepad/").split(":")[0],
-                                   "text": settings.getSetting("note"+i,"notes", "./components/Notepad/").split(":")[1]
+                                   "title": settings.getSetting("note"+i,"notes", "./components/Notepad/").split("::")[0],
+                                   "text": settings.getSetting("note"+i,"notes", "./components/Notepad/").split("::")[1]
                                })
 
         if(numNotes > 0)
@@ -132,11 +132,14 @@ Rectangle{
             label: "New"
 
             onClicked: {
-                settings.setSetting("note"+numNotes, thetext.text, "notes", "./components/Notepad/")
-                numNotes++
-                settings.setSetting("numNotes", numNotes, "notes", "./components/Notepad/")
-                notes_model.append({"title": thetext.text, "text": ""})
-                thetext.text = ""
+                if(thetext.text.length > 0)
+                {
+                    settings.setSetting("note"+numNotes, thetext.text + ":: ", "notes", "./components/Notepad/")
+                    numNotes++
+                    settings.setSetting("numNotes", numNotes, "notes", "./components/Notepad/")
+                    notes_model.append({"title": thetext.text, "text": ""})
+                    thetext.text = ""
+                }
             }
         }
 
@@ -152,11 +155,11 @@ Rectangle{
                 {
                     numNotes--
 
-                    // If the
+                    // If the index is not last, then we have to do some moving around
                     if(np_view.currentIndex != numNotes)
                     {
                         // Move the last one to the deleted slot
-                        settings.setSetting("note"+np_view.currentIndex, settings.getSetting(numNotes, "notes", "./components/Notepad/"),"notes", "./components/Notepad/")
+                        settings.setSetting("note"+np_view.currentIndex, settings.getSetting("note" + numNotes, "notes", "./components/Notepad/"),"notes", "./components/Notepad/")
                         notes_model.set(np_view.currentIndex, notes_model.get(numNotes))
                     }
 
@@ -199,7 +202,7 @@ Rectangle{
             onClicked: {
                 notes_model.setProperty(np_view.currentIndex, "text", thetext.text)
                 settings.setSetting("note"+ np_view.currentIndex,
-                                    notes_model.get(np_view.currentIndex).title + ":" + notes_model.get(np_view.currentIndex).text,
+                                    notes_model.get(np_view.currentIndex).title + ":: " + notes_model.get(np_view.currentIndex).text,
                                     "notes", "./components/Notepad/")
             }
         }

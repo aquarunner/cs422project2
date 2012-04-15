@@ -16,7 +16,7 @@ Rectangle {
         else
         {
             var unformatted = settings.getSetting("note0", "notes", "./components/Notepad/")
-            thetext.text = "<b>"+unformatted.split(":")[0]+":</b>\n" + unformatted.split(":")[1]
+            thetext.text = "<b>"+unformatted.split("::")[0]+":</b>\n" + unformatted.split("::")[1]
         }
     }
 
@@ -34,7 +34,7 @@ Rectangle {
             {
                 current--
                 var unformatted = settings.getSetting("note"+current, "notes", "./components/Notepad/")
-                thetext.text = "<b>"+unformatted.split(":")[0]+":</b>\n" + unformatted.split(":")[1]
+                thetext.text = "<b>"+unformatted.split("::")[0]+":</b>\n" + unformatted.split("::")[1]
                 if(current == 0)
                     back.enabled = false
                 if(current < numNotes-1)
@@ -57,7 +57,7 @@ Rectangle {
             {
                 current++
                 var unformatted = settings.getSetting("note"+current, "notes", "./components/Notepad/")
-                thetext.text = "<b>"+unformatted.split(":")[0]+":</b>\n" + unformatted.split(":")[1]
+                thetext.text = "<b>"+unformatted.split("::")[0]+":</b>\n" + unformatted.split("::")[1]
                 if(current == numNotes-1)
                     forward.enabled = false
                 if(current > 0)
