@@ -14,100 +14,29 @@ Item {
         id: xmlApplicationLoader
     }
 
-    Item {
-        id: popUp
 
-        property int popX
-        property int popY
-        property string target: ""
-        property int targetIndex: -1
-
-        function show(pX, pY, pT, pI) {
-            popX = pX;
-            popY = pY;
-            target = pT;
-            targetIndex = pI
-
-            popUp.y = pY
-
-            popUp.state = 'show'
-        }
-
-        function hide() {
-            popUp.state = ''
-        }
-
-        x: parent.width
-        y: 0
-        z: 2
-        width: deleteButton.width
-        visible: false
-        //opacity: popUp.visible ? 1 : 0
-
-        Column {
-            spacing: 2
-            Button {
-                id: deleteButton
-                label: i18n.galleryDeleteButtonText + " " + popUp.target
-                width: 210
-                onClicked: {
-                    popUp.hide();
-                    galleryList.model.remove(popUp.targetIndex);
-                }
-            }
-            Button {
-                id: renameButton
-                label: i18n.galleryRenameButtonText + " " + popUp.target
-                width: 210
-                onClicked: {
-                    popUp.hide();
-                }
-            }
-        }
-
-        states: [
-            State {
-                name: "show"
-                PropertyChanges {
-                    target: popUp
-                    y: popUp.popY
-                    x: popUp.popX
-                    visible: true
-                    //opacity: 1
-                }
-            }
-        ]
-
-        transitions: [
-            Transition {
-                from: ""
-                to: "show"
-                ParallelAnimation {
-                    PropertyAnimation {
-                        properties: "x";
-                        duration: 400;
-                        easing.type: Easing.OutBounce;
-                    }
-                    PropertyAnimation {
-                        properties: "opacity";
-                        duration: 400;
-                    }
-
-                }
-            }
-        ]
-
-    }
     Item {
         id: controlArea
         anchors.right: parent.right
+        anchors.rightMargin: rightMouseArea.width
         anchors.bottom: galleryList.top
-        height: helpButton.height
+        height: 300
         z: 1
         width: 20 + helpButton.width + cameraButton.width + quitButton.width
 
         Row {
+            id: controls
+            visible: (!popUp.visible && !messageArea.visible)
+            opacity: controls.visible ? 1 : 0
             spacing: 5
+            anchors.right: parent.right
+            anchors.bottom: parent.bottom
+
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: 250;
+                }
+            }
 
             Button {
                 id: helpButton
@@ -146,6 +75,117 @@ Item {
                     source: "../../icons/Exit.png"
                     anchors.fill: parent
                     fillMode: Image.PreserveAspectFit
+                }
+            }
+        }
+
+        Item {
+            id: messageArea
+            anchors.fill: parent
+            visible: false
+            opacity: visible ? 1 : 0
+
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: 250
+                }
+            }
+
+            function show(msg) {
+                message.text = msg
+                //controls.visible = false
+                messageArea.visible = true
+                messageAreaTimer.start();
+            }
+
+            Text {
+                id: message
+                text: ""
+                anchors.bottom: parent.bottom
+                anchors.right: parent.right
+                font.bold: true
+            }
+
+            Timer {
+                id: messageAreaTimer
+                running: false
+                repeat: false
+                interval: 3000
+                onTriggered: {
+                    messageArea.visible = false;
+                    //controls.visible = true;
+                }
+            }
+        }
+
+        Item {
+            id: popUp
+
+            property string target
+            property int targetIndex
+
+            function show(t, i) {
+                target = t;
+                targetIndex = i;
+                popUp.visible = true
+            }
+
+            function hide() {
+                popUp.visible = false;
+            }
+
+            //x: 0
+            //y: -100
+            //z: 2
+            //anchors.right: parent.right
+            //anchors.bottom: parent.bottom
+            anchors.fill: parent
+            //width: renameButton.width
+            visible: false
+            opacity: popUp.visible ? 1 : 0
+
+            Behavior on opacity {
+                NumberAnimation {
+                    duration: 250;
+                }
+            }
+
+//            MouseArea {
+//                id: catcher
+//                width: 2560
+//                height: 1000
+//                x: -1280
+//                y: -720
+//                z: 2
+//                onReleased: popUp.hide();
+//                enabled: popUp.visible;
+//            }
+
+
+            Column {
+                spacing: 2
+                anchors.right: parent.right
+                anchors.bottom: parent.bottom
+                Button {
+                    id: deleteButton
+                    label: i18n.galleryDeleteButtonText + " " + popUp.target
+                    width: 250
+                    onClicked: {
+                        //galleryList.model.remove(popUp.targetIndex);
+                        popUp.hide();
+                        messageArea.show(popUp.target + " removal...");
+                        //controls.visible = true;
+                    }
+                }
+                Button {
+                    id: renameButton
+                    label: i18n.galleryRenameButtonText + " " + popUp.target
+                    width: 250
+                    onClicked: {
+                        popUp.hide();
+                        messageArea.show(popUp.target + " rename...");
+                        //controls.visible = true;
+                    }
                 }
             }
         }
@@ -207,26 +247,76 @@ Item {
 
     }  //  playArea
 
+    Item {
+        id: scrollLeft
+        //anchors.verticalCenter: galleryList.verticalCenter
+        anchors.left: parent.left
+        anchors.bottom: parent.bottom
+        height: galleryList.height
+        width: 40
+
+        Text {
+            id: left
+            text: qsTr("<")
+            anchors.centerIn: parent
+            font.bold: true
+            color: leftMouseArea.pressed ? "grey" : "black"
+        }
+
+        MouseArea {
+            id: leftMouseArea
+            anchors.fill: parent
+            onClicked: {
+                galleryList.decrementCurrentIndex();
+                galleryList.positionViewAtIndex(galleryList.currentIndex, ListView.Center);
+            }
+        }
+    }
+
+    Item {
+        id: scrollRight
+        //anchors.verticalCenter: galleryList.verticalCenter
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        height: galleryList.height
+        width: 40
+
+        Text {
+            id: right
+            text: qsTr(">")
+            anchors.centerIn: parent
+            font.bold: true
+            color: rightMouseArea.pressed ? "grey" : "black"
+        }
+
+        MouseArea {
+            id: rightMouseArea
+            anchors.fill: parent
+            onClicked: {
+                galleryList.incrementCurrentIndex();
+                galleryList.positionViewAtIndex(galleryList.currentIndex, ListView.Beginning);
+            }
+        }
+    }
+
     ListView {
         id: galleryList
         orientation: ListView.Horizontal
-        anchors.left: parent.left
-        anchors.right: parent.right
+        anchors.left: scrollLeft.right
+        anchors.right: scrollRight.left
         anchors.bottom: parent.bottom
         height: 100
         spacing: 20
+        clip: true
 
         //anchors.bottomMargin: 10
         //anchors.topMargin: 10
 
         property string photoPath: "photos/"
 
-        model: ListModel {
-            id: galleryModel
+        model: GalleryModel { id: galleryModel }
 
-        }
-
-        Component.onCompleted: loadPics()
+        //Component.onCompleted: loadPics()
 
         function loadPics() {
             var srcFile = ''
@@ -246,21 +336,35 @@ Item {
                 height: galleryList.height
                 width: galleryList.height
 
+
+//                Rectangle {
+//                    id: hilighter
+//                    width: 30
+//                    height: 5
+//                    color: "grey"
+//                    anchors.horizontalCenter: parent.horizontalCenter
+//                    anchors.bottom: parent.bottom
+//                    visible: galleryDelegate.ListView.isCurrentItem
+//                }
+
+
                 MouseArea {
                     id: galleryDelegateMouseArea
                     anchors.fill: parent
                     onClicked: {
 
-                        if (popUp.visible)
+                        if (popUp.visible) {
                             popUp.hide();
+                            controls.visible = true;
+                        }
 
                         if (helpText.visible)
                             helpText.visible = false;
 
                         if (galleryFlip.flipped) {
-                            galleryFront.source = galleryList.photoPath + src
+                            galleryFront.source = src//galleryList.photoPath + src
                         } else {
-                            galleryBack.source = galleryList.photoPath + src
+                            galleryBack.source = src//galleryList.photoPath + src
                         }
                         galleryFlip.flipped = !galleryFlip.flipped
                     }
@@ -270,12 +374,8 @@ Item {
                         if (popUp.visible)
                             popUp.hide();
 
-                        var pX = mouseX
-                        //var pX = galleryDelegate.x - (galleryList.visibleArea.xPosition * galleryList.visibleArea.widthRatio)
-                        //var pX = (galleryDelegate.x > (galleryMain.width / 2)) ? galleryDelegate.x - (popUp.width / 2 ) : galleryDelegate.x + (galleryDelegate.width / 2)
-                        var pY = galleryMain.height - galleryList.height - popUp.height - 60
-
-                        popUp.show(pX, pY, src, index);
+                        //controls.visible = false;
+                        popUp.show(qsTr("filename %1").arg(index), index);
                     }
                 }
 
@@ -287,7 +387,7 @@ Item {
                     clip: true
                     Image {
                         id: galleryImage
-                        source: galleryList.photoPath + src
+                        source: src//galleryList.photoPath + src
                         anchors.centerIn: parent
                         fillMode: Image.PreserveAspectFit
                     }
@@ -295,7 +395,7 @@ Item {
 
                 Text {
                     id: galleryImageText
-                    text: src
+                    text: qsTr("filename " + index)//src
                     anchors.top: imgContainer.bottom
                     anchors.horizontalCenter: imgContainer.horizontalCenter
                 }
