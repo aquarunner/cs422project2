@@ -110,7 +110,7 @@ Rectangle {
                         anchors.left: wrapper.left
                         anchors.leftMargin: 10
                         anchors.verticalCenter: wrapper.verticalCenter
-                        source: checked? "../imgs/ICON_checkbox-d.gif": "../imgs/ICON_checkbox-u.gif"
+                        source: checked? "imgs/ICON_checkbox-d.gif": "imgs/ICON_checkbox-u.gif"
                     }
 
                     Text {
@@ -250,7 +250,7 @@ Rectangle {
         Image {
             anchors.left: addEvent.left
             anchors.leftMargin: 5
-            source: "../imgs/add.png"
+            source: "imgs/add.png"
             width: addEvent.height - 2
             height: addEvent.height - 2
         }
@@ -272,7 +272,7 @@ Rectangle {
         Image {
             anchors.left: deleteEvent.left
             anchors.leftMargin: 5
-            source: "../imgs/subtract.png"
+            source: "imgs/subtract.png"
             width: deleteEvent.height - 2
             height: deleteEvent.height - 2
             visible: !eventArea.inAddNewEventPage

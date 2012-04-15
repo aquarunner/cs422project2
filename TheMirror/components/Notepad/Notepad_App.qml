@@ -134,7 +134,7 @@ Rectangle{
             Image {
                 anchors.left: parent.left
                 anchors.leftMargin: 5
-                source: "../imgs/add.png"
+                source: "imgs/add.png"
                 width: parent.height - 2
                 height: parent.height - 2
             }
@@ -161,7 +161,7 @@ Rectangle{
             Image {
                anchors.left: parent.left
                anchors.leftMargin: 5
-               source: "../imgs/subtract.png"
+               source: "imgs/subtract.png"
                width: parent.height - 2
                height: parent.height - 2
                visible: !eventArea.inAddNewEventPage
