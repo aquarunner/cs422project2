@@ -10,6 +10,8 @@ Settings::Settings(QDeclarativeItem *parent) :
 // read them into the settings files map in memory.
 void Settings::load()
 {
+    //ofstream help("help.txt", ios::app);
+
     ifstream file;
     string line;
     string key;
@@ -21,7 +23,15 @@ void Settings::load()
     // Iterate each settings file
     for (int i = 0; i < (int)files.size(); ++i) {
 
-        file.open(files[i].c_str());
+        string filename;
+
+        if (!iniPrefix.isEmpty())
+            filename = iniPrefix.toStdString() + files[i];
+        else
+            filename = iniPath + files[i];
+
+        //help << filename << endl;
+        file.open(filename.c_str());
 
         if (!file.is_open()) {
             return;
@@ -49,7 +59,16 @@ void Settings::load()
 
             key = line.substr(0, colon);
             val = line.substr(colon + 1);
-            val = val.substr(val.find_first_not_of(" "));
+
+            unsigned content = val.find_first_not_of(" ");
+
+            // If there is no value (nothing after the colon),
+            // let val be the empty string
+            if (content == val.npos) {
+                val = "";
+            } else {
+                val = val.substr(content);
+            }
 
             // Store the variable (key) and its value (val)
             // in the settings map for this file
@@ -83,12 +102,14 @@ void Settings::save(string appfile)
     }
 }
 
-
 // app is optional
 // If app is specified, save the variable and value in that
 // app file.  Otherwise, save it in the default settings file.
-void Settings::setSetting(QString key, QString val, QString app)
+void Settings::setSetting(QString key, QString val, QString app, QString prefix)
 {
+    if (!prefix.isEmpty())
+        iniPrefix = prefix;
+
     string appfile;
 
     if (app.isEmpty())
@@ -127,8 +148,14 @@ void Settings::setSetting(QString key, QString val, QString app)
 // looking for (key) exists, return the setting for that file
 // If no app specified, return the setting from the default
 // settings file.  Otherwise, returns empty string.
-QString Settings::getSetting(QString key, QString app)
+QString Settings::getSetting(QString key, QString app, QString prefix)
 {
+    if (!prefix.isEmpty()) {
+        iniPrefix = prefix;
+        load();
+        iniPrefix.clear();
+    }
+
     string appfile;
     QString result;
 
@@ -159,9 +186,23 @@ QString Settings::getSetting(QString key, QString app)
 // and put the file names in a vector
 vector<string> Settings::findSettingsFiles()
 {
+    //ofstream f("help.txt", ios::app);
     vector<string> result;
 
-    DIR* dir = opendir(".");
+    string d;
+    if (!iniPrefix.isEmpty()) {
+        d = iniPrefix.toStdString();
+    }
+    else if (!iniPath.empty()) {
+        d = iniPath;
+    }
+    else {
+        d = ".";
+    }
+
+    DIR* dir = opendir(d.c_str());
+    //f << d << endl;
+
 
     if (dir == 0)
         return result;
@@ -186,15 +227,25 @@ vector<string> Settings::findSettingsFiles()
 // or abort if no settings file exists.
 void Settings::writeFile(string filename)
 {
-
     if (settingsFiles.find(filename) == settingsFiles.end())
         return;
 
     ofstream file;
     string result = ";" + filename + "\n";
 
+    string path;
+    // iniPrefix overrides iniPath
+    if (!iniPrefix.isEmpty()) {
+        path = iniPrefix.toStdString() + filename;
+        iniPrefix.clear();
+    } else {
+        // Add the path prefix
+        path = iniPath + filename;
+    }
+
+
     // Clears previous contents if there were any
-    file.open(filename.c_str());
+    file.open(path.c_str());
 
     if (!file.is_open())
         return;
@@ -215,4 +266,17 @@ void Settings::writeFile(string filename)
 
     file.close();
 
+}
+
+
+QString Settings::getPath()
+{
+    return QString::fromStdString(iniPath);
+}
+
+
+void Settings::setPath(QString path)
+{
+    iniPath = path.toStdString();
+    load();
 }

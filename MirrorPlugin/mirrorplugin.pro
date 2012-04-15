@@ -12,16 +12,15 @@ uri = MirrorPlugin
 SOURCES += \
     src/settings.cpp \
     src/mirror_plugin.cpp \
-    src/xml.cpp
 
 HEADERS += \
     src/settings.h \
     src/mirror_plugin.h \
-    src/xml.h
 
 OTHER_FILES = \
     qml/qmldir \
-    qml/Main.qml
+    qml/Main.qml \
+    deploy.bat
 
 !equals(_PRO_FILE_PWD_, $$OUT_PWD) {
     copy_qmldir.target = $$OUT_PWD/qmldir

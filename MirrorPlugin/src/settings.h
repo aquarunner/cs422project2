@@ -17,17 +17,21 @@ using namespace std;
 class Settings : public QDeclarativeItem
 {
     Q_OBJECT
-
+    Q_PROPERTY(QString iniPath READ getPath WRITE setPath)
 public:
     explicit Settings (QDeclarativeItem *parent = 0);
 
 private:
     map< string, map<string, string> > settingsFiles;
     vector<string> findSettingsFiles();
+    string iniPath;
+    QString iniPrefix;
 
 public:
-    Q_INVOKABLE void setSetting(QString key, QString val, QString app = "");
-    Q_INVOKABLE QString getSetting(QString key, QString app = "");
+    Q_INVOKABLE QString getPath();
+    Q_INVOKABLE void setPath(QString path = "");
+    Q_INVOKABLE void setSetting(QString key, QString val, QString app = "", QString prefix = "");
+    Q_INVOKABLE QString getSetting(QString key, QString app = "", QString prefix = "");
     Q_INVOKABLE void save(string appfile = "");
 
 private:
