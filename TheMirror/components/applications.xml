@@ -118,7 +118,7 @@
                 <category>DRESSING</category>
                 <icon>Application_Dressing_Dressing.png</icon>
                 <source>../../components/Dressing/dressing.qml</source>
-                <width>12</width>
+                <width>13</width>
                 <height>10</height>
                 <transparent>true</transparent>
                 <border>true</border>

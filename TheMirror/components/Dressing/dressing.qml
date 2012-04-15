@@ -5,14 +5,14 @@ Rectangle {
 
     color: "#00000000"
     anchors.fill: parent
-    anchors.topMargin: 55
+    anchors.topMargin: 50
 
     Rectangle {
         id: dressingPanel
         x: 0
         y: 0
         width: parent.width
-        height: parent.height - 55
+        height: parent.height - 50
         color: "#00000000"
 
         Rectangle {
@@ -364,9 +364,79 @@ Rectangle {
                     width: 246
                     height: 82
                     color: "#00000000"
+                    Rectangle {
+                        x:0
+                        y:5
+                        height:82
+                        width:82
+                        color: "#00000000"
+                        Image {
+                            source: "pictures/clear_btn.png"
+                        }
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                hatImg.source = "pictures/empty.png"
+                                glassImg.source = "pictures/empty.png"
+                                topImg.source = "pictures/empty.png"
+                                earringImg.source = "pictures/empty.png"
+                                necklessImg.source = "pictures/empty.png"
+                            }
+                        }
+
+                    }
+
+                    Rectangle {
+                        x:82
+                        y:5
+                        height:82
+                        width:82
+                        color: "#00000000"
+                        Image {
+                            source: "pictures/recommand_btn.png"
+                        }
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                hatImg.source = "pictures/empty.png"
+                                glassImg.source = "pictures/glass3_b.png"
+                                topImg.source = "pictures/top2_b.png"
+                                earringImg.source = "pictures/earring3_b.png"
+                                necklessImg.source = "pictures/neck2_b.png"
+                            }
+                        }
+
+                    }
+
+
                 }
-                Image {
-                    source: "pictures/dressing_box_frame.png"
+                Rectangle {
+                    x:246
+                    y:0
+                    width: 53
+                    height: dressingPanel.height
+                    color: "#a1a1a1"
+                    Image {
+                        x:0
+                        y:0
+                        source: "pictures/hat_icon.png"
+                    }
+                    Image {
+                        x:0
+                        y:82
+                        source: "pictures/glass_icon.png"
+                    }
+                    Image {
+                        x:0
+                        y:164
+                        source: "pictures/top_icon.png"
+                    }
+                    Image {
+                        x:0
+                        y:246
+                        source: "pictures/earring_icon.png"
+                    }
+
                 }
 
 

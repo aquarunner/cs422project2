@@ -20,7 +20,7 @@ Component {
 
             Rectangle {
             anchors.fill: parent;
-                border.color: "#0f0f0f"; border.width: 6
+                border.color: "#ffffff"; border.width: 3
                 color: "transparent"; radius: 5
                 visible: item.state == "active"
             }
