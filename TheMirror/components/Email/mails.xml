@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mails>
+        <mail>
+                <title>A GENTLE REMINDER</title>
+                <sender>somebody@abc.com</sender>
+                <cc></cc>
+                <body><![CDATA[Good afternoon Citizens of ABC Corporation,
+
+It has been impressed upon me the need for a gentle reminder regarding the sending and receiving of mail at our facility.
+
+Any incoming mail should have the company name on it, in addition to the name of the actual recipient.  Let me write that again this way: Any incoming mail should have the COMPANY NAME on it in addition to the NAME OF THE RECIPIENT.  I'm not shouting at you, the large caps were added for emphasis.  I only hope to stress the importance of this information on incoming mail because we have had instances where the post office has, in their ongoing effort to decrease mis-deliveries, returned mail intended for us to the sender because it lacked a company name.  While we still receive mail for other companies in the building, the post office has returned invoices, statements and other materials intended for us due to a lack of a company name.  So please emphasize all potential senders the importance of including our proud company name along with your own.
+
+Conversely, we have witnessed some peculiar things while handling outgoing mail.  Not wishing to draw undue attention to any particular individuals, let's just say matter of factly that it's okay to remove the backing of the mailing label and apply the sticky side to the top of the package that you are sending.  Taping the label to the package defeats the intended purpose of the nice adhesive that's been placed there for us.  The following formula has been tested and proven successful: place contents into packaging, seal package, apply label with recipient information to the package face, attach completed shipping form.  
+
+If those steps can be followed, we can almost assure, barring any interference from God or human failure, that your goods will reach the desired location within the desired time.
+
+Thank you as always for your cooperation.  Stay tuned to this screen. ]]></body>
+        </mail>
+        
+        <mail>
+                <title>Your sample proposal</title>
+                <sender>Melissa_Witt@abc.com</sender>
+                <cc></cc>
+                <body><![CDATA[Chris:
+
+I received your sample proposal today.  While I was very happy to get it, I'm disappointed in its content.  I don't see any indication that you did any of the things that we were going to do for this project.  There's no outline at the beginning, no indication of the features that are located within, and no technology case at the end of the proposal as we discussed.  In fact, I don't see any web material anywhere in the proposal.  You still have as a boxed-out feature the "Social Responsibility" box on page 25.  According to my notes, you were to take these out, integrate them into the discussion, and call them out with an icon.  Do you think the section on Motorola is still valid, considering it's recent ups and downs?  I know Mike called and received a temporary password to Wall Street Journal information to use to replace this.  Mike, did you not share it with the rest of the group?  
+
+Did I miss something?  Are we all "on the same page?"  I'm trying to help all of you write a proposal that knocks their socks off.  Your colleagues gave you the feedback to do it.  According to what I understood, the plan was agreed upon at the meeting, of which Andy gave us all a recap memo.  I'm sorry I can't write it for you.
+
+I would appreciate some feedback here from all of you. ]]></body>
+        </mail>
+        
+        <mail>
+                <title>Project Team Volunteers Needed</title>
+                <sender>somebody@abc.com</sender>
+                <cc>boss@abc.com</cc>
+                <body><![CDATA[Using the document created by Reed McKenzie’s Web Smart Strategy team, we have a solid foundation from which to build a successful Web Knowledge Curriculum for the DPI group.  Building on this backbone, I would like to find a group of people to help me design a curriculum that excels in it's creativity, design and functionality.
+
+As a volunteer for this project, you will have the opportunity to determine the solution that keeps deployment on the forefront of web technology.  For the purpose of the project, I would like to get the widest possible participation from the teams within DPI.  As a result, please volunteer yourself, or recommend someone who can truly add value; someone whom you trust to design your professional development.  I'd like a participant from each group, Desktop, Functions, ABA and BPA as well as balanced representation between Chicago and Sarasota.
+
+If you'd like to think HUGE, present ideas that are outrageous, and develop solutions that are unparalleled, you belong on this team.  Let's make an impact together.  Please respond to me via lotus notes by Monday, 16 October, 2000. ]]></body>
+        </mail>
+        
+        <mail>
+                <title>What is the status of the pilot timelines?</title>
+                <sender>Michael@abc.com</sender>
+                <cc></cc>
+                <body><![CDATA[Irene,
+
+What is the status of the pilot timelines?  Last week you mentioned that you were waiting for Henry to send you the development timeline for the pilot, and that you were working on communication and planning documents (including timelines) for the pilot.  Your assistance in expediting this information would be appreciated.
+
+I am planning for the pilot in Asia Pacific and need these dates to initiate discussion with the countries.  The pilot will be a topic of discussion on our weekly status calls next week. 
+
+Thanks,
+
+Michael]]></body>
+        </mail>
+        
+        <mail>
+                <title>Clarification</title>
+                <sender>Frank@abc.com</sender>
+                <cc>Henry_Moyle@abc.com</cc>
+                <body><![CDATA[Joe and Henry,
+
+The following note from Larry Harris is related to an HRIS issue in Peru with Bill Code/Cost Code setup.  This is the same issue (Venezuela) I forwarded to both of you on 03 August related to HRIS setup for the new fiscal year.  The countries in Latin America are very concerned because there is not much time left before the end of the fiscal year to make changes in HRIS.  Can you help clarify the necessary steps to solve these problems?
+
+Thanks,
+
+Frank]]></body>
+        </mail>
+        
+</mails>
