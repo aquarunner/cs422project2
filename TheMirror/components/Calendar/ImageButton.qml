@@ -2,10 +2,10 @@ import QtQuick 1.0
 
 Item {
     id: button
-    property string current: "imgs/textbutton.png"
-    property string background: "imgs/textbutton.png"
-    property string pressed: "imgs/textbutton_pressed.png"
-    property string focused: "imgs/textbutton_focused.png"
+    property string current: "../imgs/textbutton.png"
+    property string background: "../imgs/textbutton.png"
+    property string pressed: "../imgs/textbutton_pressed.png"
+    property string focused: "../imgs/textbutton_focused.png"
     signal buttonClicked
     // width: background.width; height: background.height
     height: monthHandler.height

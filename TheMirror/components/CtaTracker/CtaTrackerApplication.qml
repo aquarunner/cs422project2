@@ -156,7 +156,7 @@ Rectangle {
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
                 visible: existingRouteModel.count == 0
-                text: "Press [Add track] to add. "
+                text: "Press [Add route] to add. "
                 font.pixelSize: 22
                 font.bold: true
                 font.family: "Arial"
@@ -195,7 +195,7 @@ Rectangle {
                 anchors.topMargin: 15
                 anchors.left: parent.left
                 anchors.leftMargin: 20
-                label: "Add track"
+                label: "Add route"
 
                 onClicked: {
                     routesList.currentSelection = "";

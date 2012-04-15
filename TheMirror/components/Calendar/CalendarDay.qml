@@ -8,8 +8,8 @@ Rectangle {
     property bool currentDay: false
     property alias current: background.source
 
-    property string background: button.currentDay ? "imgs/calendar_day_current.png" : "imgs/calendar_day_unset.png"
-    property string pressed: "imgs/calendar_day_to_set.png"
+    property string background: button.currentDay ? "../imgs/calendar_day_current.png" : "../imgs/calendar_day_unset.png"
+    property string pressed: "../imgs/calendar_day_to_set.png"
 
     signal buttonClicked(int index)
 
@@ -90,7 +90,7 @@ Rectangle {
     Image {
         id: eventIndicator
         visible: event != ""
-        source: "imgs/event_indicator.png"
+        source: "../imgs/event_indicator.png"
         anchors.right: parent.right
         anchors.top: parent.top
         anchors.bottom: parent.bottom

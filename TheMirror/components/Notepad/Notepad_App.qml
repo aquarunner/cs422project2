@@ -131,6 +131,14 @@ Rectangle{
             anchors.leftMargin: 2
             label: "New"
 
+            Image {
+                anchors.left: parent.left
+                anchors.leftMargin: 5
+                source: "../imgs/add.png"
+                width: parent.height - 2
+                height: parent.height - 2
+            }
+
             onClicked: {
                 if(thetext.text.length > 0)
                 {
@@ -149,6 +157,15 @@ Rectangle{
             anchors.rightMargin: 2
             anchors.leftMargin: 2
             label: "Delete"
+
+            Image {
+               anchors.left: parent.left
+               anchors.leftMargin: 5
+               source: "../imgs/subtract.png"
+               width: parent.height - 2
+               height: parent.height - 2
+               visible: !eventArea.inAddNewEventPage
+           }
 
             onClicked: {
                 if(numNotes > 0) // Only if there is something to remove

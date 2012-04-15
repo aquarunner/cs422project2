@@ -14,10 +14,10 @@ Item {
 
     ImageButton {
         id: prevBtn
-        current: "imgs/btn_prev.png"
-        background: "imgs/btn_prev.png"
-        pressed: "imgs/btn_prev_pressed.png"
-        focused: "imgs/btn_prev.png"
+        current: "../imgs/btn_prev.png"
+        background: "../imgs/btn_prev.png"
+        pressed: "../imgs/btn_prev_pressed.png"
+        focused: "../imgs/btn_prev.png"
         anchors.left: parent.left
         // anchors.leftMargin: -2
         onButtonClicked: monthHandler.previousClicked()
@@ -25,7 +25,7 @@ Item {
 
     Image {
         id: calendarStringImg
-        source: "imgs/calendar_string_bg.png"
+        source: "../imgs/calendar_string_bg.png"
         // height: 66; width: 211
         height: monthHandler.height
         width: monthHandler.width/5*3
@@ -44,10 +44,10 @@ Item {
 
     ImageButton {
         id: nextBtn
-        current: "imgs/btn_next.png"
-        background: "imgs/btn_next.png"
-        pressed: "imgs/btn_next_pressed.png"
-        focused: "imgs/btn_next.png"
+        current: "../imgs/btn_next.png"
+        background: "../imgs/btn_next.png"
+        pressed: "../imgs/btn_next_pressed.png"
+        focused: "../imgs/btn_next.png"
         anchors.left: calendarStringImg.right
         onButtonClicked: monthHandler.nextClicked()
     }

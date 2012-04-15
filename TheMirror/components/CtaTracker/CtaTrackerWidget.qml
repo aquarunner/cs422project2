@@ -34,7 +34,7 @@ Rectangle {
         // height: 20
         // width: parent.width
 
-        text: "CTA Bus Trakcer"
+        text: "CTA Bus Tracker"
         font.pixelSize: 18
         font.bold: true
         font.family: "Arial"
