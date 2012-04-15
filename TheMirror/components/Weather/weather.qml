@@ -109,6 +109,7 @@ Rectangle {
                     height: weatherCurrentCondition.height;
                     model: weatherCurrentConditionXmlModel
                     delegate: weatherCurrentConditionPanelDelegate
+                    interactive: false
                 }
 
             }
@@ -375,6 +376,7 @@ Rectangle {
                     height: weatherCurrentCondition.height;
                     model: weatherForecastXmlModel
                     delegate: weatherForecastPanelDelegate
+                    interactive: false
                 }
 
             }
