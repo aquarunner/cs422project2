@@ -48,7 +48,7 @@ Rectangle {
             y: 0
             width: healthPanel.width;
             height: healthPanel.height;
-            color: "#ffffff"
+            color: "#00000000"
 
             Rectangle {
                 x: healthPanel.width - 110

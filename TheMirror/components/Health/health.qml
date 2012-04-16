@@ -13,7 +13,7 @@ Rectangle {
         y: 0
         width: parent.width
         height: parent.height - 50
-        color: "#f0f0f0"
+        color: "#00000000"
 
         Rectangle {
             x: 0
