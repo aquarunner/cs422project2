@@ -281,8 +281,8 @@ Rectangle {
 
                 MouseArea {
 
-                    property int original_x;    // Original position
-                    property int original_y;
+                    property int original_x: -1;    // Original position
+                    property int original_y: -1;
                     property int deltaX;
                     property int deltaY;
 
@@ -329,7 +329,7 @@ Rectangle {
                             widgetContainer.scale = 1.5
                         }
                         componentDisplayArea.interactive = true;
-                        if(!removeOut) {
+                        if(!removeOut && original_x!=-1 &&original_y!=-1) {
                             widgetContainer.x = original_x;
                             widgetContainer.y = original_y;
                         }
@@ -346,7 +346,7 @@ Rectangle {
                         }
 
                         componentDisplayArea.interactive = true;
-                        if(!removeOut) {
+                        if(!removeOut && original_x!=-1 &&original_y!=-1) {
                             widgetContainer.x = original_x;
                             widgetContainer.y = original_y;
                         }
