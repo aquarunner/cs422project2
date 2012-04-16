@@ -50,24 +50,7 @@ Rectangle {
             height: healthPanel.height;
             color: "#00000000"
 
-            Rectangle {
-                x: healthPanel.width - 110
-                y: 20
-                width: 80
-                height: 80
-                color: "#00000000"
-                Image {
-                    source: "pictures/reportIcon.png"
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        healthM.visible = false
-                        healthR.visible = true
-                    }
-                }
 
-            }
 
             Rectangle {
                 x: 60

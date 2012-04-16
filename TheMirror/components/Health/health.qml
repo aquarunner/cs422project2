@@ -83,6 +83,34 @@ Rectangle {
 
     }
 
+    Button {
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 10
+        anchors.right: parent.right
+        anchors.rightMargin: 200
+        label: i18n.report
+
+        onClicked: {
+            healthM.visible = false
+            healthR.visible = true
+        }
+
+    }
+
+    Button {
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 10
+        anchors.right: parent.right
+        anchors.rightMargin: 380
+        label: i18n.monitor
+
+        onClicked: {
+            healthM.visible = true
+            healthR.visible = false
+        }
+
+    }
+
 
 
 

@@ -52,4 +52,7 @@ Item {
     property string trafficSearchText: "输入地址..."
     property string trafficHelpText: "<html><p>Traffic Watch v1.0</p><p>Enter a search location into the search bar to reveal traffic for that region on the map.</p><p>Traffic will be shown only for supported locations, courtesy of the Google maps plugin API.</p><p>For support with the Google maps plugin contact Google.  For Traffic Watch support contact support@microsoft.com</p></html>"
     property string trafficClearRecent: "删除最近的项目"
+
+    property string report: "报告"
+    property string monitor: "数据"
 }
