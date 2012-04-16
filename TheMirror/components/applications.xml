@@ -154,6 +154,7 @@
                 <transparent>false</transparent>
                 <border>true</border>
         </application>
+        <!--
         <application>
                 <name>Help Demo</name>
                 <category>MISC</category>
@@ -164,7 +165,7 @@
                 <transparent>false</transparent>
                 <border>true</border>
         </application>
-        <!--
+
         <application>
                 <name>App. Manager</name>
                 <category>MISC</category>

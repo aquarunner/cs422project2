@@ -76,12 +76,12 @@ Rectangle {
             back.viewID = settingsSubMenuList
             settingsSubMenuList.model = null;
 
-        }else if(category == "HELP") {
-            applicationLoder.title = name;
-            applicationLoder.iconName = icon;
+//        }else if(category == "HELP") {
+//            applicationLoder.title = name;
+//            applicationLoder.iconName = icon;
 
-            back.viewID = settingsSubMenuList
-            settingsSubMenuList.model = aboutAndHelpSubMenuModel;
+//            back.viewID = settingsSubMenuList
+//            settingsSubMenuList.model = aboutAndHelpSubMenuModel;
 
         } else { // invoke new page
             applicationCanvas.isApplicationAreaTransparent = true;

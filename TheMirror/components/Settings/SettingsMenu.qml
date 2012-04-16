@@ -97,7 +97,7 @@ Rectangle {
             settingsMainMenuModel.append( { "category": "LANGUAGE", "icon": "SettingsMenu_Language.png", "name": i18n.select_language, })
             settingsMainMenuModel.append( { "category": "WIFI", "icon": "SettingsMenu_Wifi.png", "name": i18n.wifi_settings, })
             settingsMainMenuModel.append( { "category": "DATE", "icon": "SettingsMenu_Date.png", "name": i18n.date_and_time, })
-            settingsMainMenuModel.append( { "category": "HELP", "icon": "SettingsMenu_Help.png", "name": i18n.about_and_help, })
+            // settingsMainMenuModel.append( { "category": "HELP", "icon": "SettingsMenu_Help.png", "name": i18n.about_and_help, })
         }
     }
 
@@ -113,16 +113,16 @@ Rectangle {
         }
     }
 
-    ListModel {
-        id: aboutAndHelpSubMenuModel;
+//    ListModel {
+//        id: aboutAndHelpSubMenuModel;
 
-        Component.onCompleted: { reload() }
-        function reload() {
-            aboutAndHelpSubMenuModel.clear();
-            aboutAndHelpSubMenuModel.append( { "category": "HELP_ABOUT", "name": i18n.about, "icon": "", "source": ""})
-            aboutAndHelpSubMenuModel.append( { "category": "HELP_HELP", "name": i18n.help, "icon": "", "source": ""})
-        }
-    }
+//        Component.onCompleted: { reload() }
+//        function reload() {
+//            aboutAndHelpSubMenuModel.clear();
+//            aboutAndHelpSubMenuModel.append( { "category": "HELP_ABOUT", "name": i18n.about, "icon": "", "source": ""})
+//            aboutAndHelpSubMenuModel.append( { "category": "HELP_HELP", "name": i18n.help, "icon": "", "source": ""})
+//        }
+//    }
 
     ListModel {
         id: selectLanguageRadioMenuModel;
@@ -166,7 +166,7 @@ Rectangle {
                 mainScreen.language = settingsRadioSelectionList.sourceName;
                 settingsMainMenuModel.reload();
                 manageProfilesSubMenuModel.reload();
-                aboutAndHelpSubMenuModel.reload();
+                // aboutAndHelpSubMenuModel.reload();
             } else if(settingsRadioSelectionList.settingOption == "current_wifi"
                       && settingsRadioSelectionList.sourceName !== undefined) {
                 settings.setSetting("current_wifi", settingsRadioSelectionList.currentSelection, "settings", "./components/Settings/");
