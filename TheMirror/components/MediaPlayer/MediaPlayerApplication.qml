@@ -72,13 +72,11 @@ Rectangle {
     VisualItemModel {
         id: pagesModel
 
-        Rectangle {
+        Mp3Panel {
             id: mp3Page
 
             width: pagesListView.width
             height: pagesListView.height
-
-            color: "skyblue"
         }
 
         Rectangle {

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<music>
+        <album>
+                <albumName>Titanic Collector's Anniversary Edition</albumName>
+                <category>DAILY</category>
+                <icon>Application_Daily_Calendar.png</icon>
+                <source>../../components/Calendar/CalendarApplication.qml</source>
+                <width>10</width>
+                <height>8</height>
+                <transparent>false</transparent>
+                <border>true</border>
+        </album>
+
+</music>

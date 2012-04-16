@@ -18,7 +18,7 @@ Rectangle {
     gradient: Gradient {
         GradientStop { position: 0.0; color: "#8C8F8C" }
         GradientStop { position: 0.2; color: "lightgrey" }
-        GradientStop { position: 0.9; color: selected? "darkgrey": "white" }
+        GradientStop { position: 0.98; color: selected? "darkgrey": "white" }
         GradientStop { position: 1.0; color: "#8C8F8C" }
     }
     scale: mouseArea.pressed? 0.9: 1
