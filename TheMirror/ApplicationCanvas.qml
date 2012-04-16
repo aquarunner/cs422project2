@@ -34,6 +34,9 @@ Rectangle {
         color: "darkgrey"
         Image { source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3 }
         opacity: 0.8
+        MouseArea {
+            anchors.fill: parent
+        }
     }
 
     Rectangle {
@@ -47,6 +50,9 @@ Rectangle {
         color: "darkgrey"
         Image { source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3 }
         opacity: 0.8
+        MouseArea {
+            anchors.fill: parent
+        }
     }
 
     Rectangle {
@@ -62,6 +68,9 @@ Rectangle {
         color: "darkgrey"
         Image { source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3 }
         opacity: 0.8
+        MouseArea {
+            anchors.fill: parent
+        }
     }
 
     Rectangle {
@@ -77,6 +86,9 @@ Rectangle {
         color: "darkgrey"
         Image { source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3 }
         opacity: 0.8
+        MouseArea {
+            anchors.fill: parent
+        }
     }
 
     //    Rectangle {
@@ -109,10 +121,10 @@ Rectangle {
         border.width: showBorder? 5 : 0
 
         color: isApplicationAreaTransparent? "#00000000" : "darkgrey"
-        Image {
-            source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3
-            visible: !isApplicationAreaTransparent
-        }
+//        Image {
+//            source: "icons/stripes.png"; fillMode: Image.Tile; anchors.fill: parent; opacity: 0.3
+//            visible: !isApplicationAreaTransparent
+//        }
         opacity: 0.8
     }
 
