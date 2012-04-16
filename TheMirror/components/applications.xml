@@ -154,6 +154,7 @@
                 <transparent>false</transparent>
                 <border>true</border>
         </application>
+        <!--
         <application>
                 <name>App. Manager</name>
                 <category>MISC</category>
@@ -164,5 +165,6 @@
                 <transparent>true</transparent>
                 <border>true</border>
         </application>
+        -->
 
 </applications>
