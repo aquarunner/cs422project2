@@ -134,6 +134,8 @@ Rectangle {
 
         color: dragBarMouseArea.startDrag?  Qt.darker("grey", 1.5)  : "grey"
         radius: 3
+
+
     }
 
     Loader {
@@ -163,6 +165,27 @@ Rectangle {
 
         property int last_x;
         property int last_y;
+
+        Image {
+            source: "icons/help.png"
+            width: 40
+            height: 40
+            smooth: true
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+            anchors.verticalCenter: parent.verticalCenter
+            scale: helpMouseArea.pressed? 0.9: 1
+
+            MouseArea {
+                id: helpMouseArea
+                anchors.fill: parent
+                onClicked: {
+                    if(componentLoder.item.help !== undefined) {
+                        componentLoder.item.help();
+                    }
+                }
+            }
+        }
 
         onPressAndHold: {
 

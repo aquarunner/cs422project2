@@ -24,6 +24,10 @@ Rectangle {
         id: xmlApplicationLoader
     }
 
+    function help() {
+
+    }
+
     Image {
         id: focusFrame
         source: "icons/focus.png"
