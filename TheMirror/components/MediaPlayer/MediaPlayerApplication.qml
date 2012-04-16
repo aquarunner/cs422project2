@@ -65,7 +65,7 @@ Rectangle {
         boundsBehavior: Flickable.StopAtBounds
         // flickDeceleration: 5000
         highlightFollowsCurrentItem: true
-        highlightMoveDuration:100
+        highlightMoveDuration:240
         highlightRangeMode: ListView.NoHighlightRange
     }
 

@@ -20,6 +20,15 @@ Rectangle {
         border.width: 1
         height: 4
         color: "grey"
+
+        MouseArea {
+            anchors.fill: parent
+            anchors.topMargin: -10
+            anchors.bottomMargin: -10
+            onClicked: {
+                currentTime = mouseX/progressBar.width * totalTime
+            }
+        }
     }
 
     Rectangle {
