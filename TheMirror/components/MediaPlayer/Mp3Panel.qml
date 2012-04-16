@@ -377,7 +377,31 @@ Rectangle {
                 id: albumDelegateMouseArea
                 anchors.fill: parent
 
-                onClicked: {
+//                onClicked: {
+//                    if(listView.showAlbum) {
+//                        listView.showAlbum = false
+//                        songModel.albumName = albumName;
+
+//                        mp3Player.album = albumName;
+//                        mp3Player.albumCover = albumCover;
+
+//                        listView.model = songModel
+
+//                        // stop
+//                        playTimer.stop();
+//                        playing = false;
+//                        progreebar.currentTime = 0;
+
+//                        mp3Player.songName = "";
+//                        mp3Player.artist = "";
+//                        mp3Player.songLenght = 0;
+
+//                        listView.selectIndex =-1;
+//                    }
+//                }
+
+                onClicked:/*onDoubleClicked*/ {
+
                     if(listView.showAlbum) {
                         listView.showAlbum = false
                         songModel.albumName = albumName;
@@ -398,10 +422,7 @@ Rectangle {
 
                         listView.selectIndex =-1;
                     }
-                }
-
-                onDoubleClicked: {
-                    if(!listView.showAlbum)
+                    else
                     {
                         click();
                     }
