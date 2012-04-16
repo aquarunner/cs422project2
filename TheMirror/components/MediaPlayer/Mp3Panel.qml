@@ -5,10 +5,10 @@ Rectangle {
     id: mp3Player
 
     property bool playing: false
-    property string songName: "Maenam";
-    property string artist: "Jami Sieber";
-    property string album: "Hidden Sky";
-    property string albumCover: "";
+    property string songName: "My Heart Will Go On";
+    property string artist: "Celine Dion";
+    property string album: "Titanic";
+    property string albumCover: "albumCovers/titanic.jpg";
     property int songLenght: 45;
 
     radius: 5
@@ -108,7 +108,7 @@ Rectangle {
         Rectangle {
             id: musicInfo
             anchors.left: seekForward.right
-            anchors.right: parent.right
+            anchors.right: albumCoverImage.left
             anchors.rightMargin: 10
             anchors.top: parent.top
             anchors.bottom: parent.bottom
@@ -137,9 +137,24 @@ Rectangle {
                 anchors.rightMargin: 10
                 anchors.top: musicInfo.top
                 anchors.topMargin: 10
-                text: artist + " - " + songName /*+ " [" +album +"] "*/ + " ("+converSecondsIntoTime(songLenght)+")"
-                font.pixelSize: 15
+                anchors.left: currentTimeText.right
+                anchors.leftMargin: 20
+
+                text: artist + " - " + songName
+                font.pixelSize: 12
                 font.bold: true
+                wrapMode: Text.Wrap
+
+            }
+
+            Text {
+                id: totalTimeText
+                text: converSecondsIntoTime(songLenght)
+                font.pixelSize: 12
+                font.bold: true
+                anchors.right: musicInfo.right
+                anchors.rightMargin: 10
+                anchors.bottom: progreebar.top
             }
 
             ProgressBar {
@@ -154,6 +169,21 @@ Rectangle {
                 totalTime: songLenght
                 currentTime: 0
             }
+        }
+
+        Image {
+            id: albumCoverImage
+            source: albumCover
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+//            anchors.top: parent.top
+//            anchors.bottom: parent.bottom
+            width: 80
+            height: 80
+            fillMode: Image.PreserveAspectCrop
+            smooth: true
+
+
         }
     }
 
