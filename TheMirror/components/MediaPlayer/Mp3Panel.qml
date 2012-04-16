@@ -345,7 +345,7 @@ Rectangle {
         property int selectIndex: -1;
 
         anchors.top: row_2.bottom
-        // anchors.topMargin: 10
+        anchors.topMargin: -20
         anchors.left: parent.left
         anchors.leftMargin: 10
         anchors.right: parent.right
