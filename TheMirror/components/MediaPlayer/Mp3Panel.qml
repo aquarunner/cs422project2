@@ -317,6 +317,7 @@ Rectangle {
         id: listView
 
         property bool showAlbum: true
+        property int selectIndex: -1;
 
         anchors.top: row_2.bottom
         // anchors.topMargin: 10
@@ -342,7 +343,7 @@ Rectangle {
                 anchors.left: parent.left
                 anchors.leftMargin: 10
                 // anchors.horizontalCenter: parent.horizontalCenter
-                text: listView.showAlbum? albumName: songName
+                text: listView.showAlbum? albumName: songName + " - " + artist
             }
 
             MouseArea {
@@ -385,6 +386,9 @@ Rectangle {
                         // then start
                         playTimer.start();
                         playing = true;
+
+
+
                     }
                 }
             }
