@@ -57,6 +57,8 @@ Rectangle {
     property string label
     property color buttonColor: "#444444"
 
+    property alias pixelSize: buttonText.font.pixelSize
+
     MouseArea {
         id: mouseRegion
         smooth: true
@@ -68,6 +70,7 @@ Rectangle {
     }
 
     Text {
+        id: buttonText
         color: "white"
         font.bold: true
         font.pixelSize: 20
