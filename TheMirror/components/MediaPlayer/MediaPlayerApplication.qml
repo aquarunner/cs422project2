@@ -98,6 +98,24 @@ Rectangle {
         }
     }
 
+    Image {
+        id: voiceControl
+        source: "icons/voiceControl.png"
+        width: voiceControlButton.pressed? 45: 50
+        height: voiceControlButton.pressed? 45: 50
+        smooth: true
+
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 5
+        anchors.left: parent.left
+        anchors.leftMargin: 40
+
+        MouseArea {
+            id: voiceControlButton
+            anchors.fill: parent
+        }
+    }
+
     Button {
         id: exit
 
