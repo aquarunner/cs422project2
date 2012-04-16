@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<health>
+        <monitor>
+                <sleepHour>8</sleepHour>
+                <sleepHour_w> </sleepHour_w>
+
+                <height_t>height</height_t>
+                <height>5.84</height>
+                <height_w> </height_w>
+
+                <weight_t>weight</weight_t>
+                <weight>200</weight>
+                <weight_w>HIGH!</weight_w>
+
+                <temperature_t>body temperature</temperature_t>
+                <temperature>98.6</temperature>
+                <temperature_w>NORMAL</temperature_w>
+
+                <heartBeat_t>heart beat rate</heartBeat_t>
+                <heartBeat>65</heartBeat>
+                <heartBeat_w>NORMAL</heartBeat_w>
+                <heartBeatImg>heartBeatImg.png</heartBeatImg>
+
+                <caloriesBurn_t>Calorieis burned</caloriesBurn_t>
+                <caloriesBurn>2000</caloriesBurn>
+                <caloriesBurn_w>NORMAL</caloriesBurn_w>
+
+                <caloriesAte_t>Calories ate</caloriesAte_t>
+                <caloriesAte>2400</caloriesAte>
+                <caloriesAte_w>NORMAL</caloriesAte_w>
+        </monitor>
+
+</health>
