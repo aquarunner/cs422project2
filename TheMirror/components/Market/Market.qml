@@ -20,12 +20,14 @@ Rectangle {
             anchors.fill: parent
 
             // Filter Button
-            MarketButton {
+            Button {
                 id: filterButton
                 width: 300
                 property string curFilter: "All"
                 //property string buttonLabel: i18n.marketCategoryButtonText
-                text: appList.count + i18n.marketCategoryButtonText + curFilter
+                //text: appList.count + i18n.marketCategoryButtonText + curFilter
+                label: appList.count + i18n.marketCategoryButtonText + curFilter
+                pixelSize: 12
 
                 anchors.margins: 10
                 anchors.left: parent.left
@@ -87,10 +89,12 @@ Rectangle {
                     Item {
                         width: filterButton.width
                         height: filterList.itemHeight
-                        MarketButton {
+                        Button {
                             anchors.horizontalCenter: parent.horizontalCenter
                             anchors.fill: parent
-                            text: category
+                            pixelSize: filterButton.pixelSize
+                            //text: category
+                            label: category
                             onClicked: {
                                 filterList.state = ""
                                 filterButton.curFilter = category
@@ -126,7 +130,7 @@ Rectangle {
 
                 Behavior on height {
                     NumberAnimation {
-                        duration: 200;
+                        duration: 100;
                     }
                 }
 
