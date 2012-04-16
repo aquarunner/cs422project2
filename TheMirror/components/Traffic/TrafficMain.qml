@@ -147,6 +147,7 @@ Item {
     }
 
     Button {
+        visible: false;
         id: helpButton
         label: (helpButton.width < 50 )?"?":i18n.help
         anchors.right: closeButton.left

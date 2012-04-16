@@ -6,6 +6,10 @@ Item {
     anchors.topMargin: 55
     clip: true
 
+    function help() {
+        trafficFlip.state = "back";
+    }
+
     Flipable {
         id: trafficFlip
         anchors.fill: parent
