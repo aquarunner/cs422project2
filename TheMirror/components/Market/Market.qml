@@ -9,8 +9,6 @@ Rectangle {
     clip: true
 
     property string bgColor: "#00000000"
-    //property string bgColor: "khaki"
-
 
     Flipable {
         id: marketFlip
@@ -26,7 +24,8 @@ Rectangle {
                 id: filterButton
                 width: 300
                 property string curFilter: "All"
-                text: qsTr("%1 Item(s) in Category:  %2").arg(appList.count).arg(curFilter)
+                //property string buttonLabel: i18n.marketCategoryButtonText
+                text: appList.count + i18n.marketCategoryButtonText + curFilter
 
                 anchors.margins: 10
                 anchors.left: parent.left
@@ -363,7 +362,7 @@ Rectangle {
                 radius: 5
                 TextEdit {
                     id: searchEdit
-                    text: "Search..."
+                    text: i18n.search
                     font.italic: true
                     anchors.right: parent.right
                     width: parent.width - 10
@@ -374,7 +373,7 @@ Rectangle {
                         if (searchEdit.activeFocus) {
                             text = ""
                         } else
-                            text = "Search..."
+                            text = i18n.search
                     }
                 }
             }
@@ -399,7 +398,7 @@ Rectangle {
                 anchors.bottomMargin: 10
                 anchors.right: parent.right
                 anchors.rightMargin: 20
-                label: "Close"
+                label: i18n.close
 
                 onClicked: {
                     mainScreen.showMainMenuBar = true;
@@ -429,7 +428,7 @@ Rectangle {
                 anchors.bottomMargin: 10
                 anchors.right: parent.right
                 anchors.rightMargin: 20
-                label: "Back"
+                label: i18n.done
 
                 onClicked: {
                     marketFlip.state = ''
