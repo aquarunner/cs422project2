@@ -366,7 +366,7 @@ Rectangle {
                                 last_y = currentY;
                             }
 
-                            var offset = (type == "SHORTCUT")? 100: 200;
+                            var offset = (type == "SHORTCUT")? 100: 150;
                             if(Math.sqrt((currentX-original_x)*(currentX-original_x) + (currentY-original_y)*(currentY-original_y)) > offset
                                     && componentIndex != -1) {
                                 console.log("Index["+componentIndex+"], let's go! ")

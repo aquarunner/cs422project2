@@ -38,4 +38,18 @@ Item {
     property string next: "下一步"
     property string please_face_the_mirror_then_take_two_shots: "请面对镜子，照两张相"
     property string enter_a_pin_code: "请设置Pin码"
+
+    property string search: "搜索..."
+    property string close: "关闭"
+
+    property string marketCategoryButtonText: " 可用应用: "
+    property string marketHelpText: "<html><p>Market v1.0</p><p>The app market allows you to browse through applications available for download through the cloud.</p><p>Instructions: use the description text of each application to determine if it is a feature you like, and then press the Install button.</p><p>Send gripes, suggestions and praise to support@microsoft.com</p><p>Thank you - Market App Dev Team.</p></html>"
+
+    property string galleryHelpText: "<html><p>Touch any image icon to view it.</p><p>Press and hold an image for additional options.</p></html>"
+    property string galleryRenameButtonText: "重命名"
+    property string galleryDeleteButtonText: "删除"
+
+    property string trafficSearchText: "输入地址..."
+    property string trafficHelpText: "<html><p>Traffic Watch v1.0</p><p>Enter a search location into the search bar to reveal traffic for that region on the map.</p><p>Traffic will be shown only for supported locations, courtesy of the Google maps plugin API.</p><p>For support with the Google maps plugin contact Google.  For Traffic Watch support contact support@microsoft.com</p></html>"
+    property string trafficClearRecent: "删除最近的项目"
 }
