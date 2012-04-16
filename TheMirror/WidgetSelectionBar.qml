@@ -355,6 +355,7 @@ Rectangle {
                     }
                     onPositionChanged: {
                         if(startDrag) {
+
                             var currentX = mouseX - deltaX;
                             var currentY = mouseY - deltaY;
 
@@ -369,9 +370,15 @@ Rectangle {
                             var offset = (type == "SHORTCUT")? 100: 150;
                             if(Math.sqrt((currentX-original_x)*(currentX-original_x) + (currentY-original_y)*(currentY-original_y)) > offset
                                     && componentIndex != -1) {
-                                console.log("Index["+componentIndex+"], let's go! ")
+                                // console.log("Index["+componentIndex+"], let's go! ")
                                 // console.log((widgetContainer.x + delta_widgetContainer_widgetGrid_x) + "/" + (widgetContainer.y + delta_widgetContainer_widgetGrid_y));
-                                var indexInGrid = grid.indexAt(widgetContainer.x + delta_widgetContainer_widgetGrid_x, widgetContainer.y + delta_widgetContainer_widgetGrid_y);
+
+                                var xx = (widgetContainer.x + delta_widgetContainer_widgetGrid_x) % componentDisplayArea.width
+                                var indexInGrid = grid.indexAt(xx, widgetContainer.y + delta_widgetContainer_widgetGrid_y);
+                                if(indexInGrid == -1) {
+                                    return;
+                                }
+
                                 // console.log("indexInGrid: " +indexInGrid)
                                 // printObjectInfo(widgetCanvas.gridModel.get(0))
                                 // printObjectInfo(widgetCanvas.gridModel.get(indexInGrid))
