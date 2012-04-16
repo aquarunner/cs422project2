@@ -1,0 +1,12 @@
+## qmldir file to specify plugin location
+
+## Uncomment below to use the debug version
+plugin MirrorPlugin plugins/debug
+
+## Uncomment below to use the release version
+#plugin MirrorPlugin plugins/release 
+
+## Uncomment below to allow the plugin location 
+## to be specified on command line.
+## Command line: qmlviewer.exe -P [folder path]
+#plugin MirrorPlugin
