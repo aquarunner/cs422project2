@@ -208,6 +208,17 @@ Rectangle {
             anchors.leftMargin: 45
             width: 50
             height: 50
+
+            onClicked: {
+                if(listView.selectIndex!=-1 && !listView.showAlbum) {
+                    var newIndex = (listView.selectIndex - 1)%listView.count
+                    listView.selectIndex = newIndex==-1? listView.count-1: newIndex
+                    // console.log(listView.selectIndex)
+                    listView.currentIndex = listView.selectIndex;
+                    listView.currentItem.mouseArea.click();
+                }
+            }
+
         }
 
         PlayerButton {
@@ -231,6 +242,20 @@ Rectangle {
             icon: "icons/skip-forward.png"
             width: 50
             height: 50
+
+            function printObjectInfo(modelObject) {
+                for(var prop in modelObject) {
+                    console.debug("name: " + prop + "; value: " + modelObject[prop])
+                }
+            }
+
+            onClicked: {
+                if(listView.selectIndex!=-1 && !listView.showAlbum) {
+                    listView.selectIndex = (listView.selectIndex + 1)%listView.count
+                    listView.currentIndex = listView.selectIndex;
+                    listView.currentItem.mouseArea.click();
+                }
+            }
         }
 
         Rectangle {
@@ -331,11 +356,13 @@ Rectangle {
 
         delegate: Rectangle {
 
+            property alias mouseArea: albumDelegateMouseArea
+
             id: albumDelegate
             width: listView.width
             height: 40
             radius: 2
-            color: albumDelegateMouseArea.pressed? "lightgrey": "white"
+            color: albumDelegateMouseArea.pressed|| (listView.selectIndex==index && !listView.showAlbum)? "lightgrey": "white"
             border.width: 2
 
             Text {
@@ -368,28 +395,33 @@ Rectangle {
                         mp3Player.songName = "";
                         mp3Player.artist = "";
                         mp3Player.songLenght = 0;
+
+                        listView.selectIndex =-1;
                     }
                 }
 
                 onDoubleClicked: {
                     if(!listView.showAlbum)
                     {
-                        mp3Player.songName = songName;
-                        mp3Player.artist = artist;
-                        mp3Player.songLenght = length;
-
-                        // stop
-                        playTimer.stop();
-                        playing = false;
-                        progreebar.currentTime = 0;
-
-                        // then start
-                        playTimer.start();
-                        playing = true;
-
-
-
+                        click();
                     }
+                }
+
+                function click() {
+                    mp3Player.songName = songName;
+                    mp3Player.artist = artist;
+                    mp3Player.songLenght = length;
+
+                    // stop
+                    playTimer.stop();
+                    playing = false;
+                    progreebar.currentTime = 0;
+
+                    // then start
+                    playTimer.start();
+                    playing = true;
+
+                    listView.selectIndex = index;
                 }
             }
         }
