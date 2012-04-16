@@ -10,6 +10,10 @@ Rectangle {
 
     property string bgColor: "#00000000"
 
+    function help() {
+        marketFlip.state = 'back';
+    }
+
     Flipable {
         id: marketFlip
         anchors.fill: parent
@@ -385,6 +389,7 @@ Rectangle {
 
             // Help Button
             Button {
+                visible: false
                 id: helpButton
                 anchors.right: closeButton.left
                 anchors.verticalCenter: closeButton.verticalCenter
