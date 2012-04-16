@@ -1,14 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <music>
-        <album>
-                <albumName>Titanic Collector's Anniversary Edition</albumName>
-                <category>DAILY</category>
-                <icon>Application_Daily_Calendar.png</icon>
-                <source>../../components/Calendar/CalendarApplication.qml</source>
-                <width>10</width>
-                <height>8</height>
-                <transparent>false</transparent>
-                <border>true</border>
-        </album>
+	<album>
+		
+		<albumName>Titanic OST</albumName>
+		<albumCover>albumCovers/titanic.jpg</albumCover>
+		
+		<song>
+			<name>My Heart Will Go On</name>
+			<artist>Celine Dion</artist>
+			<length>310</length>
+		</song>
+		
+		<song>
+			<name>Never An Absolution</name>
+			<artist>James Horner</artist>
+			<length>183</length>
+		</song>
+		
+		<song>
+			<name>Distant Memories</name>
+			<artist>James Horner</artist>
+			<length>144</length>
+		</song>
+		
+		<song>
+			<name>Southampton</name>
+			<artist>James Horner</artist>
+			<length>181</length>
+		</song>
+		
+		<song>
+			<name>Rose</name>
+			<artist>James Horner</artist>
+			<length>172</length>
+		</song>
+		
+		<song>
+			<name>Leaving Port</name>
+			<artist>James Horner</artist>
+			<length>106</length>
+		</song>
+                
+	</album>
+	
+	<album>
+		
+		<albumName>Pacific Moon III</albumName>
+		<albumCover>albumCovers/Pacific.Moon.III.jpg</albumCover>
+		
+		<song>
+			<name>Silver Moon</name>
+			<artist>Naoyuki Onda</artist>
+			<length>329</length>
+		</song>
+		
+		<song>
+			<name>Teinsagu Nu Hana</name>
+			<artist>Silver MoonPenny</artist>
+			<length>309</length>
+		</song>
+		
+		<song>
+			<name>Night Sky</name>
+			<artist>Naoyuki Onda</artist>
+			<length>339</length>
+		</song>
+		
+		<song>
+			<name>Wings Of The Eagle</name>
+			<artist>Uttara-Kuru</artist>
+			<length>338</length>
+		</song>
+		
+		<song>
+			<name>Beyond The Window</name>
+			<artist>Mizuyo Komiya</artist>
+			<length>187</length>
+		</song>
+		
+		<song>
+			<name>Neyuki</name>
+			<artist>Uttara-Kuru</artist>
+			<length>325</length>
+		</song>
+		
+		<song>
+			<name>A Lullaby Of Takeda</name>
+			<artist>Eri</artist>
+			<length>291</length>
+		</song>
+		
+		<song>
+			<name>Hae</name>
+			<artist>F.A.B.</artist>
+			<length>462</length>
+		</song>
+                
+	</album>
 
 </music>

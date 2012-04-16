@@ -1,15 +1,17 @@
 import QtQuick 1.0
+import "../../common"
 
 Rectangle {
 
     id: mp3Player
 
     property bool playing: false
-    property string songName: "My Heart Will Go On";
-    property string artist: "Celine Dion";
-    property string album: "Titanic";
-    property string albumCover: "albumCovers/titanic.jpg";
-    property int songLenght: 45;
+
+    property string songName: "";
+    property string artist: "";
+    property string album: "";
+    property string albumCover: "";
+    property int songLenght: 0;
 
     radius: 5
     border.color: "grey"
@@ -140,7 +142,7 @@ Rectangle {
                 anchors.left: currentTimeText.right
                 anchors.leftMargin: 20
 
-                text: artist + " - " + songName
+                text: artist + ((artist!="")?" - ":"") + songName
                 font.pixelSize: 12
                 font.bold: true
                 wrapMode: Text.Wrap
@@ -270,9 +272,151 @@ Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
                 source: "icons/volume_up.png"
             }
-
-
         }
+
+        Rectangle {
+            id: selectAlbumButton
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+            anchors.top: parent.top
+            anchors.topMargin: 10
+            height: 30
+            width: selectAlbumButtonText.width +10
+            scale: selectAlbumButtonMouseArea.pressed? 0.9: 1
+
+            color: "grey"
+            radius: 5
+
+            gradient: Gradient {
+                GradientStop { position: 0.0; color: "#8C8F8C" }
+                GradientStop { position: 0.05; color: "#6A6D6A" }
+                GradientStop { position: 0.95;color: "#3F3F3F" }
+                GradientStop { position: 1.0; color: "#0e1B20" }
+            }
+
+            MouseArea {
+                id: selectAlbumButtonMouseArea
+                anchors.fill: parent
+                onClicked: {
+                    listView.model = albumModel
+                    listView.showAlbum = true;
+                }
+            }
+
+            Text {
+                id: selectAlbumButtonText
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.horizontalCenter: parent.horizontalCenter
+                text: "Select album"
+                color: "white"
+            }
+        }
+    }
+
+    ListView {
+        id: listView
+
+        property bool showAlbum: true
+
+        anchors.top: row_2.bottom
+        // anchors.topMargin: 10
+        anchors.left: parent.left
+        anchors.leftMargin: 10
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 20
+        clip: true
+
+        delegate: Rectangle {
+
+            id: albumDelegate
+            width: listView.width
+            height: 40
+            radius: 2
+            color: albumDelegateMouseArea.pressed? "lightgrey": "white"
+            border.width: 2
+
+            Text {
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: parent.left
+                anchors.leftMargin: 10
+                // anchors.horizontalCenter: parent.horizontalCenter
+                text: listView.showAlbum? albumName: songName
+            }
+
+            MouseArea {
+                id: albumDelegateMouseArea
+                anchors.fill: parent
+
+                onClicked: {
+                    if(listView.showAlbum) {
+                        listView.showAlbum = false
+                        songModel.albumName = albumName;
+
+                        mp3Player.album = albumName;
+                        mp3Player.albumCover = albumCover;
+
+                        listView.model = songModel
+
+                        // stop
+                        playTimer.stop();
+                        playing = false;
+                        progreebar.currentTime = 0;
+
+                        mp3Player.songName = "";
+                        mp3Player.artist = "";
+                        mp3Player.songLenght = 0;
+                    }
+                }
+
+                onDoubleClicked: {
+                    if(!listView.showAlbum)
+                    {
+                        mp3Player.songName = songName;
+                        mp3Player.artist = artist;
+                        mp3Player.songLenght = length;
+
+                        // stop
+                        playTimer.stop();
+                        playing = false;
+                        progreebar.currentTime = 0;
+
+                        // then start
+                        playTimer.start();
+                        playing = true;
+                    }
+                }
+            }
+        }
+
+        ScrollBar {
+            scrollArea: listView; height: listView.height; width: 8
+            anchors.right: listView.right
+        }
+    }
+
+
+
+    XmlListModel {
+        id: albumModel
+        source: "mp3.xml"
+        query: "/music/album"
+
+        XmlRole { name: "albumName"; query: "albumName/string()" }
+        XmlRole { name: "albumCover"; query: "albumCover/string()" }
+    }
+
+    XmlListModel {
+        id: songModel
+        property string albumName;
+
+        source: "mp3.xml"
+        query: "/music/album[albumName=\"" +albumName + "\"]/song"
+
+        XmlRole { name: "songName"; query: "name/string()" }
+        XmlRole { name: "artist"; query: "artist/string()" }
+        XmlRole { name: "length"; query: "length/string()" }
     }
 
     function converSecondsIntoTime(seconds) {
