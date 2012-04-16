@@ -154,6 +154,16 @@
                 <transparent>false</transparent>
                 <border>true</border>
         </application>
+        <application>
+                <name>Help Demo</name>
+                <category>MISC</category>
+                <icon>Application_Misc_Market.png</icon>
+                <source>../Help/Help.qml</source>
+                <width>12</width>
+                <height>9</height>
+                <transparent>false</transparent>
+                <border>true</border>
+        </application>
         <!--
         <application>
                 <name>App. Manager</name>
