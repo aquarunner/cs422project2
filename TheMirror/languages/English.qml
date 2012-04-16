@@ -42,11 +42,12 @@ Item {
     property string search: "Search..."
     property string close: "Close"
 
-    property string galleryHelpText: "<html><p>Touch any image icon to view it.</p><p>Press and hold an image for additional options.</p></html>"
+    property string marketCategoryButtonText: " Item(s) in Category: "
     property string marketHelpText: "<html><p>Market v1.0</p><p>The app market allows you to browse through applications available for download through the cloud.</p><p>Instructions: use the description text of each application to determine if it is a feature you like, and then press the Install button.</p><p>Send gripes, suggestions and praise to support@microsoft.com</p><p>Thank you - Market App Dev Team.</p></html>"
 
-    property string  galleryRenameButtonText: "Rename"
-    property string  galleryDeleteButtonText: "Delete"
+    property string galleryHelpText: "<html><p>Touch any image icon to view it.</p><p>Press and hold an image for additional options.</p></html>"
+    property string galleryRenameButtonText: "Rename"
+    property string galleryDeleteButtonText: "Delete"
 
     property string trafficSearchText: "Enter Any Location..."
     property string trafficHelpText: "<html><p>Traffic Watch v1.0</p><p>Enter a search location into the search bar to reveal traffic for that region on the map.</p><p>Traffic will be shown only for supported locations, courtesy of the Google maps plugin API.</p><p>For support with the Google maps plugin contact Google.  For Traffic Watch support contact support@microsoft.com</p></html>"
