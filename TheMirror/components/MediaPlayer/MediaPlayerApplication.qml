@@ -88,7 +88,7 @@ Rectangle {
             color: "lightgreen"
         }
 
-        Rectangle {
+        VideoPanel {
             id: videoPage
 
             width: pagesListView.width

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<videos>
+	
+	<video>
+		<videoName>Bruce Lee</videoName>
+		<videoLocation>videos/bruce_lee.gif</videoLocation>
+		<videoLength>10</videoLength>     
+	</video>
+	
+	<video>
+		<videoName>I don't like shower</videoName>
+		<videoLocation>videos/i_dont_like_to_shower.gif</videoLocation>
+		<videoLength>15</videoLength>     
+	</video>
+
+
+</videos>
