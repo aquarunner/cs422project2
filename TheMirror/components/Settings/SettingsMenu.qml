@@ -128,9 +128,9 @@ Rectangle {
         id: selectLanguageRadioMenuModel;
         ListElement { identification: "en"; sourceName: "English"; name: "English"; secondIconSource: ""}
         ListElement { identification: "zh"; sourceName: "Chinese"; name: "中文"; secondIconSource: ""}
-        ListElement { identification: "jp"; sourceName: "Japanese"; name: "日本語"; secondIconSource: ""}
-        ListElement { identification: "es"; sourceName: "Spanish"; name: "Español"; secondIconSource: ""}
         // faked
+        ListElement { identification: "jp"; sourceName: "English"; name: "日本語"; secondIconSource: ""}
+        ListElement { identification: "es"; sourceName: "English"; name: "Español"; secondIconSource: ""}
         ListElement { identification: "cs"; sourceName: "English"; name: "Czech"; secondIconSource: ""}
         ListElement { identification: "nl"; sourceName: "English"; name: "Dutch"; secondIconSource: ""}
         ListElement { identification: "fi"; sourceName: "English"; name: "Suomi"; secondIconSource: ""}
