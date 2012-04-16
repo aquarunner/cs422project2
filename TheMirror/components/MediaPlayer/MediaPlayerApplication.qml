@@ -79,7 +79,7 @@ Rectangle {
             height: pagesListView.height
         }
 
-        Rectangle {
+        RadioPanel {
             id: radioPage
 
             width: pagesListView.width
