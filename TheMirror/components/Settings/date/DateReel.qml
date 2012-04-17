@@ -138,12 +138,13 @@ Item {
         Component.onCompleted: {
             months.update();
         }
-        ListElement { number: "2011" }
+//        ListElement { number: "2011" }
         ListElement { number: "2012" }
         ListElement { number: "2013" }
         ListElement { number: "2014" }
         ListElement { number: "2015" }
         ListElement { number: "2016" }
+        ListElement { number: "2017" }
     }
 
     ListModel{
