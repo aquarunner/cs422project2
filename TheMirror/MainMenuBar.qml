@@ -84,7 +84,7 @@ Rectangle {
             applicationCanvas.isApplicationAreaTransparent = false;
             applicationCanvas.showBorder = true;
             applicationCanvas.applicationAreaHeightInNumberOfCells = applicationCanvas.__defaultHeightInNumberOfCells
-            applicationCanvas.applicationAreaWidthInNumberOfCells = 8
+            applicationCanvas.applicationAreaWidthInNumberOfCells = 13
 
             applicationCanvas.componentLoder.title = i18n.help
             applicationCanvas.componentLoder.iconName = "SettingsMenu_Help.png"

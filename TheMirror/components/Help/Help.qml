@@ -6,15 +6,30 @@ Rectangle {
     id: helpArea
     color: "#00000000"
     anchors.fill: parent
-    anchors.topMargin: 55
+    anchors.topMargin: 50
     clip: true
 
-    WebView {
-        anchors.top: parent.top
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: closeButton.top
-        anchors.bottomMargin: 10
+    Item {
+        id: instruction
+        anchors.fill: parent
+        anchors.bottomMargin: 55
+        anchors.leftMargin: 20
+        anchors.topMargin: 20
+        visible: true
+
+        Flickable {
+
+            id: flickable
+
+            Image{
+                id: picture; source:"Documentation.png"
+            }
+            contentWidth:flickable.width
+            contentHeight:picture.height
+            anchors.fill: parent
+            clip: true
+
+        }
     }
 
     Button {
