@@ -73,8 +73,13 @@ Rectangle {
             applicationLoder.title = name;
             applicationLoder.iconName = icon;
 
-            back.viewID = settingsSubMenuList
-            settingsSubMenuList.model = null;
+//            back.viewID = settingsSubMenuList
+//            settingsSubMenuList.model = null;
+
+            applicationCanvas.isApplicationAreaTransparent = true;
+            applicationLoder.source = "ChangeDateAndTime.qml";
+            applicationCanvas.applicationAreaHeightInNumberOfCells = 8
+            applicationCanvas.applicationAreaWidthInNumberOfCells = 5
 
 //        }else if(category == "HELP") {
 //            applicationLoder.title = name;
