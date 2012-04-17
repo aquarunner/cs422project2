@@ -6,5 +6,6 @@ XmlListModel {
     query: "/feed/entry"
     namespaceDeclarations: "declare default element namespace 'http://www.w3.org/2005/Atom';"
 
+    XmlRole { name: "thumb"; query: "content/string()" }
     XmlRole { name: "src"; query: "link[@rel='enclosure']/@href/string()" }
 }

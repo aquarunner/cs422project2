@@ -43,6 +43,7 @@ Item {
                 label: "?"
                 width: 40
                 onClicked: helpText.visible = true
+                visible: false
             }
 
 
@@ -336,17 +337,12 @@ Item {
                 height: galleryList.height
                 width: galleryList.height
 
-
-//                Rectangle {
-//                    id: hilighter
-//                    width: 30
-//                    height: 5
-//                    color: "grey"
-//                    anchors.horizontalCenter: parent.horizontalCenter
-//                    anchors.bottom: parent.bottom
-//                    visible: galleryDelegate.ListView.isCurrentItem
-//                }
-
+                AnimatedImage {
+                    id: placeHolder
+                    source: "../../icons/Waiting.gif"
+                    visible: galleryImage.progress !== 1
+                    anchors.centerIn: parent
+                }
 
                 MouseArea {
                     id: galleryDelegateMouseArea
@@ -388,7 +384,9 @@ Item {
                     Image {
                         id: galleryImage
                         source: src//galleryList.photoPath + src
+                        //source: thumb
                         anchors.centerIn: parent
+                        anchors.fill: parent
                         fillMode: Image.PreserveAspectFit
                     }
                 }
