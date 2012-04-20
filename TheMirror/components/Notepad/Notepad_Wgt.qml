@@ -7,6 +7,9 @@ Rectangle {
 
     property int numNotes: settings.getSetting("numNotes", "notes", "./components/Notepad/")
     property int current: 0
+    anchors.leftMargin: 5
+    anchors.rightMargin: 5
+    anchors.fill: parent
 
     Component.onCompleted: {
         back.enabled = false

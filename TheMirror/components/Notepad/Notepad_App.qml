@@ -6,6 +6,7 @@ Rectangle{
     anchors.fill: parent
     anchors.topMargin: 55
 
+
     property int numNotes: settings.getSetting("numNotes", "notes", "./components/Notepad/")
     property string oldText: ""
 
@@ -33,6 +34,9 @@ Rectangle{
         anchors.rightMargin: 2
         anchors.leftMargin: 2
         anchors.bottomMargin: 2
+        color: "lightgrey"
+        border.color: "black"
+        border.width: 1
 
         Component {
             id: noteDelegate
@@ -43,16 +47,18 @@ Rectangle{
                     Text {
                         text: '<b>' + title  + "</b>";
                         horizontalAlignment: Text.AlignRight
+                        font.pixelSize: 18
                     }
 
-                    MouseArea {
-                        anchors.fill: parent
 
-                        onClicked: {
-                            np_view.currentIndex = index;
-                            thetext.text = text
-                            oldText = text
-                        }
+                }
+                MouseArea {
+                    anchors.fill: parent
+
+                    onClicked: {
+                        np_view.currentIndex = index;
+                        thetext.text = text
+                        oldText = text
                     }
                 }
             }
@@ -65,7 +71,7 @@ Rectangle{
             anchors.fill: parent
             model: notes_model
             delegate: noteDelegate
-            highlight: Rectangle { color: "lightgray"; radius: 5 }
+            highlight: Rectangle { width: parent.width; color: "#FCF0AD"; radius: 5 }
             focus: true
         }
     }
@@ -79,6 +85,7 @@ Rectangle{
         anchors.rightMargin: 2
         anchors.leftMargin: 2
         anchors.bottomMargin: 2
+        color: "#FCF0AD"
 
         Component.onCompleted: {
             keyboard.letterClicked.connect(addletter)
@@ -90,6 +97,7 @@ Rectangle{
             id: thetext
             height: 100
             text: "" // np_view.currentItem.
+            font.pixelSize: 18
         }
 
         Keyboard {
@@ -231,7 +239,7 @@ Rectangle{
             anchors.leftMargin: 2
             label: "Exit"
 
-            onClicked: {                
+            onClicked: {
                 widgetCanvas.reloadWidget("notes_widget")
                 mainScreen.showMainMenuBar = true;
                 mainScreen.showApplicationArea = false;
