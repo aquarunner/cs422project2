@@ -95,7 +95,9 @@ Rectangle {
             id = ids[i].replace(/^\s+|\s+$/g, ""); // trim
             if(id.length !== 0 && id != "NONE"){
                 url = settings.getSetting(id, "routes", "./components/CtaTracker/");
-                existingRouteModel.append({"routeID": id, "routeURL": url})
+                if(url != "$NULL$") {
+                    existingRouteModel.append({"routeID": id, "routeURL": url})
+                }
             }
         }
 
@@ -164,6 +166,15 @@ Rectangle {
 
             }
 
+            property int numberOfChecked: 0
+            property variant checkedIndices: [];
+
+            function clearCheckedInfo() {
+                numberOfChecked = 0;
+                var checkedIndicesCopy = [];
+                checkedIndices = checkedIndicesCopy;
+            }
+
             ListView {
                 id: existingRoutesList
                 anchors.fill: parent
@@ -172,6 +183,7 @@ Rectangle {
 
                 delegate: ExistingRouteButton {
                     listView: pagesListView
+                    showCheckBox: true
                     onClicked: {
                         predictionsModel.source = "http://www.ctabustracker.com/bustime/api/v1/getpredictions?key=iKjMrnkQCtzUN2DeCQjUtrf26"+routeURL;
                         // console.log(routeURL);
@@ -195,12 +207,31 @@ Rectangle {
                 anchors.topMargin: 15
                 anchors.left: parent.left
                 anchors.leftMargin: 20
-                label: "Add route"
+                label: currentTrackingPage.numberOfChecked >0? "Delete": "Add route"
 
                 onClicked: {
-                    routesList.currentSelection = "";
-                    pagesListView.currentIndex = 2
+                    if(currentTrackingPage.numberOfChecked ==0) {
+                        routesList.currentSelection = "";
+                        pagesListView.currentIndex = 2
+                    }
+                    else {
+                        currentTrackingPage.deleteRoutes();
+                    }
                 }
+            }
+
+            function deleteRoutes() {
+                for(var i = 0; i < existingRouteModel.count; i++) {
+                    if(currentTrackingPage.checkedIndices[i]) {
+                        var idToDel = existingRouteModel.get(i).routeID
+                        settings.setSetting(idToDel, "$NULL$", "routes", "./components/CtaTracker/");
+                    }
+                }
+
+                readExistingRoutes();
+                currentTrackingPage.numberOfChecked=0;
+
+                widgetCanvas.reloadWidget("cta_widget");
             }
 
             Button {

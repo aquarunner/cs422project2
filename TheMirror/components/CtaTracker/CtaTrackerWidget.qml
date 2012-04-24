@@ -73,7 +73,9 @@ Rectangle {
             id = ids[i].replace(/^\s+|\s+$/g, ""); // trim
             if(id.length !== 0 && id != "NONE"){
                 url = settings.getSetting(id, "routes", "./components/CtaTracker/");
-                existingRouteModel.append({"routeID": id, "routeURL": url})
+                if(url!="$NULL$") {
+                    existingRouteModel.append({"routeID": id, "routeURL": url})
+                }
             }
         }
 
@@ -124,13 +126,13 @@ Rectangle {
                     }
                 }
 
-//                MouseArea {
-//                    anchors.fill: existingRoutesList
-//                    visible: existingRouteModel.count == 0
-//                    onClicked: {
-//                        xmlApplicationLoader.loadApplication("CTA Bus");
-//                    }
-//                }
+                //                MouseArea {
+                //                    anchors.fill: existingRoutesList
+                //                    visible: existingRouteModel.count == 0
+                //                    onClicked: {
+                //                        xmlApplicationLoader.loadApplication("CTA Bus");
+                //                    }
+                //                }
             }
         }
 
@@ -170,7 +172,7 @@ Rectangle {
                 }
             }
 
-        } 
+        }
     }
 
 
